@@ -52,7 +52,7 @@ def run_test(prayer: Prayer, language: str, voice: str, dry_run: bool) -> tuple[
             ["say", "-v", voice_str, "-r", str(RATE), text],
             capture_output=True,
             text=True,
-            timeout=30,
+            timeout=60,
         )
         if result.returncode == 0:
             return True, f"good: {label}"

@@ -100,9 +100,12 @@ def main() -> None:
     print(f"\n  ✅  Installed : {PRAY_DST}")
 
     # ── Install prayers/ module ────────────────────────────────────────────────
-    if PRAYERS_DST.exists():
+    if PRAYERS_DST.is_symlink():
+        os.unlink(PRAYERS_DST)
+    elif PRAYERS_DST.exists():
         shutil.rmtree(PRAYERS_DST)
-    shutil.copytree(PRAYERS_SRC, PRAYERS_DST)
+    if not PRAYERS_DST.exists():
+        os.symlink(PRAYERS_SRC, PRAYERS_DST)
     print(f"  ✅  Installed : {PRAYERS_DST}/")
 
     # ── Verify ────────────────────────────────────────────────────────────────

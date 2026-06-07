@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pray — Sacred Prayers in Many Voices</title>
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    max-width: 680px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: #1a1a1a;
+    background: #fff;
+  }
+  h1 { font-size: 1.4rem; font-weight: 500; margin-bottom: 0.25rem; }
+  p.sub { font-size: 0.875rem; color: #666; margin-bottom: 1.5rem; }
+  label { display: block; font-size: 0.8rem; color: #666; margin-bottom: 4px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 1.25rem; }
+  select, input[type=range] { width: 100%; box-sizing: border-box; }
+  select { padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+  #prayer-text {
+    background: #f7f7f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    font-size: 15px;
+    line-height: 2;
+    white-space: pre-line;
+    min-height: 120px;
+    margin-bottom: 1.25rem;
+  }
+  .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  button {
+    padding: 0 1.25rem;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+  }
+  button:hover { background: #f0f0f0; }
+  button:disabled { opacity: 0.4; cursor: default; }
+  #status { font-size: 13px; color: #888; }
+  .note { font-size: 11px; color: #aaa; margin-top: 1rem; }
+  footer { margin-top: 2rem; font-size: 12px; color: #aaa; border-top: 1px solid #eee; padding-top: 1rem; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1a1a1a; color: #e8e8e8; }
+    select { background: #2a2a2a; color: #e8e8e8; border-color: #444; }
+    #prayer-text { background: #2a2a2a; border-color: #444; }
+    button { background: #2a2a2a; color: #e8e8e8; border-color: #444; }
+    button:hover { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Pray</h1>
+<p class="sub">"Ask, and it shall be given you; seek, and ye shall find." — Matthew 7:7</p>
+
+<div class="grid">
+  <div>
+    <label for="prayer">Prayer</label>
+    <select id="prayer">
+      <option value="ave">Ave Maria</option>
+      <option value="lords">Lord's Prayer</option>
+    </select>
+  </div>
+  <div>
+    <label for="language">Language</label>
+    <select id="language">
+      <option value="english">English</option>
+      <option value="german">Deutsch</option>
+      <option value="italian" selected>Italiano</option>
+      <option value="latin">Latina</option>
+      <option value="french">Français</option>
+      <option value="spanish">Español</option>
+      <option value="portuguese">Português</option>
+      <option value="polish">Polski</option>
+    </select>
+  </div>
+  <div>
+    <label for="voice-select">Voice</label>
+    <select id="voice-select"><option>Loading...</option></select>
+  </div>
+  <div>
+    <label for="rate">Rate — <span id="rate-out">85</span> wpm</label>
+    <input type="range" min="60" max="200" value="85" step="1" id="rate" />
+  </div>
+</div>
+
+<div id="prayer-text"></div>
+
+<div class="controls">
+  <button id="btn-pray">&#9654; Pray</button>
+  <button id="btn-stop" disabled>&#9646;&#9646; Stop</button>
+  <span id="status"></span>
+</div>
+
+<p class="note">Uses your browser's built-in speech synthesis. Available voices vary by OS and browser. For the full macOS voice experience, see <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
+
+<footer>
+  Pray — open source. Two prayers, eight languages.<br>
+  <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>
+</footer>
+
+<script>
+const TEXTS = {
+  ave: {
+    english: "Hail Mary, full of grace, the Lord is with thee.\nBlessed art thou among women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God, pray for us sinners,\nnow and at the hour of our death. Amen.",
+    german: "Gegrüßet seist du, Maria, voll der Gnade, der Herr ist mit dir.\nDu bist gebenedeit unter den Frauen,\nund gebenedeit ist die Frucht deines Leibes, Jesus.\nHeilige Maria, Mutter Gottes, bitte für uns Sünder\njetzt und in der Stunde unseres Todes. Amen.",
+    italian: "Ave Maria, piena di grazia, il Signore è con te.\nTu sei benedetta fra le donne,\ne benedetto è il frutto del tuo seno, Gesù.\nSanta Maria, Madre di Dio, prega per noi peccatori,\nadesso e nell'ora della nostra morte. Amen.",
+    latin: "Ave Maria, gratia plena, Dominus tecum.\nBenedicta tu in mulieribus,\net benedictus fructus ventris tui, Iesus.\nSancta Maria, Mater Dei, ora pro nobis peccatoribus,\nnunc et in hora mortis nostrae. Amen.",
+    french: "Je vous salue, Marie, pleine de grâce,\nle Seigneur est avec vous.\nVous êtes bénie entre toutes les femmes,\net Jésus, le fruit de vos entrailles, est béni.\nSainte Marie, Mère de Dieu,\npriez pour nous, pauvres pécheurs,\nmaintenant et à l'heure de notre mort. Amen.",
+    spanish: "Dios te salve, María, llena eres de gracia,\nel Señor es contigo.\nBendita tú eres entre todas las mujeres,\ny bendito es el fruto de tu vientre, Jesús.\nSanta María, Madre de Dios,\nruega por nosotros, pecadores,\nahora y en la hora de nuestra muerte. Amén.",
+    portuguese: "Ave Maria, cheia de graça,\no Senhor é convosco.\nBendita sois vós entre as mulheres,\ne bendito é o fruto do vosso ventre, Jesus.\nSanta Maria, Mãe de Deus,\nrogai por nós, pecadores,\nagora e na hora da nossa morte. Amém.",
+    polish: "Zdrowaś Maryjo, łaski pełna,\nPan z Tobą.\nBłogosławionaś Ty między niewiastami\ni błogosławiony owoc żywota Twojego, Jezus.\nŚwięta Maryjo, Matko Boża,\nmódl się za nami grzesznymi\nteraz i w godzinę śmierci naszej. Amen."
+  },
+  lords: {
+    english: "Our Father, who art in heaven,\nhallowed be thy name.\nThy kingdom come, thy will be done,\non earth as it is in heaven.\nGive us this day our daily bread,\nand forgive us our trespasses,\nas we forgive those who trespass against us.\nAnd lead us not into temptation,\nbut deliver us from evil.\nFor thine is the kingdom, the power, and the glory,\nfor ever and ever. Amen.",
+    german: "Vater unser im Himmel,\ngeheiligt werde dein Name.\nDein Reich komme, dein Wille geschehe,\nwie im Himmel, so auf Erden.\nUnser tägliches Brot gib uns heute.\nUnd vergib uns unsere Schuld,\nwie auch wir vergeben unsern Schuldigern.\nUnd führe uns nicht in Versuchung,\nsondern erlöse uns von dem Bösen.\nDenn dein ist das Reich und die Kraft\nund die Herrlichkeit in Ewigkeit. Amen.",
+    italian: "Padre nostro, che sei nei cieli,\nsia santificato il tuo nome.\nVenga il tuo regno, sia fatta la tua volontà,\ncome in cielo così in terra.\nDacci oggi il nostro pane quotidiano,\ne rimetti a noi i nostri debiti,\ncome noi li rimettiamo ai nostri debitori.\nE non ci indurre in tentazione,\nma liberaci dal male.\nAmen.",
+    latin: "Pater noster, qui es in caelis,\nsanctificetur nomen tuum.\nAdveniat regnum tuum,\nfiat voluntas tua,\nsicut in caelo, et in terra.\nPanem nostrum quotidianum da nobis hodie,\net dimitte nobis debita nostra,\nsicut et nos dimittimus debitoribus nostris.\nEt ne nos inducas in tentationem,\nsed libera nos a malo.\nAmen.",
+    french: "Notre Père, qui es aux cieux,\nque ton nom soit sanctifié.\nQue ton règne vienne,\nque ta volonté soit faite\nsur la terre comme au ciel.\nDonne-nous aujourd'hui notre pain de ce jour.\nPardonne-nous nos offenses,\ncomme nous pardonnons aussi à ceux qui nous ont offensés.\nEt ne nous soumets pas à la tentation,\nmais délivre-nous du mal.\nAmen.",
+    spanish: "Padre nuestro, que estás en el cielo,\nsantificado sea tu nombre.\nVenga tu reino,\nhágase tu voluntad\nen la tierra como en el cielo.\nDanos hoy nuestro pan de cada día.\nPerdona nuestras ofensas,\ncomo también nosotros perdonamos\na los que nos ofenden.\nNo nos dejes caer en tentación\ny líbranos del mal. Amén.",
+    portuguese: "Pai nosso, que estais nos céus,\nsantificado seja o vosso nome.\nVenha a nós o vosso reino.\nSeja feita a vossa vontade,\nassim na terra como no céu.\nO pão nosso de cada dia nos dai hoje.\nPerdoai-nos as nossas ofensas,\nassim como nós perdoamos\na quem nos tem ofendido.\nE não nos deixeis cair em tentação,\nmas livrai-nos do mal. Amém.",
+    polish: "Ojcze nasz, któryś jest w niebie,\nświęć się imię Twoje.\nPrzyjdź królestwo Twoje,\nbądź wola Twoja,\njako w niebie tak i na ziemi.\nChleba naszego powszedniego daj nam dzisiaj.\nI odpuść nam nasze winy,\njako i my odpuszczamy naszym winowajcom.\nI nie wódź nas na pokuszenie,\nale nas zbaw ode złego. Amen."
+  }
+};
+
+const LANG_CODES = {
+  english:'en', german:'de', italian:'it', latin:'it',
+  french:'fr', spanish:'es', portuguese:'pt', polish:'pl'
+};
+
+const prayerSel  = document.getElementById('prayer');
+const langSel    = document.getElementById('language');
+const voiceSel   = document.getElementById('voice-select');
+const rateSlider = document.getElementById('rate');
+const rateOut    = document.getElementById('rate-out');
+const textDiv    = document.getElementById('prayer-text');
+const btnPray    = document.getElementById('btn-pray');
+const btnStop    = document.getElementById('btn-stop');
+const statusEl   = document.getElementById('status');
+
+function updateText() {
+  textDiv.textContent = TEXTS[prayerSel.value][langSel.value] || '';
+}
+
+function populateVoices() {
+  const all     = window.speechSynthesis.getVoices();
+  const code    = LANG_CODES[langSel.value] || 'en';
+  const matched = all.filter(v => v.lang.toLowerCase().startsWith(code));
+  const pool    = matched.length ? matched : all.filter(v => v.lang.startsWith('en'));
+  voiceSel.innerHTML = pool.map((v, i) =>
+    `<option value="${i}">${v.name} (${v.lang})</option>`
+  ).join('') || '<option>No voices found</option>';
+  voiceSel._pool = pool;
+}
+
+function pray() {
+  window.speechSynthesis.cancel();
+  const text = TEXTS[prayerSel.value][langSel.value];
+  if (!text) return;
+  const u     = new SpeechSynthesisUtterance(text);
+  const pool  = voiceSel._pool || [];
+  const voice = pool[parseInt(voiceSel.value)];
+  if (voice) { u.voice = voice; u.lang = voice.lang; }
+  u.rate = parseInt(rateSlider.value) / 100;
+  u.onstart = () => { statusEl.textContent = 'Praying...'; btnPray.disabled = true; btnStop.disabled = false; };
+  u.onend = u.onerror = () => { statusEl.textContent = ''; btnPray.disabled = false; btnStop.disabled = true; };
+  window.speechSynthesis.speak(u);
+}
+
+rateSlider.addEventListener('input', () => { rateOut.textContent = rateSlider.value; });
+prayerSel.addEventListener('change', updateText);
+langSel.addEventListener('change', () => { updateText(); populateVoices(); });
+btnPray.addEventListener('click', pray);
+btnStop.addEventListener('click', () => {
+  window.speechSynthesis.cancel();
+  statusEl.textContent = ''; btnPray.disabled = false; btnStop.disabled = true;
+});
+
+if ('onvoiceschanged' in window.speechSynthesis) {
+  window.speechSynthesis.onvoiceschanged = populateVoices;
+}
+setTimeout(populateVoices, 400);
+updateText();
+</script>
+</body>
+</html>

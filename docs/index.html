@@ -17,8 +17,24 @@
   p.sub { font-size: 0.875rem; color: #666; margin-bottom: 1.5rem; }
   label { display: block; font-size: 0.8rem; color: #666; margin-bottom: 4px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 1.25rem; }
-  select, input[type=range] { width: 100%; box-sizing: border-box; }
-  select { padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+  select { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+  input[type=range] { width: 100%; }
+  #art-container {
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+  #art-container img {
+    max-width: 100%;
+    max-height: 320px;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+  #art-caption {
+    font-size: 11px;
+    color: #999;
+    margin-top: 6px;
+    font-style: italic;
+  }
   #prayer-text {
     background: #f7f7f5;
     border: 1px solid #e0e0e0;
@@ -90,6 +106,11 @@
   </div>
 </div>
 
+<div id="art-container">
+  <img id="art-img" src="" alt="" />
+  <div id="art-caption"></div>
+</div>
+
 <div id="prayer-text"></div>
 
 <div class="controls">
@@ -106,6 +127,17 @@
 </footer>
 
 <script>
+const ART = {
+  ave: {
+    src: "The_First_Eucharist.png",
+    caption: "The First Eucharist — AI image directed by Rodney Stephen Price, 2026"
+  },
+  lords: {
+    src: "Breaking_of_The_Bread.png",
+    caption: "Breaking of the Bread (The Last Supper) — AI image, ChatGPT, 2026"
+  }
+};
+
 const TEXTS = {
   ave: {
     english: "Hail Mary, full of grace, the Lord is with thee.\nBlessed art thou among women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God, pray for us sinners,\nnow and at the hour of our death. Amen.",
@@ -143,6 +175,15 @@ const textDiv    = document.getElementById('prayer-text');
 const btnPray    = document.getElementById('btn-pray');
 const btnStop    = document.getElementById('btn-stop');
 const statusEl   = document.getElementById('status');
+const artImg     = document.getElementById('art-img');
+const artCaption = document.getElementById('art-caption');
+
+function updateArt() {
+  const a = ART[prayerSel.value];
+  artImg.src = a.src;
+  artImg.alt = a.caption;
+  artCaption.textContent = a.caption;
+}
 
 function updateText() {
   textDiv.textContent = TEXTS[prayerSel.value][langSel.value] || '';
@@ -174,7 +215,7 @@ function pray() {
 }
 
 rateSlider.addEventListener('input', () => { rateOut.textContent = rateSlider.value; });
-prayerSel.addEventListener('change', updateText);
+prayerSel.addEventListener('change', () => { updateText(); updateArt(); });
 langSel.addEventListener('change', () => { updateText(); populateVoices(); });
 btnPray.addEventListener('click', pray);
 btnStop.addEventListener('click', () => {
@@ -187,6 +228,7 @@ if ('onvoiceschanged' in window.speechSynthesis) {
 }
 setTimeout(populateVoices, 400);
 updateText();
+updateArt();
 </script>
 </body>
 </html>

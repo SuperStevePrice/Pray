@@ -12,6 +12,7 @@ Each prayer module defines a Prayer instance with:
 """
 
 from dataclasses import dataclass, field
+from typing import Optional
 
 
 @dataclass
@@ -30,11 +31,11 @@ class Prayer:
     def voice_names(self) -> list[str]:
         return list(next(iter(self.voices.values())).keys())
 
-    def resolve_language(self, raw: str) -> str | None:
+    def resolve_language(self, raw: str) -> Optional[str]:
         """Resolve a raw language string (any case/alias) to canonical key."""
         return self.language_aliases.get(raw.lower(), None)
 
-    def resolve_voice(self, raw: str) -> str | None:
+    def resolve_voice(self, raw: str) -> Optional[str]:
         """Resolve a raw voice name (any case) to canonical key."""
         cap = raw.capitalize()
         names = self.voice_names()

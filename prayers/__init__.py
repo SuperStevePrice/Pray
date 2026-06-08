@@ -9,19 +9,21 @@ from .ave_maria    import AveMaria
 from .lords_prayer import LordsPrayer
 from .serenity     import Serenity
 from .psalm_23     import Psalm23
+from .peace        import Peace
 from .base         import Prayer
 
 # ── Registry ───────────────────────────────────────────────────────────────────
 
-PRAYERS: dict[str, Prayer] = {
+PRAYERS: dict = {
     "ave":      AveMaria,
     "lords":    LordsPrayer,
     "serenity": Serenity,
     "psalm23":  Psalm23,
+    "peace":    Peace,
 }
 
 # Aliases for --prayer argument
-PRAYER_ALIASES: dict[str, str] = {
+PRAYER_ALIASES: dict = {
     # Ave Maria
     "ave":           "ave",
     "ave maria":     "ave",
@@ -42,15 +44,22 @@ PRAYER_ALIASES: dict[str, str] = {
     "notre pere":    "lords",
     "notre père":    "lords",
     # Serenity Prayer
-    "serenity":      "serenity",
+    "serenity":        "serenity",
     "serenity prayer": "serenity",
-    "gelassenheit":  "serenity",
+    "gelassenheit":    "serenity",
     # 23rd Psalm
-    "psalm23":       "psalm23",
-    "psalm 23":      "psalm23",
-    "23rd psalm":    "psalm23",
-    "the lord is my shepherd": "psalm23",
-    "der herr ist mein hirte": "psalm23",
+    "psalm23":                     "psalm23",
+    "psalm 23":                    "psalm23",
+    "23rd psalm":                  "psalm23",
+    "the lord is my shepherd":     "psalm23",
+    "der herr ist mein hirte":     "psalm23",
+    # Peace Prayer
+    "peace":                       "peace",
+    "peace prayer":                "peace",
+    "prayer of st francis":        "peace",
+    "st francis":                  "peace",
+    "make me a channel":           "peace",
+    "channel of your peace":       "peace",
 }
 
 __all__ = ["Prayer", "PRAYERS", "PRAYER_ALIASES"]

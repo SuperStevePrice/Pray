@@ -5,25 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pray — Sacred Prayers in Many Voices</title>
 <style>
-  body {
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     font-family: system-ui, sans-serif;
-    max-width: 680px;
-    margin: 2rem auto;
-    padding: 0 1rem;
     color: #1a1a1a;
-    background: #fff;
+  }
+  #bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('bg_alps.png') center center / cover no-repeat;
+    z-index: 0;
+    transition: opacity 1s ease;
+  }
+  #panel {
+    position: relative;
+    z-index: 1;
+    max-width: 660px;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
   }
   h1 { font-size: 1.4rem; font-weight: 500; margin-bottom: 0.25rem; }
   p.sub { font-size: 0.875rem; color: #666; margin-bottom: 1.5rem; }
   label { display: block; font-size: 0.8rem; color: #666; margin-bottom: 4px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 1.25rem; }
-  select { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+  select { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background: #fff; }
   input[type=range] { width: 100%; }
   #art-container { text-align: center; margin-bottom: 1.25rem; min-height: 40px; }
-  #art-container img { max-width: 100%; max-height: 320px; border-radius: 8px; object-fit: contain; }
+  #art-container img { max-width: 100%; max-height: 280px; border-radius: 8px; object-fit: contain; }
   #art-caption { font-size: 11px; color: #999; margin-top: 6px; font-style: italic; }
   #prayer-text {
-    background: #f7f7f5;
+    background: rgba(247, 247, 245, 0.95);
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     padding: 1.25rem 1.5rem;
@@ -39,17 +56,20 @@
   button:disabled { opacity: 0.4; cursor: default; }
   #status { font-size: 13px; color: #888; }
   .note { font-size: 11px; color: #aaa; margin-top: 1rem; }
-  footer { margin-top: 2rem; font-size: 12px; color: #aaa; border-top: 1px solid #eee; padding-top: 1rem; }
+  footer { margin-top: 2rem; font-size: 12px; color: #aaa; border-top: 1px solid #ddd; padding-top: 1rem; }
   @media (prefers-color-scheme: dark) {
-    body { background: #1a1a1a; color: #e8e8e8; }
+    #panel { background: rgba(30, 30, 30, 0.90); color: #e8e8e8; }
     select { background: #2a2a2a; color: #e8e8e8; border-color: #444; }
-    #prayer-text { background: #2a2a2a; border-color: #444; }
+    #prayer-text { background: rgba(42, 42, 42, 0.95); border-color: #444; color: #e8e8e8; }
     button { background: #2a2a2a; color: #e8e8e8; border-color: #444; }
     button:hover { background: #333; }
+    p.sub, label, #status, .note, footer { color: #aaa; }
   }
 </style>
 </head>
 <body>
+<div id="bg"></div>
+<div id="panel">
 
 <h1>Pray</h1>
 <p class="sub">"Ask, and it shall be given you; seek, and ye shall find." — Matthew 7:7</p>
@@ -62,6 +82,7 @@
       <option value="lords">Lord's Prayer</option>
       <option value="serenity">Serenity Prayer</option>
       <option value="psalm23">23rd Psalm</option>
+      <option value="peace">Peace Prayer</option>
     </select>
   </div>
   <div>
@@ -103,7 +124,7 @@
 <p class="note">Uses your browser's built-in speech synthesis. Available voices vary by OS and browser. For the full macOS voice experience, see <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
 
 <footer>
-  Pray — open source. Four prayers, eight languages.<br>
+  Pray — open source. Five prayers, eight languages.<br>
   <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>
 </footer>
 
@@ -112,7 +133,7 @@ const ART = {
   ave:      { src: "The_First_Eucharist.png",   caption: "The First Eucharist — AI image directed by Rodney Stephen Price, 2026" },
   lords:    { src: "Breaking_of_The_Bread.png", caption: "Breaking of the Bread (The Last Supper) — AI image, ChatGPT, 2026" },
   serenity: { src: "Serenity.png",              caption: "Serenity — AI image, ChatGPT, 2026" },
-  psalm23:  { src: "Psalm_23.png",              caption: "The Lord is my Shepherd — AI image, ChatGPT, 2026" }
+  peace:    { src: "Peace.png",                caption: "Peace Prayer, attributed to St. Francis of Assisi (text c. 1912) — AI image, ChatGPT, 2026" }
 };
 
 const TEXTS = {
@@ -146,7 +167,16 @@ const TEXTS = {
     portuguese: "Deus, concede-me a serenidade\npara aceitar as coisas que não posso mudar,\ncoragem para mudar as que posso,\ne sabedoria para distinguir uma das outras.\nAmém.",
     polish:     "Boże, użycz mi pogody ducha,\nabym godził się z tym, czego nie mogę zmienić,\nodwagi, abym zmieniał to, co mogę zmienić,\ni mądrości, abym odróżniał jedno od drugiego.\nAmen."
   },
-  psalm23: {
+  peace: {
+    english:    "Lord, make me an instrument of your peace.\nWhere there is hatred, let me sow love;\nwhere there is injury, pardon;\nwhere there is doubt, faith;\nwhere there is despair, hope;\nwhere there is darkness, light;\nwhere there is sadness, joy.\nO Divine Master, grant that I may not so much seek\nto be consoled as to console,\nto be understood as to understand,\nto be loved as to love.\nFor it is in giving that we receive,\nit is in pardoning that we are pardoned,\nand it is in dying that we are born to eternal life.\nAmen.",
+    german:     "Herr, mach mich zu einem Werkzeug deines Friedens,\ndass ich Liebe übe, wo man sich hasst,\ndass ich verzeihe, wo man sich beleidigt,\ndass ich verbinde, wo Streit ist,\ndass ich die Wahrheit sage, wo Irrtum ist,\ndass ich den Glauben bringe, wo Zweifel droht,\ndass ich Hoffnung wecke, wo Verzweiflung quält,\ndass ich Licht entzünde, wo Finsternis regiert,\ndass ich Freude bringe, wo der Kummer wohnt.\nHerr, lass mich trachten,\nnicht, dass ich getröstet werde, sondern dass ich tröste,\nnicht, dass ich verstanden werde, sondern dass ich verstehe,\nnicht, dass ich geliebt werde, sondern dass ich liebe.\nDenn wer sich hingibt, der empfängt,\nwer verzeiht, dem wird verziehen,\nund wer stirbt, der erwacht zum ewigen Leben.\nAmen.",
+    italian:    "Signore, fa' di me uno strumento della tua pace:\ndove è odio, fa' ch'io porti amore;\ndove è offesa, ch'io porti il perdono;\ndove è discordia, ch'io porti l'unione;\ndove è dubbio, ch'io porti la fede;\ndove è errore, ch'io porti la verità;\ndove è disperazione, ch'io porti la speranza;\ndove è tristezza, ch'io porti la gioia;\ndove sono le tenebre, ch'io porti la luce.\nO Maestro Divino, fa' che io non cerchi tanto\ndi essere consolato, quanto di consolare;\ndi essere compreso, quanto di comprendere;\ndi essere amato, quanto di amare.\nPoiché è dando che si riceve,\nè perdonando che si è perdonati,\ned è morendo che si risuscita a vita eterna.\nAmen.",
+    latin:      "Domine, fac me instrumentum pacis tuae:\nubi odium, amorem seram;\nubi iniuria, veniam;\nubi discordia, unionem;\nubi dubium, fidem;\nubi error, veritatem;\nubi desperatio, spem;\nubi tristitia, laetitiam;\nubi tenebrae, lucem.\nO Magister Divine, concede ut non tam\nconsolationem quaeram quam consolare;\nintelligi quam intelligere;\namari quam amare.\nNam in dando accipitur,\nin ignoscendo ignoscitur,\net in moriendo ad vitam aeternam resurgetur.\nAmen.",
+    french:     "Seigneur, fais de moi un instrument de ta paix.\nLà où il y a de la haine, que je mette l'amour;\nlà où il y a une offense, que je mette le pardon;\nlà où il y a la discorde, que je mette l'union;\nlà où il y a l'erreur, que je mette la vérité;\nlà où il y a le doute, que je mette la foi;\nlà où il y a le désespoir, que je mette l'espérance;\nlà où il y a les ténèbres, que je mette ta lumière;\nlà où il y a la tristesse, que je mette la joie.\nÔ Maître, que je ne cherche pas tant\nà être consolé qu'à consoler,\nà être compris qu'à comprendre,\nà être aimé qu'à aimer.\nCar c'est en donnant qu'on reçoit,\nc'est en pardonnant qu'on est pardonné,\nc'est en mourant qu'on ressuscite à l'éternelle vie.\nAmen.",
+    spanish:    "Señor, hazme un instrumento de tu paz:\ndonde haya odio, que yo lleve el amor;\ndonde haya ofensa, que yo lleve el perdón;\ndonde haya discordia, que yo lleve la unión;\ndonde haya duda, que yo lleve la fe;\ndonde haya error, que yo lleve la verdad;\ndonde haya desesperación, que yo lleve la esperanza;\ndonde haya tristeza, que yo lleve la alegría;\ndonde haya tinieblas, que yo lleve la luz.\nOh, Maestro Divino, concédeme que no busque tanto\nser consolado como consolar,\nser comprendido como comprender,\nser amado como amar.\nPorque es dando como se recibe,\nes perdonando como se es perdonado,\ny es muriendo como se resucita a la vida eterna.\nAmén.",
+    portuguese: "Senhor, fazei-me instrumento da vossa paz.\nOnde houver ódio, que eu leve o amor;\nonde houver ofensa, que eu leve o perdão;\nonde houver discórdia, que eu leve a união;\nonde houver dúvida, que eu leve a fé;\nonde houver erro, que eu leve a verdade;\nonde houver desespero, que eu leve a esperança;\nonde houver tristeza, que eu leve a alegria;\nonde houver trevas, que eu leve a luz.\nÓ Divino Mestre, concedei-me que eu não procure tanto\nser consolado como consolar,\nser compreendido como compreender,\nser amado como amar.\nPois é dando que se recebe,\né perdoando que se é perdonado,\ne é morrendo que se ressuscita para a vida eterna.\nAmém.",
+    polish:     "Panie, uczyń mnie narzędziem Twojego pokoju,\nabym siał miłość tam, gdzie panuje nienawiść;\nprzebaczenie tam, gdzie panuje krzywda;\njedność tam, gdzie panuje niezgoda;\nprawdę tam, gdzie panuje błąd;\nwiarę tam, gdzie panuje wątpliwość;\nnadzieję tam, gdzie panuje rozpacz;\nświatło tam, gdzie panuje mrok;\nradość tam, gdzie panuje smutek.\nO Panie, spraw, abym nie szukał tak bardzo\npociechy, jak pocieszania;\nzrozumienia, jak rozumienia;\nmiłości, jak miłowania.\nBo przez dawanie — otrzymujemy,\nprzez przebaczanie — otrzymujemy przebaczenie,\na przez umieranie — rodzimy się do życia wiecznego.\nAmen."
+  }
     english:    "The Lord is my shepherd; I shall not want.\nHe maketh me to lie down in green pastures:\nhe leadeth me beside the still waters.\nHe restoreth my soul:\nhe leadeth me in the paths of righteousness\nfor his name's sake.\nYea, though I walk through the valley\nof the shadow of death,\nI will fear no evil: for thou art with me;\nthy rod and thy staff they comfort me.\nThou preparest a table before me\nin the presence of mine enemies:\nthou anointest my head with oil;\nmy cup runneth over.\nSurely goodness and mercy shall follow me\nall the days of my life:\nand I will dwell in the house of the Lord for ever.\nAmen.",
     german:     "Der Herr ist mein Hirte, mir wird nichts mangeln.\nEr weidet mich auf einer grünen Aue\nund führet mich zum frischen Wasser.\nEr erquicket meine Seele.\nEr führet mich auf rechter Straße\num seines Namens willen.\nUnd ob ich schon wanderte im finstern Tal,\nfürchte ich kein Unglück;\ndenn du bist bei mir,\ndein Stecken und Stab trösten mich.\nDu bereitest vor mir einen Tisch\nim Angesicht meiner Feinde.\nDu salbest mein Haupt mit Öl\nund schenkest mir voll ein.\nGutes und Barmherzigkeit werden mir folgen\nmein Leben lang,\nund ich werde bleiben im Hause des Herrn immerdar.\nAmen.",
     italian:    "Il Signore è il mio pastore: non manco di nulla.\nSu pascoli erbosi mi fa riposare,\nad acque tranquille mi conduce.\nRinfranca l'anima mia.\nMi guida per il giusto cammino\na motivo del suo nome.\nAnche se vado per una valle oscura,\nnon temo alcun male, perché tu sei con me.\nIl tuo bastone e il tuo vincastro\nmi danno sicurezza.\nDavanti a me tu prepari una mensa\nsotto gli occhi dei miei nemici.\nUngi di olio il mio capo;\nil mio calice trabocca.\nSì, bontà e fedeltà mi saranno compagne\ntutti i giorni della mia vita,\nabiterò nella casa del Signore per lunghi giorni.\nAmen.",
@@ -227,5 +257,6 @@ setTimeout(populateVoices, 400);
 updateText();
 updateArt();
 </script>
+</div><!-- #panel -->
 </body>
 </html>

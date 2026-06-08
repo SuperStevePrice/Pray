@@ -146,7 +146,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def validate_language(prayer: Prayer, raw: str) -> str | None:
+def validate_language(prayer: Prayer, raw: str) -> Optional[str]:
     resolved = prayer.resolve_language(raw)
     if resolved is None:
         print(f"\n  ❌  Unrecognised language: '{raw}'")

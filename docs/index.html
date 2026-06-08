@@ -27,7 +27,7 @@
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 1rem; }
   select { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #444; border-radius: 6px; font-size: 14px; background: #2a2a2a; color: #e8e8e8; }
   input[type=range] { width: 100%; }
-  .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .controls { display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
   button { padding: 0 1.25rem; height: 38px; font-size: 14px; border: 1px solid #444; border-radius: 6px; background: #2a2a2a; color: #e8e8e8; cursor: pointer; }
   button:hover { background: #333; }
   button:disabled { opacity: 0.4; cursor: default; }
@@ -80,6 +80,7 @@
   .modal p { font-size: 0.85rem; line-height: 1.6; color: #ccc; margin: 0 0 0.7rem; }
   .modal p:last-child { margin-bottom: 0; }
   .modal a { color: #aaa; }
+  .modal-ver { font-size: 0.7rem; color: #777; margin-top: 1rem; padding-top: 0.6rem; border-top: 1px solid #333; }
   .modal-close {
     position: absolute; top: 0.6rem; right: 0.8rem;
     width: 28px; height: 28px; padding: 0;
@@ -141,10 +142,10 @@
 
 <div id="prayer-text"></div>
 
-<p class="note">Uses your browser's built-in speech synthesis. Available voices vary by OS and browser. For the full macOS voice experience, see <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
+<p class="note">Uses your browser's built-in speech synthesis. Available voices vary by OS and browser.</p>
 
 <footer>
-  Pray — open source. Seven prayers, eight languages.<br>
+  Pray — open source.<br>
   <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>
 </footer>
 
@@ -160,6 +161,7 @@
     <p>Prayer texts are traditional liturgical and biblical texts in the public domain.</p>
     <p>Background: alpine landscape.</p>
     <p>Pray is open source: <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
+    <p class="modal-ver">Version 2026-06-08 15:29 · 62e2864</p>
   </div>
 </div>
 

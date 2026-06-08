@@ -11,7 +11,7 @@ Each prayer module defines a Prayer instance with:
     - latin_note:       optional note printed when Latin is requested
 """
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
 
@@ -19,16 +19,16 @@ from typing import Optional
 class Prayer:
     name:           str                        # canonical: "ave", "lords"
     title:          str                        # display: "Ave Maria"
-    native_titles:  dict[str, str]             # language → native title
-    texts:          dict[str, str]             # language → text
-    voices:         dict[str, dict[str, str]]  # language → {name: say_string}
-    language_aliases: dict[str, str]           # alias → canonical language
+    native_titles:  dict                       # language → native title
+    texts:          dict                       # language → text
+    voices:         dict                       # language → {name: say_string}
+    language_aliases: dict                     # alias → canonical language
     latin_note:     str = ""                   # shown when latin requested
 
-    def language_names(self) -> list[str]:
+    def language_names(self) -> list:
         return list(self.texts.keys())
 
-    def voice_names(self) -> list[str]:
+    def voice_names(self) -> list:
         return list(next(iter(self.voices.values())).keys())
 
     def resolve_language(self, raw: str) -> Optional[str]:

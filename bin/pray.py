@@ -14,6 +14,7 @@ import argparse
 import subprocess
 import sys
 from pathlib import Path
+from typing import Optional
 
 # ── Prayer registry ────────────────────────────────────────────────────────────
 # prayers/ must be in the same directory as pray.py
@@ -27,7 +28,7 @@ DEFAULT_PRAYER = "ave"
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
-def resolve_prayer(raw: str) -> Prayer | None:
+def resolve_prayer(raw: str) -> Optional[Prayer]:
     key = PRAYER_ALIASES.get(raw.lower().strip(), None)
     return PRAYERS.get(key) if key else None
 

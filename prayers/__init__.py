@@ -7,37 +7,50 @@ To add a new prayer: create a new module, import it here, add to PRAYERS.
 
 from .ave_maria    import AveMaria
 from .lords_prayer import LordsPrayer
+from .serenity     import Serenity
+from .psalm_23     import Psalm23
 from .base         import Prayer
 
 # ── Registry ───────────────────────────────────────────────────────────────────
-# Key is the canonical --prayer argument value.
 
 PRAYERS: dict[str, Prayer] = {
-    "ave":   AveMaria,
-    "lords": LordsPrayer,
+    "ave":      AveMaria,
+    "lords":    LordsPrayer,
+    "serenity": Serenity,
+    "psalm23":  Psalm23,
 }
 
 # Aliases for --prayer argument
 PRAYER_ALIASES: dict[str, str] = {
     # Ave Maria
-    "ave":          "ave",
-    "ave maria":    "ave",
-    "avemaria":     "ave",
-    "hail mary":    "ave",
-    "hailmary":     "ave",
+    "ave":           "ave",
+    "ave maria":     "ave",
+    "avemaria":      "ave",
+    "hail mary":     "ave",
+    "hailmary":      "ave",
     # Lord's Prayer
-    "lords":        "lords",
-    "lord":         "lords",
-    "lords prayer": "lords",
-    "lordsprayer":  "lords",
-    "our father":   "lords",
-    "ourfather":    "lords",
-    "paternoster":  "lords",
-    "pater noster": "lords",
-    "vaterunser":   "lords",
-    "padre nostro": "lords",
-    "notre pere":   "lords",
-    "notre père":   "lords",
+    "lords":         "lords",
+    "lord":          "lords",
+    "lords prayer":  "lords",
+    "lordsprayer":   "lords",
+    "our father":    "lords",
+    "ourfather":     "lords",
+    "paternoster":   "lords",
+    "pater noster":  "lords",
+    "vaterunser":    "lords",
+    "padre nostro":  "lords",
+    "notre pere":    "lords",
+    "notre père":    "lords",
+    # Serenity Prayer
+    "serenity":      "serenity",
+    "serenity prayer": "serenity",
+    "gelassenheit":  "serenity",
+    # 23rd Psalm
+    "psalm23":       "psalm23",
+    "psalm 23":      "psalm23",
+    "23rd psalm":    "psalm23",
+    "the lord is my shepherd": "psalm23",
+    "der herr ist mein hirte": "psalm23",
 }
 
 __all__ = ["Prayer", "PRAYERS", "PRAYER_ALIASES"]

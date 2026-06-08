@@ -22,11 +22,16 @@
     box-shadow: 0 4px 32px rgba(0,0,0,0.5);
   }
   h1 { font-size: 1.4rem; font-weight: 500; margin-bottom: 0.25rem; color: #e8e8e8; }
-  p.sub { font-size: 0.875rem; color: #aaa; margin-bottom: 1.5rem; }
+  p.sub { font-size: 0.875rem; color: #aaa; margin-bottom: 1.25rem; }
   label { display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 4px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 1.25rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 1rem; }
   select { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #444; border-radius: 6px; font-size: 14px; background: #2a2a2a; color: #e8e8e8; }
   input[type=range] { width: 100%; }
+  .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  button { padding: 0 1.25rem; height: 38px; font-size: 14px; border: 1px solid #444; border-radius: 6px; background: #2a2a2a; color: #e8e8e8; cursor: pointer; }
+  button:hover { background: #333; }
+  button:disabled { opacity: 0.4; cursor: default; }
+  #status { font-size: 13px; color: #888; }
   #prayer-text {
     background: #2a2a2a;
     border: 1px solid #444;
@@ -39,11 +44,6 @@
     margin-bottom: 1.25rem;
     color: #e8e8e8;
   }
-  .controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-  button { padding: 0 1.25rem; height: 38px; font-size: 14px; border: 1px solid #444; border-radius: 6px; background: #2a2a2a; color: #e8e8e8; cursor: pointer; }
-  button:hover { background: #333; }
-  button:disabled { opacity: 0.4; cursor: default; }
-  #status { font-size: 13px; color: #888; }
   .note { font-size: 11px; color: #777; margin-top: 1rem; }
   .note a { color: #aaa; }
   footer { margin-top: 2rem; font-size: 12px; color: #777; border-top: 1px solid #333; padding-top: 1rem; }
@@ -65,6 +65,8 @@
       <option value="serenity">Serenity Prayer</option>
       <option value="psalm23">23rd Psalm</option>
       <option value="peace">Peace Prayer</option>
+      <option value="nunc">Nunc Dimittis</option>
+      <option value="miserere">Psalm 51 — Miserere</option>
     </select>
   </div>
   <div>
@@ -90,22 +92,22 @@
   </div>
 </div>
 
-<div id="prayer-text"></div>
-
 <div class="controls">
   <button id="btn-pray">&#9654; Pray</button>
   <button id="btn-stop" disabled>&#9646;&#9646; Stop</button>
   <span id="status"></span>
 </div>
 
+<div id="prayer-text"></div>
+
 <p class="note">Uses your browser's built-in speech synthesis. Available voices vary by OS and browser. For the full macOS voice experience, see <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
 
 <footer>
-  Pray — open source. Five prayers, eight languages.<br>
+  Pray — open source. Seven prayers, eight languages.<br>
   <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>
 </footer>
 
-</div><!-- #panel -->
+</div>
 
 <script>
 const TEXTS = {
@@ -158,6 +160,26 @@ const TEXTS = {
     spanish:    "Señor, hazme un instrumento de tu paz:\ndonde haya odio, que yo lleve el amor;\ndonde haya ofensa, que yo lleve el perdón;\ndonde haya discordia, que yo lleve la unión;\ndonde haya duda, que yo lleve la fe;\ndonde haya error, que yo lleve la verdad;\ndonde haya desesperación, que yo lleve la esperanza;\ndonde haya tristeza, que yo lleve la alegría;\ndonde haya tinieblas, que yo lleve la luz.\nOh, Maestro Divino, concédeme que no busque tanto\nser consolado como consolar,\nser comprendido como comprender,\nser amado como amar.\nPorque es dando como se recibe,\nes perdonando como se es perdonado,\ny es muriendo como se resucita a la vida eterna.\nAmén.",
     portuguese: "Senhor, fazei-me instrumento da vossa paz.\nOnde houver ódio, que eu leve o amor;\nonde houver ofensa, que eu leve o perdão;\nonde houver discórdia, que eu leve a união;\nonde houver dúvida, que eu leve a fé;\nonde houver erro, que eu leve a verdade;\nonde houver desespero, que eu leve a esperança;\nonde houver tristeza, que eu leve a alegria;\nonde houver trevas, que eu leve a luz.\nÓ Divino Mestre, concedei-me que eu não procure tanto\nser consolado como consolar,\nser compreendido como compreender,\nser amado como amar.\nPois é dando que se recebe,\né perdoando que se é perdonado,\ne é morrendo que se ressuscita para a vida eterna.\nAmém.",
     polish:     "Panie, uczyń mnie narzędziem Twojego pokoju,\nabym siał miłość tam, gdzie panuje nienawiść;\nprzebaczenie tam, gdzie panuje krzywda;\njedność tam, gdzie panuje niezgoda;\nprawdę tam, gdzie panuje błąd;\nwiarę tam, gdzie panuje wątpliwość;\nnadzieję tam, gdzie panuje rozpacz;\nświatło tam, gdzie panuje mrok;\nradość tam, gdzie panuje smutek.\nO Panie, spraw, abym nie szukał tak bardzo\npociechy, jak pocieszania;\nzrozumienia, jak rozumienia;\nmiłości, jak miłowania.\nBo przez dawanie — otrzymujemy,\nprzez przebaczanie — otrzymujemy przebaczenie,\na przez umieranie — rodzimy się do życia wiecznego.\nAmen."
+  },
+  nunc: {
+    english:    "Lord, now lettest thou thy servant depart in peace,\naccording to thy word.\nFor mine eyes have seen thy salvation,\nwhich thou hast prepared before the face of all people;\na light to lighten the Gentiles,\nand the glory of thy people Israel.\nGlory be to the Father, and to the Son,\nand to the Holy Ghost;\nas it was in the beginning, is now, and ever shall be,\nworld without end. Amen.",
+    german:     "Herr, nun lässest du deinen Diener in Frieden fahren,\nwie du gesagt hast.\nDenn meine Augen haben deinen Heiland gesehen,\nwelchen du bereitet hast vor allen Völkern,\nein Licht zur Erleuchtung der Heiden\nund zum Preis deines Volkes Israel.\nEhre sei dem Vater und dem Sohn\nund dem Heiligen Geist,\nwie es war im Anfang, jetzt und immerdar\nund in Ewigkeit. Amen.",
+    italian:    "Ora lascia, o Signore, che il tuo servo vada in pace,\nsecondo la tua parola.\nPerché i miei occhi hanno visto la tua salvezza,\nche hai preparata davanti a tutti i popoli:\nluce per illuminare le genti\ne gloria del tuo popolo Israele.\nGloria al Padre, al Figlio\ne allo Spirito Santo,\ncome era nel principio, ora e sempre\nnei secoli dei secoli. Amen.",
+    latin:      "Nunc dimittis servum tuum, Domine,\nsecundum verbum tuum in pace.\nQuia viderunt oculi mei salutare tuum,\nquod parasti ante faciem omnium populorum:\nlumen ad revelationem gentium\net gloriam plebis tuae Israel.\nGloria Patri et Filio\net Spiritui Sancto,\nsicut erat in principio et nunc et semper\net in saecula saeculorum. Amen.",
+    french:     "Maintenant, Seigneur, tu laisses ton serviteur s'en aller en paix,\nselon ta parole.\nCar mes yeux ont vu ton salut,\nque tu as préparé devant tous les peuples:\nlumière pour éclairer les nations\net gloire d'Israël ton peuple.\nGloire au Père, au Fils\net au Saint-Esprit,\ncomme il était au commencement, maintenant et toujours\ndans les siècles des siècles. Amen.",
+    spanish:    "Ahora, Señor, despides a tu siervo en paz,\nconforme a tu palabra.\nPorque han visto mis ojos tu salvación,\nla cual has preparado en presencia de todos los pueblos:\nluz para iluminar a las naciones\ny gloria de tu pueblo Israel.\nGloria al Padre, al Hijo\ny al Espíritu Santo,\ncomo era en el principio, ahora y siempre\npor los siglos de los siglos. Amén.",
+    portuguese: "Agora, Senhor, despedes o teu servo em paz,\nsegundo a tua palavra.\nPorque os meus olhos viram a tua salvação,\na qual preparaste em presença de todos os povos:\nluz para iluminar as nações\ne glória do teu povo Israel.\nGlória ao Pai, ao Filho\ne ao Espírito Santo,\ncomo era no princípio, agora e sempre\npelos séculos dos séculos. Amém.",
+    polish:     "Teraz, o Panie, pozwalasz odejść swojemu słudze w pokoju,\nwedług Twojego słowa.\nBo moje oczy ujrzały Twoje zbawienie,\nktóre przygotowałeś wobec wszystkich narodów:\nświatło na oświecenie pogan\ni chwałę ludu Twego, Izraela.\nChwała Ojcu i Synowi\ni Duchowi Świętemu,\njak była na początku, teraz i zawsze\ni na wieki wieków. Amen."
+  },
+  miserere: {
+    english:    "Have mercy upon me, O God,\naccording to thy lovingkindness:\naccording unto the multitude of thy tender mercies\nblot out my transgressions.\nWash me thoroughly from mine iniquity,\nand cleanse me from my sin.\nFor I acknowledge my transgressions:\nand my sin is ever before me.\nCreate in me a clean heart, O God;\nand renew a right spirit within me.\nCast me not away from thy presence;\nand take not thy holy spirit from me.\nRestore unto me the joy of thy salvation;\nand uphold me with thy free spirit.\nThe sacrifices of God are a broken spirit:\na broken and a contrite heart, O God,\nthou wilt not despise.\nAmen.",
+    german:     "Gott, sei mir gnädig nach deiner Güte,\nund tilge meine Sünden nach deiner großen Barmherzigkeit.\nWasche mich rein von meiner Missetat\nund reinige mich von meiner Sünde.\nDenn ich erkenne meine Missetat,\nund meine Sünde ist immer vor mir.\nSchaffe in mir, Gott, ein reines Herz\nund gib mir einen neuen, beständigen Geist.\nVerwirf mich nicht von deinem Angesicht\nund nimm deinen heiligen Geist nicht von mir.\nErfreue mich wieder mit deiner Hilfe,\nund mit einem willigen Geist rüste mich aus.\nDas Opfer, das Gott gefällt, ist ein geängsteter Geist;\nein geängstetes, zerschlagenes Herz\nwirst du, Gott, nicht verachten.\nAmen.",
+    italian:    "Pietà di me, o Dio, nel tuo amore,\nnella tua grande misericordia cancella il mio peccato.\nLavami da tutte le mie colpe,\nmondami dal mio peccato.\nRiconosco la mia colpa,\nil mio peccato mi sta sempre dinanzi.\nCrea in me, o Dio, un cuore puro,\nrinnova in me uno spirito saldo.\nNon scacciarmi dalla tua presenza\ne non togliermi il tuo santo spirito.\nRendimi la gioia della tua salvezza,\nsostienimi con uno spirito generoso.\nUno spirito contrito è sacrificio a Dio;\nun cuore contrito e affranto\ntu, o Dio, non disprezzi.\nAmen.",
+    latin:      "Miserere mei, Deus,\nsecundum magnam misericordiam tuam;\net secundum multitudinem miserationum tuarum\ndele iniquitatem meam.\nAmplius lava me ab iniquitate mea,\net a peccato meo munda me.\nQuoniam iniquitatem meam ego cognosco,\net peccatum meum contra me est semper.\nCor mundum crea in me, Deus,\net spiritum rectum innova in visceribus meis.\nNe proicias me a facie tua,\net spiritum sanctum tuum ne auferas a me.\nRedde mihi laetitiam salutaris tui,\net spiritu principali confirma me.\nSacrificium Deo spiritus contribulatus;\ncor contritum et humiliatum, Deus, non despicies.\nAmen.",
+    french:     "Aie pitié de moi, ô Dieu, dans ta bonté;\nselon ta grande miséricorde, efface mes transgressions.\nLave-moi complètement de mon iniquité,\net purifie-moi de mon péché.\nCar je reconnais mes transgressions,\net mon péché est constamment devant moi.\nCrée en moi un cœur pur, ô Dieu,\net renouvelle en moi un esprit bien disposé.\nNe me rejette pas loin de ta face,\net ne me retire pas ton Esprit Saint.\nRends-moi la joie de ton salut,\net qu'un esprit généreux me soutienne.\nLes sacrifices qui plaisent à Dieu, c'est un esprit brisé;\nun cœur brisé et contrit,\ntu ne le mépriseras pas, ô Dieu.\nAmen.",
+    spanish:    "Ten misericordia de mí, oh Dios, conforme a tu bondad;\nconforme a la multitud de tus piedades borra mis rebeliones.\nLávame más y más de mi maldad,\ny límpiame de mi pecado.\nPorque yo reconozco mis rebeliones,\ny mi pecado está siempre delante de mí.\nCrea en mí, oh Dios, un corazón limpio,\ny renueva un espíritu recto dentro de mí.\nNo me eches de delante de ti,\ny no quites de mí tu Santo Espíritu.\nVuélveme el gozo de tu salvación,\ny espíritu noble me sustente.\nLos sacrificios de Dios son el espíritu quebrantado;\nal corazón contrito y humillado\nno despreciarás tú, oh Dios.\nAmén.",
+    portuguese: "Tem misericórdia de mim, ó Deus, segundo a tua benignidade;\napaga as minhas transgressões segundo a multidão das tuas misericórdias.\nLava-me completamente da minha iniquidade\ne purifica-me do meu pecado.\nPorque eu conheço as minhas transgressões,\ne o meu pecado está sempre diante de mim.\nCria em mim, ó Deus, um coração puro,\ne renova em mim um espírito reto.\nNão me lances fora da tua presença\ne não retires de mim o teu Espírito Santo.\nRestitui-me a alegria da tua salvação\ne sustenta-me com um espírito voluntário.\nOs sacrifícios de Deus são o espírito quebrantado;\na um coração quebrantado e contrito\nnão desprezarás, ó Deus.\nAmém.",
+    polish:     "Zmiłuj się nade mną, Boże, w swojej łaskawości,\nw ogromie swego miłosierdzia wymaż moją nieprawość.\nObmyj mnie zupełnie z mojej winy\ni oczyść mnie z grzechu.\nUznaję bowiem moją nieprawość,\nmój grzech jest zawsze przede mną.\nStwórz we mnie, Boże, serce czyste\ni odnów we mnie moc ducha.\nNie odrzucaj mnie od swojego oblicza\ni nie odbieraj mi swego Ducha Świętego.\nPrzywróć mi radość Twojego zbawienia\ni wzmocnij mnie duchem ofiarnym.\nOfiarą Bogu miłą jest duch skruszony;\nsercem skruszonym i pokornym\nTy, Boże, nie gardzisz.\nAmen."
   }
 };
 

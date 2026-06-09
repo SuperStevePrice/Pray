@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-pray.py — Pray in many languages, in many voices, on macOS.
+pray.py — Pray in many languages, in many voices, on macOS and Linux.
 
 Usage:
     pray.py                                      # show help
@@ -8,9 +8,13 @@ Usage:
     pray.py --prayer PRAYER --language LANGUAGE [--voice VOICE] [--rate RATE]
     pray.py --all [--prayer PRAYER] [--language LANGUAGE] [--voice VOICE]
     pray.py --help
+
+On macOS: uses system 'say' command with specified voices (Eddy, Flo, Grandma, etc.)
+On Linux: uses espeak-ng (install with: sudo apt install espeak-ng)
 """
 
 import argparse
+import platform
 import subprocess
 import sys
 from pathlib import Path
@@ -63,10 +67,37 @@ def speak(prayer: Prayer, voice_name: str, language: str, rate: int) -> None:
         print(f"  {line}")
     print()
 
-    subprocess.run(
-        ["say", "-v", voice_str, "-r", str(rate), text.replace("\n", " ")],
-        check=True,
-    )
+    # Detect OS and use appropriate TTS
+    system = platform.system()
+    
+    if system == "Darwin":
+        # macOS: use 'say' command
+        subprocess.run(
+            ["say", "-v", voice_str, "-r", str(rate), text.replace("\n", " ")],
+            check=True,
+        )
+    elif system == "Linux":
+        # Linux: use espeak-ng
+        # Map language names to espeak-ng language codes
+        lang_map = {
+            "english": "en",
+            "deutsch": "de",
+            "italian": "it",
+            "latin": "la",
+            "french": "fr",
+            "spanish": "es",
+            "portuguese": "pt",
+            "polish": "pl",
+        }
+        lang_code = lang_map.get(language, language[:2])
+        
+        subprocess.run(
+            ["espeak-ng", "-v", lang_code, "-s", str(rate), text.replace("\n", " ")],
+            check=True,
+        )
+    else:
+        print(f"  ❌  Unsupported operating system: {system}")
+        sys.exit(1)
 
 # ── CLI ────────────────────────────────────────────────────────────────────────
 

@@ -12,6 +12,7 @@ from .psalm_23       import Psalm23
 from .peace          import Peace
 from .nunc_dimittis  import NuncDimittis
 from .miserere       import Miserere
+from .gloria_patri   import GloriaPatri
 from .base           import Prayer
 
 # ── Registry ───────────────────────────────────────────────────────────────────
@@ -24,6 +25,7 @@ PRAYERS: dict = {
     "peace":    Peace,
     "nunc":     NuncDimittis,
     "miserere": Miserere,
+    "gloria":   GloriaPatri,
 }
 
 # Aliases for --prayer argument
@@ -74,6 +76,14 @@ PRAYER_ALIASES: dict = {
     "psalm51":           "miserere",
     "psalm 51":          "miserere",
     "have mercy":        "miserere",
+    # Gloria Patri
+    "gloria":            "gloria",
+    "gloria patri":      "gloria",
+    "glory be":          "gloria",
+    "glory be to the father": "gloria",
+    "doxology":          "gloria",
+    "lesser doxology":   "gloria",
+    "ehre sei dem vater": "gloria",
 }
 
 __all__ = ["Prayer", "PRAYERS", "PRAYER_ALIASES"]

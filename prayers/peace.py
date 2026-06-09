@@ -6,19 +6,8 @@ himself. It became widely known through Sebastian Temple's 1967 musical
 setting "Make Me a Channel of Your Peace." The text is freely usable.
 """
 
-from .base import Prayer
+from .base import Prayer, voices_for
 
-def _voices(lang_tag: str) -> dict:
-    return {
-        "Eddy":    f"Eddy ({lang_tag})",
-        "Flo":     f"Flo ({lang_tag})",
-        "Grandma": f"Grandma ({lang_tag})",
-        "Grandpa": f"Grandpa ({lang_tag})",
-        "Reed":    f"Reed ({lang_tag})",
-        "Rocko":   f"Rocko ({lang_tag})",
-        "Sandy":   f"Sandy ({lang_tag})",
-        "Shelley": f"Shelley ({lang_tag})",
-    }
 
 Peace = Prayer(
     name  = "peace",
@@ -188,24 +177,14 @@ Peace = Prayer(
         ),
     },
     voices = {
-        "english":    _voices("English (US)"),
-        "german":     _voices("German (Germany)"),
-        "italian":    _voices("Italian (Italy)"),
-        "latin":      _voices("Italian (Italy)"),
-        "french":     _voices("French (France)"),
-        "spanish":    _voices("Spanish (Spain)"),
-        "portuguese": _voices("Portuguese (Brazil)"),
-        "polish": {
-            "Zosia":   "Zosia",
-            "Grandma": "Zosia",
-            "Grandpa": "Zosia",
-            "Eddy":    "Zosia",
-            "Flo":     "Zosia",
-            "Reed":    "Zosia",
-            "Rocko":   "Zosia",
-            "Sandy":   "Zosia",
-            "Shelley": "Zosia",
-        },
+        "english":    voices_for("english"),
+        "german":    voices_for("german"),
+        "italian":    voices_for("italian"),
+        "latin":    voices_for("latin"),
+        "french":    voices_for("french"),
+        "spanish":    voices_for("spanish"),
+        "portuguese":    voices_for("portuguese"),
+        "polish": voices_for("polish"),
     },
     language_aliases = {
         "english": "english", "englisch": "english", "inglese": "english",

@@ -2,22 +2,8 @@
 prayers/ave_maria.py — Ave Maria (Hail Mary) prayer definition.
 """
 
-from .base import Prayer
+from .base import Prayer, voices_for
 
-# ── Shared voice families ──────────────────────────────────────────────────────
-
-def _voices(lang_tag: str) -> dict[str, str]:
-    """Build the standard 8-voice roster for a given say language tag."""
-    return {
-        "Eddy":    f"Eddy ({lang_tag})",
-        "Flo":     f"Flo ({lang_tag})",
-        "Grandma": f"Grandma ({lang_tag})",
-        "Grandpa": f"Grandpa ({lang_tag})",
-        "Reed":    f"Reed ({lang_tag})",
-        "Rocko":   f"Rocko ({lang_tag})",
-        "Sandy":   f"Sandy ({lang_tag})",
-        "Shelley": f"Shelley ({lang_tag})",
-    }
 
 # ── Prayer definition ──────────────────────────────────────────────────────────
 
@@ -101,24 +87,14 @@ AveMaria = Prayer(
         ),
     },
     voices = {
-        "english":    _voices("English (US)"),
-        "german":     _voices("German (Germany)"),
-        "italian":    _voices("Italian (Italy)"),
-        "latin":      _voices("Italian (Italy)"),  # best available
-        "french":     _voices("French (France)"),
-        "spanish":    _voices("Spanish (Spain)"),
-        "portuguese": _voices("Portuguese (Brazil)"),
-        "polish":     {                             # single voice available
-            "Zosia":   "Zosia",
-            "Grandma": "Zosia",                    # alias for consistency
-            "Grandpa": "Zosia",
-            "Eddy":    "Zosia",
-            "Flo":     "Zosia",
-            "Reed":    "Zosia",
-            "Rocko":   "Zosia",
-            "Sandy":   "Zosia",
-            "Shelley": "Zosia",
-        },
+        "english":    voices_for("english"),
+        "german":    voices_for("german"),
+        "italian":    voices_for("italian"),
+        "latin":    voices_for("latin"),
+        "french":    voices_for("french"),
+        "spanish":    voices_for("spanish"),
+        "portuguese":    voices_for("portuguese"),
+        "polish": voices_for("polish"),
     },
     language_aliases = {
         # English

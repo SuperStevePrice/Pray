@@ -82,6 +82,7 @@ def speak(prayer: Prayer, voice_name: str, language: str, rate: int) -> None:
         lang_map = {
             "english": "en",
             "deutsch": "de",
+            "german": "de",
             "italian": "it",
             "latin": "la",
             "french": "fr",
@@ -89,7 +90,8 @@ def speak(prayer: Prayer, voice_name: str, language: str, rate: int) -> None:
             "portuguese": "pt",
             "polish": "pl",
         }
-        lang_code = lang_map.get(language, language[:2])
+        lang_lower = language.lower()
+        lang_code = lang_map.get(lang_lower, lang_lower[:2].lower())
         
         subprocess.run(
             ["espeak-ng", "-v", lang_code, "-s", str(rate), text.replace("\n", " ")],

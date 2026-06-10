@@ -219,19 +219,11 @@ const mediumImage = document.getElementById('medium-image');
 const fullscreenImage = document.getElementById('fullscreen-image');
 const imageBasePath = 'images/';
 let currentPrayer = 'ave';
+const PRAYERS_WITH_IMAGES = ['ave', 'lords', 'gloria', 'psalm23', 'serenity'];
 let imageAvailable = {};
-async function checkImageExists(filename) {
-  if (!filename) return false;
-  try {
-    const response = await fetch(imageBasePath + filename, { method: 'GET' });
-    return response.ok;
-  } catch {
-    return false;
-  }
-}
-async function initializeImages() {
-  for (const [key, filename] of Object.entries(PRAYER_IMAGE_MAP)) {
-    imageAvailable[key] = await checkImageExists(filename);
+function initializeImages() {
+  for (const key of PRAYERS_WITH_IMAGES) {
+    imageAvailable[key] = true;
   }
   updateThumbnailButtons();
 }

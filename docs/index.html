@@ -162,7 +162,7 @@
     <p>Prayer texts are traditional liturgical and biblical texts in the public domain.</p>
     <p>Background: alpine landscape.</p>
     <p>Pray is open source: <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
-    <p class="modal-ver">Version 2026-06-09 13:42 · 42af8d9</p>
+    <p class="modal-ver">Version 2026-06-09 19:04 · c892a2e</p>
   </div>
 </div>
 
@@ -271,26 +271,12 @@ function updateText() {
 }
 
 function populateVoices() {
-  const BLOCKLIST = [
-    'albert', 'bad news', 'bahh', 'bells', 'boing', 'bubbles', 'cellos',
-    'fred', 'good news', 'jester', 'junior', 'kathy', 'organ', 'ralph',
-    'superstar', 'trinoids', 'whisper', 'wobble', 'zarvox'
-  ];
   const all     = window.speechSynthesis.getVoices();
   const code    = LANG_CODES[langSel.value] || 'en';
-  const matched = all.filter(v =>
-    v.lang.toLowerCase().startsWith(code) &&
-    !BLOCKLIST.includes(v.name.toLowerCase())
-  );
-  const pool = matched.length ? matched : all.filter(v =>
-    v.lang.startsWith('en') &&
-    !BLOCKLIST.includes(v.name.toLowerCase())
-  );
+  const matched = all.filter(v => v.lang.toLowerCase().startsWith(code));
+  const pool    = matched.length ? matched : all.filter(v => v.lang.startsWith('en'));
   voiceSel.innerHTML = pool.map((v, i) =>
     `<option value="${i}">${v.name} (${v.lang})</option>`
-  ).join('') || '<option>No voices found</option>';
-  voiceSel._pool = pool;
-}">${v.name} (${v.lang})</option>`
   ).join('') || '<option>No voices found</option>';
   voiceSel._pool = pool;
 }

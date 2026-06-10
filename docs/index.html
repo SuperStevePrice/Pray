@@ -271,12 +271,26 @@ function updateText() {
 }
 
 function populateVoices() {
+  const BLOCKLIST = [
+    'albert', 'bad news', 'bahh', 'bells', 'boing', 'bubbles', 'cellos',
+    'fred', 'good news', 'jester', 'junior', 'kathy', 'organ', 'ralph',
+    'superstar', 'trinoids', 'whisper', 'wobble', 'zarvox'
+  ];
   const all     = window.speechSynthesis.getVoices();
   const code    = LANG_CODES[langSel.value] || 'en';
-  const matched = all.filter(v => v.lang.toLowerCase().startsWith(code));
-  const pool    = matched.length ? matched : all.filter(v => v.lang.startsWith('en'));
+  const matched = all.filter(v =>
+    v.lang.toLowerCase().startsWith(code) &&
+    !BLOCKLIST.includes(v.name.toLowerCase())
+  );
+  const pool = matched.length ? matched : all.filter(v =>
+    v.lang.startsWith('en') &&
+    !BLOCKLIST.includes(v.name.toLowerCase())
+  );
   voiceSel.innerHTML = pool.map((v, i) =>
     `<option value="${i}">${v.name} (${v.lang})</option>`
+  ).join('') || '<option>No voices found</option>';
+  voiceSel._pool = pool;
+}">${v.name} (${v.lang})</option>`
   ).join('') || '<option>No voices found</option>';
   voiceSel._pool = pool;
 }

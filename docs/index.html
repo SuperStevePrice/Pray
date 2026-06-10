@@ -31,10 +31,6 @@
   button { padding: 0 1.25rem; height: 38px; font-size: 14px; border: 1px solid #444; border-radius: 6px; background: #2a2a2a; color: #e8e8e8; cursor: pointer; }
   button:hover { background: #333; }
   button:disabled { opacity: 0.4; cursor: default; }
-  .thumb-btn { padding: 0; width: 60px; height: 60px; border: 1px solid #444; border-radius: 6px; background-size: cover; background-position: center; cursor: pointer; }
-  .thumb-btn.large { width: 100px; height: 100px; }
-  .thumb-btn:hover { opacity: 0.85; }
-  .thumb-btn:disabled { opacity: 0.3; cursor: default; }
   #status { font-size: 13px; color: #888; }
   #prayer-text {
     background: #2a2a2a;
@@ -52,6 +48,7 @@
   .note a { color: #aaa; }
   footer { margin-top: 2rem; font-size: 12px; color: #777; border-top: 1px solid #333; padding-top: 1rem; }
   footer a { color: #aaa; }
+
   /* --- Info button + attribution modal --- */
   #panel { position: relative; }
   #about-btn {
@@ -91,18 +88,16 @@
     font-size: 22px; line-height: 1; cursor: pointer;
   }
   .modal-close:hover { color: #e8e8e8; }
-  /* --- Image modals --- */
-  .image-modal { max-width: none; max-height: none; width: 90%; height: 90%; padding: 0; display: flex; align-items: center; justify-content: center; }
-  .image-modal img { max-width: 100%; max-height: 100%; object-fit: contain; }
-  #medium-overlay .image-modal img { max-height: 600px; }
-  #fullscreen-overlay .image-modal img { width: 100%; height: 100%; object-fit: contain; }
 </style>
 </head>
 <body>
 <div id="panel">
 <button id="about-btn" aria-label="About Pray" title="About Pray">i</button>
+
+
 <h1>Pray</h1>
 <p class="sub">"Ask, and it shall be given you; seek, and ye shall find." — Matthew 7:7</p>
+
 <div class="grid">
   <div>
     <label for="prayer">Prayer</label>
@@ -139,20 +134,24 @@
     <input type="range" min="60" max="200" value="85" step="1" id="rate" />
   </div>
 </div>
+
 <div class="controls">
   <button id="btn-pray">&#9654; Pray</button>
   <button id="btn-stop" disabled>&#9646;&#9646; Stop</button>
-  <button id="thumb-small" class="thumb-btn" title="View image" hidden></button>
-  <button id="thumb-large" class="thumb-btn large" title="Full screen" hidden></button>
   <span id="status"></span>
 </div>
+
 <div id="prayer-text"></div>
+
 <p class="note">Uses your browser's built-in speech synthesis. Available voices vary by OS and browser.</p>
+
 <footer>
   Pray — open source.<br>
   <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>
 </footer>
+
 </div>
+
 <div id="about-overlay" class="overlay" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button id="about-close" class="modal-close" aria-label="Close">&times;</button>
@@ -163,21 +162,10 @@
     <p>Prayer texts are traditional liturgical and biblical texts in the public domain.</p>
     <p>Background: alpine landscape.</p>
     <p>Pray is open source: <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
-    <p class="modal-ver">Version 2026-06-09 19:04 · c892a2e</p>
+    <p class="modal-ver">Version 2026-06-10 10:39 · a07076a</p>
   </div>
 </div>
-<div id="medium-overlay" class="overlay" hidden>
-  <div class="modal image-modal">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <img id="medium-image" src="" alt="Prayer image" />
-  </div>
-</div>
-<div id="fullscreen-overlay" class="overlay" hidden>
-  <div class="modal image-modal">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <img id="fullscreen-image" src="" alt="Prayer image" />
-  </div>
-</div>
+
 <script>
 const TEXTS = {
   ave: {
@@ -261,74 +249,27 @@ const TEXTS = {
     polish:     "Chwała na wysokości Bogu,\na na ziemi pokój ludziom dobrej woli.\nChwalimy Cię, błogosławimy Cię,\nwielbimy Cię, wysławiamy Cię,\ndzięki Ci składamy, bo wielka jest chwała Twoja.\nPanie Boże, Królu nieba,\nBoże, Ojcze wszechmogący.\nPanie, Synu Jednorodzony, Jezu Chryste.\nPanie Boże, Baranku Boży, Synu Ojca.\nKtóry gładzisz grzechy świata, zmiłuj się nad nami;\nKtóry gładzisz grzechy świata, przyjm błaganie nasze;\nKtóry siedzisz po prawicy Ojca, zmiłuj się nad nami.\nAlbowiem tylko Tyś jest święty,\ntylko Tyś jest Panem, tylko Tyś Najwyższy, Jezu Chryste,\nz Duchem Świętym, w chwale Boga Ojca. Amen."
   }
 };
+
 const LANG_CODES = {
   english:'en', german:'de', italian:'it', latin:'it',
   french:'fr', spanish:'es', portuguese:'pt', polish:'pl'
 };
-const PRAYER_IMAGE_MAP = {
-  ave:       'ave-maria.png',
-  lords:     'lords-prayer.png',
-  serenity:  'serenity.png',
-  psalm23:   'psalm23.png',
-  peace:     'peace.png',
-  nunc:      'nunc-dimittis.png',
-  miserere:  'miserere.png',
-  gloria:    'gloria.png'
-};
-const prayerSel    = document.getElementById('prayer');
-const langSel      = document.getElementById('language');
-const voiceSel     = document.getElementById('voice-select');
-const rateSlider   = document.getElementById('rate');
-const rateOut      = document.getElementById('rate-out');
-const textDiv      = document.getElementById('prayer-text');
-const btnPray      = document.getElementById('btn-pray');
-const btnStop      = document.getElementById('btn-stop');
-const thumbSmall   = document.getElementById('thumb-small');
-const thumbLarge   = document.getElementById('thumb-large');
-const statusEl     = document.getElementById('status');
-const mediumOverlay = document.getElementById('medium-overlay');
-const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-const mediumImage  = document.getElementById('medium-image');
-const fullscreenImage = document.getElementById('fullscreen-image');
-const imageBasePath = 'images/prayers/';
-let currentPrayer = 'ave';
-let imageAvailable = {};
-async function checkImageExists(filename) {
-  if (!filename) return false;
-  try {
-    const response = await fetch(imageBasePath + filename, { method: 'HEAD' });
-    return response.ok;
-  } catch {
-    return false;
-  }
-}
-async function initializeImages() {
-  for (const [key, filename] of Object.entries(PRAYER_IMAGE_MAP)) {
-    imageAvailable[key] = await checkImageExists(filename);
-  }
-  updateThumbnailButtons();
-}
-function updateThumbnailButtons() {
-  const hasImage = imageAvailable[currentPrayer];
-  if (hasImage) {
-    const imgUrl = imageBasePath + PRAYER_IMAGE_MAP[currentPrayer];
-    thumbSmall.style.backgroundImage = `url('${imgUrl}')`;
-    thumbLarge.style.backgroundImage = `url('${imgUrl}')`;
-    thumbSmall.hidden = false;
-    thumbLarge.hidden = false;
-  } else {
-    thumbSmall.hidden = true;
-    thumbLarge.hidden = true;
-  }
-}
-function dismissImageModals() {
-  mediumOverlay.hidden = true;
-  fullscreenOverlay.hidden = true;
-}
+
+const prayerSel  = document.getElementById('prayer');
+const langSel    = document.getElementById('language');
+const voiceSel   = document.getElementById('voice-select');
+const rateSlider = document.getElementById('rate');
+const rateOut    = document.getElementById('rate-out');
+const textDiv    = document.getElementById('prayer-text');
+const btnPray    = document.getElementById('btn-pray');
+const btnStop    = document.getElementById('btn-stop');
+const statusEl   = document.getElementById('status');
+
 function updateText() {
   const p = TEXTS[prayerSel.value];
   textDiv.textContent = p ? (p[langSel.value] || '') : '';
 }
+
 function populateVoices() {
   const all     = window.speechSynthesis.getVoices();
   const code    = LANG_CODES[langSel.value] || 'en';
@@ -339,6 +280,7 @@ function populateVoices() {
   ).join('') || '<option>No voices found</option>';
   voiceSel._pool = pool;
 }
+
 function pray() {
   window.speechSynthesis.cancel();
   const p = TEXTS[prayerSel.value];
@@ -353,40 +295,22 @@ function pray() {
   u.onend = u.onerror = () => { statusEl.textContent = ''; btnPray.disabled = false; btnStop.disabled = true; };
   window.speechSynthesis.speak(u);
 }
+
 rateSlider.addEventListener('input', () => { rateOut.textContent = rateSlider.value; });
-prayerSel.addEventListener('change', () => {
-  currentPrayer = prayerSel.value;
-  updateText();
-  updateThumbnailButtons();
-  dismissImageModals();
-});
+prayerSel.addEventListener('change', updateText);
 langSel.addEventListener('change', () => { updateText(); populateVoices(); });
 btnPray.addEventListener('click', pray);
 btnStop.addEventListener('click', () => {
   window.speechSynthesis.cancel();
   statusEl.textContent = ''; btnPray.disabled = false; btnStop.disabled = true;
 });
-thumbSmall.addEventListener('click', () => {
-  if (imageAvailable[currentPrayer]) {
-    mediumImage.src = imageBasePath + PRAYER_IMAGE_MAP[currentPrayer];
-    mediumOverlay.hidden = false;
-  }
-});
-thumbLarge.addEventListener('click', () => {
-  if (imageAvailable[currentPrayer]) {
-    fullscreenImage.src = imageBasePath + PRAYER_IMAGE_MAP[currentPrayer];
-    fullscreenOverlay.hidden = false;
-  }
-});
-const closeModalButtons = document.querySelectorAll('.image-modal .modal-close');
-closeModalButtons.forEach(btn => {
-  btn.addEventListener('click', dismissImageModals);
-});
-mediumOverlay.addEventListener('click', (e) => { if (e.target === mediumOverlay) dismissImageModals(); });
-fullscreenOverlay.addEventListener('click', (e) => { if (e.target === fullscreenOverlay) dismissImageModals(); });
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') dismissImageModals();
-});
+
+if ('onvoiceschanged' in window.speechSynthesis) {
+  window.speechSynthesis.onvoiceschanged = populateVoices;
+}
+setTimeout(populateVoices, 400);
+updateText();
+
 // --- About modal ---
 const aboutBtn     = document.getElementById('about-btn');
 const aboutOverlay = document.getElementById('about-overlay');
@@ -397,12 +321,6 @@ aboutBtn.addEventListener('click', openAbout);
 aboutClose.addEventListener('click', closeAbout);
 aboutOverlay.addEventListener('click', e => { if (e.target === aboutOverlay) closeAbout(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !aboutOverlay.hidden) closeAbout(); });
-if ('onvoiceschanged' in window.speechSynthesis) {
-  window.speechSynthesis.onvoiceschanged = populateVoices;
-}
-setTimeout(populateVoices, 400);
-updateText();
-initializeImages();
 </script>
 </body>
 </html>

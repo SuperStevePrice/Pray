@@ -90,6 +90,15 @@
     font-size: 22px; line-height: 1; cursor: pointer;
   }
   .modal-close:hover { color: #e8e8e8; }
+  #fullscreen-overlay .modal-close {
+    width: 48px; height: 48px; font-size: 36px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    color: #fff;
+    top: 1rem; right: 1rem;
+    z-index: 1000;
+  }
+  #fullscreen-overlay .modal-close:hover { background: rgba(0,0,0,0.8); color: #fff; }
   .image-modal { max-width: none; max-height: none; width: 100%; height: 100%; padding: 0; display: flex; align-items: center; justify-content: center; }
   .image-modal img { width: 100%; height: 100%; object-fit: contain; }
   #medium-overlay .image-modal { width: 90%; height: 90%; }

@@ -290,13 +290,13 @@ const mediumOverlay = document.getElementById('medium-overlay');
 const fullscreenOverlay = document.getElementById('fullscreen-overlay');
 const mediumImage  = document.getElementById('medium-image');
 const fullscreenImage = document.getElementById('fullscreen-image');
-const imageBasePath = 'images/';
+const imageBasePath = 'images/prayers/';
 let currentPrayer = 'ave';
 let imageAvailable = {};
 async function checkImageExists(filename) {
   if (!filename) return false;
   try {
-    const response = await fetch(imageBasePath + filename, { method: 'GET' });
+    const response = await fetch(imageBasePath + filename, { method: 'HEAD' });
     return response.ok;
   } catch {
     return false;

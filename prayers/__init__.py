@@ -1,10 +1,8 @@
 """
 prayers/__init__.py — Prayer registry.
-
 Import all prayers here and register them in PRAYERS dict.
 To add a new prayer: create a new module, import it here, add to PRAYERS.
 """
-
 from .ave_maria      import AveMaria
 from .lords_prayer   import LordsPrayer
 from .serenity       import Serenity
@@ -13,10 +11,11 @@ from .peace          import Peace
 from .nunc_dimittis  import NuncDimittis
 from .miserere       import Miserere
 from .gloria_patri   import GloriaPatri
+from .sanctus        import Sanctus
+from .magnificat     import Magnificat
 from .base           import Prayer
 
 # ── Registry ───────────────────────────────────────────────────────────────────
-
 PRAYERS: dict = {
     "ave":      AveMaria,
     "lords":    LordsPrayer,
@@ -26,6 +25,8 @@ PRAYERS: dict = {
     "nunc":     NuncDimittis,
     "miserere": Miserere,
     "gloria":   GloriaPatri,
+    "sanctus":  Sanctus,
+    "magnificat": Magnificat,
 }
 
 # Aliases for --prayer argument
@@ -84,6 +85,19 @@ PRAYER_ALIASES: dict = {
     "doxology":          "gloria",
     "lesser doxology":   "gloria",
     "ehre sei dem vater": "gloria",
+    # Sanctus
+    "sanctus":           "sanctus",
+    "holy holy holy":    "sanctus",
+    "sanctus sanctus":   "sanctus",
+    "trisagion":         "sanctus",
+    "heilig heilig heilig": "sanctus",
+    # Magnificat
+    "magnificat":        "magnificat",
+    "mary's song":       "magnificat",
+    "song of mary":      "magnificat",
+    "luke 1":            "magnificat",
+    "my soul magnifies":  "magnificat",
+    "meine seele erhebt": "magnificat",
 }
 
 __all__ = ["Prayer", "PRAYERS", "PRAYER_ALIASES"]

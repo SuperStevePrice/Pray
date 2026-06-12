@@ -136,16 +136,16 @@
   <div>
     <label for="prayer">Prayer</label>
     <select id="prayer">
-      <option value="ave">ave</option>
-      <option value="gloria">gloria</option>
-      <option value="lords">lords</option>
-      <option value="magnificat">magnificat</option>
-      <option value="miserere">miserere</option>
-      <option value="nunc">nunc</option>
-      <option value="peace">peace</option>
-      <option value="psalm23">psalm23</option>
-      <option value="sanctus">sanctus</option>
-      <option value="serenity">serenity</option>
+      <option value="ave">Ave Maria</option>
+      <option value="gloria">Gloria</option>
+      <option value="peace">Instrument of Thy Peace</option>
+      <option value="lords">Lord's Prayer</option>
+      <option value="magnificat">Magnificat</option>
+      <option value="miserere">Miserere Psalm 51</option>
+      <option value="nunc">Nunc Dimittis</option>
+      <option value="sanctus">Sanctus</option>
+      <option value="serenity">Serenity Prayer</option>
+      <option value="psalm23">The Lord is My Shepherd</option>
     </select>
   </div>
   <div>
@@ -176,7 +176,7 @@
   <button id="btn-music">♪ Music</button>
   <span id="status"></span>
 </div>
-<audio id="gregorian-audio" loop>
+<audio id="gregorian-audio" src="audio/ave-maria-gregorian.mp3" loop>
   <source src="audio/ave-maria-gregorian.mp3" type="audio/mpeg">
 </audio>
 <div id="prayer-gallery"></div>
@@ -309,9 +309,7 @@ const TEXTS = {
     "polish": "Boże, użycz mi pogody ducha,\nabym godził się z tym, czego nie mogę zmienić,\nodwagi, abym zmieniał to, co mogę zmienić,\ni mądrości, abym odróżniał jedno od drugiego.\nAmen."
   }
 };
-const PRAYER_NAMES = {"ave": "Ave Maria", "gloria": "Gloria", "peace": "Instrument of Thy Peace", "lords": "Lord's Prayer", "magnificat": "Magnificat", "miserere": "Miserere Psalm 51", "nunc": "Nunc Dimittis", "sanctus": "Sanctus", "serenity": "Serenity Prayer", "psalm23": "The Lord is My Shepherd"};
 const PRAYER_IMAGES = {"ave": "ave-maria.png", "lords": "Breaking_of_The_Bread.png", "serenity": "serenity.png", "psalm23": "psalm23.png", "peace": "peace.png", "nunc": "nunc-dimittis.png", "miserere": "miserere.png", "gloria": "gloria.png", "sanctus": "sanctus.png", "magnificat": "magnificat.png"};
-const PRAYER_AUDIO = {"ave": "ave-maria-gregorian.mp3", "gloria": "vivaldi-gloria-RV-589.mp3", "peace": "instrument-of-thy-peace.mp3", "lords": "lords-prayer-mario-lanza.mp3", "magnificat": "magnificat-reawaken.mp3", "miserere": "miserere-allegri.mp3", "nunc": "nunc-dimittis-gregorian.mp3", "sanctus": "sanctus-gregorian.mp3", "serenity": "serenity-prayer.mp3", "psalm23": "psalm23-shepherd.mp3"};
 const LANG_CODES = {
   english:'en', german:'de', italian:'it', latin:'it',
   french:'fr', spanish:'es', portuguese:'pt', polish:'pl'
@@ -334,6 +332,10 @@ function updateText() {
   const p = TEXTS[prayerSel.value];
   textDiv.textContent = p ? (p[langSel.value] || '') : '';
   updateGallery();
+  // Update audio src for current prayer
+  audio.src = 'audio/' + PRAYER_AUDIO[prayerSel.value];
+  audio.pause();
+  btnMusic.style.opacity = '0.6';
 }
 
 function updateGallery() {

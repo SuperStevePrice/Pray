@@ -335,7 +335,7 @@ function updateText() {
   textDiv.textContent = p ? (p[langSel.value] || '') : '';
   updateGallery();
   // Update audio src for current prayer
-  audio.src = 'audio/' + PRAYER_AUDIO[prayerSel.value];
+  audio.src = 'audio/' + PRAYER_AUDIO[prayerSel.value] + '?v=' + Math.random();
   audio.load();
   audio.pause();
   btnMusic.style.opacity = '0.6';

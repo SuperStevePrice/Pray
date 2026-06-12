@@ -356,6 +356,15 @@ const modalImage   = document.getElementById('modal-image');
 function updateText() {
   const p = TEXTS[prayerSel.value];
   textDiv.textContent = p ? (p[langSel.value] || '') : '';
+  
+  // Update audio source
+  const audioFile = PRAYER_AUDIO[prayerSel.value];
+  if (audioFile) {
+    const audio = document.getElementById('gregorian-audio');
+    audio.src = 'audio/' + audioFile + '?v=' + Math.random();
+    audio.load();
+  }
+  
   updateGallery();
 }
 

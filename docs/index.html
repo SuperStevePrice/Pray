@@ -10,7 +10,7 @@
     padding: 0;
     min-height: 100vh;
     font-family: system-ui, sans-serif;
-    background: url('images/bg_alps.png') center center / cover no-repeat fixed;
+    background: url('bg_alps.png') center center / cover no-repeat fixed;
   }
   #panel {
     max-width: 660px;
@@ -27,30 +27,11 @@
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 1rem; }
   select { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #444; border-radius: 6px; font-size: 14px; background: #2a2a2a; color: #e8e8e8; }
   input[type=range] { width: 100%; }
-  .controls { display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .controls { display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
   button { padding: 0 1.25rem; height: 38px; font-size: 14px; border: 1px solid #444; border-radius: 6px; background: #2a2a2a; color: #e8e8e8; cursor: pointer; }
   button:hover { background: #333; }
   button:disabled { opacity: 0.4; cursor: default; }
   #status { font-size: 13px; color: #888; }
-  #prayer-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    min-height: 80px;
-    align-items: center;
-  }
-  .gallery-thumb {
-    cursor: pointer;
-    border: 1px solid #444;
-    border-radius: 6px;
-    transition: opacity 0.2s;
-    object-fit: cover;
-    display: block;
-  }
-  .gallery-thumb:hover { opacity: 0.8; }
-  .gallery-thumb.small { width: 80px; height: 80px; }
-  .gallery-thumb.medium { width: 120px; height: 120px; }
   #prayer-text {
     background: #2a2a2a;
     border: 1px solid #444;
@@ -68,25 +49,7 @@
   footer { margin-top: 2rem; font-size: 12px; color: #777; border-top: 1px solid #333; padding-top: 1rem; }
   footer a { color: #aaa; }
 
-  /* Modal for image viewer */
-  .image-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-  }
-  .image-modal[hidden] { display: none; }
-  .image-modal img {
-    max-width: 90vw;
-    max-height: 90vh;
-    border-radius: 8px;
-  }
-
-  /* Info button + modal */
+  /* --- Info button + attribution modal --- */
   #panel { position: relative; }
   #about-btn {
     position: absolute; top: 1rem; right: 1rem;
@@ -130,23 +93,23 @@
 <body>
 <div id="panel">
 <button id="about-btn" aria-label="About Pray" title="About Pray">i</button>
+
+
 <h1>Pray</h1>
-<h2 id="prayer-name" style="font-size: 1.1rem; font-weight: 400; color: #ccc; margin: 0 0 1rem; text-align: center;"></h2>
 <p class="sub">"Ask, and it shall be given you; seek, and ye shall find." — Matthew 7:7</p>
+
 <div class="grid">
   <div>
     <label for="prayer">Prayer</label>
     <select id="prayer">
       <option value="ave">Ave Maria</option>
-      <option value="gloria">Gloria</option>
-      <option value="peace">Instrument of Thy Peace</option>
       <option value="lords">Lord's Prayer</option>
-      <option value="magnificat">Magnificat</option>
-      <option value="miserere">Miserere Psalm 51</option>
-      <option value="nunc">Nunc</option>
-      <option value="sanctus">Sanctus</option>
       <option value="serenity">Serenity Prayer</option>
-      <option value="psalm23">The Lord is My Shepherd</option>
+      <option value="psalm23">23rd Psalm</option>
+      <option value="peace">Peace Prayer</option>
+      <option value="nunc">Nunc Dimittis</option>
+      <option value="miserere">Psalm 51 — Miserere</option>
+      <option value="gloria">Gloria</option>
     </select>
   </div>
   <div>
@@ -171,26 +134,22 @@
     <input type="range" min="60" max="200" value="85" step="1" id="rate" />
   </div>
 </div>
+
 <div class="controls">
-  <button id="btn-pray">🙏 Pray</button>
-  <button id="btn-stop" disabled>🙏🙏 Stop</button>
-  <button id="btn-music">♪ Music</button>
+  <button id="btn-pray">&#9654; Pray</button>
+  <button id="btn-stop" disabled>&#9646;&#9646; Stop</button>
   <span id="status"></span>
 </div>
-<audio id="gregorian-audio" loop>
-  <source src="audio/ave-maria-gregorian.mp3" type="audio/mpeg">
-</audio>
-<div id="prayer-gallery"></div>
+
 <div id="prayer-text"></div>
+
 <p class="note">Uses your browser's built-in speech synthesis. Available voices vary by OS and browser.</p>
+
 <footer>
   Pray — open source.<br>
   <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>
 </footer>
-</div>
 
-<div id="image-modal" class="image-modal" hidden>
-  <img id="modal-image" src="" alt="Prayer artwork">
 </div>
 
 <div id="about-overlay" class="overlay" hidden>
@@ -203,174 +162,117 @@
     <p>Prayer texts are traditional liturgical and biblical texts in the public domain.</p>
     <p>Background: alpine landscape.</p>
     <p>Pray is open source: <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
-    <p class="modal-ver">Version 2026-06-11 19:44 · af1a2ce</p>
+    <p class="modal-ver">Version 2026-06-11 19:46 · c11def2</p>
   </div>
 </div>
 
 <script>
 const TEXTS = {
-  "ave": {
-    "english": "Hail Mary, full of grace, the Lord is with thee.\nBlessed art thou among women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God, pray for us sinners,\nnow and at the hour of our death. Amen.",
-    "german": "Gegrüßet seist du, Maria, voll der Gnade, der Herr ist mit dir.\nDu bist gebenedeit unter den Frauen,\nund gebenedeit ist die Frucht deines Leibes, Jesus.\nHeilige Maria, Mutter Gottes, bitte für uns Sünder\njetzt und in der Stunde unseres Todes. Amen.",
-    "italian": "Ave Maria, piena di grazia, il Signore è con te.\nTu sei benedetta fra le donne,\ne benedetto è il frutto del tuo seno, Gesù.\nSanta Maria, Madre di Dio, prega per noi peccatori,\nadesso e nell'ora della nostra morte. Amen.",
-    "latin": "Ave Maria, gratia plena, Dominus tecum.\nBenedicta tu in mulieribus,\net benedictus fructus ventris tui, Iesus.\nSancta Maria, Mater Dei, ora pro nobis peccatoribus,\nnunc et in hora mortis nostrae. Amen.",
-    "french": "Je vous salue, Marie, pleine de grâce,\nle Seigneur est avec vous.\nVous êtes bénie entre toutes les femmes,\net Jésus, le fruit de vos entrailles, est béni.\nSainte Marie, Mère de Dieu,\npriez pour nous, pauvres pécheurs,\nmaintenant et à l'heure de notre mort. Amen.",
-    "spanish": "Dios te salve, María, llena eres de gracia,\nel Señor es contigo.\nBendita tú eres entre todas las mujeres,\ny bendito es el fruto de tu vientre, Jesús.\nSanta María, Madre de Dios,\nruega por nosotros, pecadores,\nahora y en la hora de nuestra muerte. Amén.",
-    "portuguese": "Ave Maria, cheia de graça,\no Senhor é convosco.\nBendita sois vós entre as mulheres,\ne bendito é o fruto do vosso ventre, Jesus.\nSanta Maria, Mãe de Deus,\nrogai por nós, pecadores,\nagora e na hora da nossa morte. Amém.",
-    "polish": "Zdrowaś Maryjo, łaski pełna,\nPan z Tobą.\nBłogosławionaś Ty między niewiastami\ni błogosławiony owoc żywota Twojego, Jezus.\nŚwięta Maryjo, Matko Boża,\nmódl się za nami grzesznymi\nteraz i w godzinę śmierci naszej. Amen."
+  ave: {
+    english:    "Hail Mary, full of grace, the Lord is with thee.\nBlessed art thou among women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God, pray for us sinners,\nnow and at the hour of our death. Amen.",
+    german:     "Gegrüßet seist du, Maria, voll der Gnade, der Herr ist mit dir.\nDu bist gebenedeit unter den Frauen,\nund gebenedeit ist die Frucht deines Leibes, Jesus.\nHeilige Maria, Mutter Gottes, bitte für uns Sünder\njetzt und in der Stunde unseres Todes. Amen.",
+    italian:    "Ave Maria, piena di grazia, il Signore è con te.\nTu sei benedetta fra le donne,\ne benedetto è il frutto del tuo seno, Gesù.\nSanta Maria, Madre di Dio, prega per noi peccatori,\nadesso e nell'ora della nostra morte. Amen.",
+    latin:      "Ave Maria, gratia plena, Dominus tecum.\nBenedicta tu in mulieribus,\net benedictus fructus ventris tui, Iesus.\nSancta Maria, Mater Dei, ora pro nobis peccatoribus,\nnunc et in hora mortis nostrae. Amen.",
+    french:     "Je vous salue, Marie, pleine de grâce,\nle Seigneur est avec vous.\nVous êtes bénie entre toutes les femmes,\net Jésus, le fruit de vos entrailles, est béni.\nSainte Marie, Mère de Dieu,\npriez pour nous, pauvres pécheurs,\nmaintenant et à l'heure de notre mort. Amen.",
+    spanish:    "Dios te salve, María, llena eres de gracia,\nel Señor es contigo.\nBendita tú eres entre todas las mujeres,\ny bendito es el fruto de tu vientre, Jesús.\nSanta María, Madre de Dios,\nruega por nosotros, pecadores,\nahora y en la hora de nuestra muerte. Amén.",
+    portuguese: "Ave Maria, cheia de graça,\no Senhor é convosco.\nBendita sois vós entre as mulheres,\ne bendito é o fruto do vosso ventre, Jesus.\nSanta Maria, Mãe de Deus,\nrogai por nós, pecadores,\nagora e na hora da nossa morte. Amém.",
+    polish:     "Zdrowaś Maryjo, łaski pełna,\nPan z Tobą.\nBłogosławionaś Ty między niewiastami\ni błogosławiony owoc żywota Twojego, Jezus.\nŚwięta Maryjo, Matko Boża,\nmódl się za nami grzesznymi\nteraz i w godzinę śmierci naszej. Amen."
   },
-  "gloria": {
-    "english": "Glory be to the Father,\nand to the Son,\nand to the Holy Ghost;\nas it was in the beginning,\nis now, and ever shall be,\nworld without end.\nAmen.",
-    "german": "Ehre sei dem Vater\nund dem Sohn\nund dem Heiligen Geist,\nwie es war im Anfang,\njetzt und immerdar\nund in Ewigkeit.\nAmen.",
-    "italian": "Gloria al Padre\ne al Figlio\ne allo Spirito Santo,\ncome era nel principio,\nora e sempre\nnei secoli dei secoli.\nAmen.",
-    "latin": "Gloria Patri\net Filio\net Spiritui Sancto,\nsicut erat in principio\net nunc et semper\net in saecula saeculorum.\nAmen.",
-    "french": "Gloire au Père,\nau Fils\net au Saint-Esprit,\ncomme il était au commencement,\nmaintenant et toujours\ndans les siècles des siècles.\nAmen.",
-    "spanish": "Gloria al Padre,\nal Hijo\ny al Espíritu Santo,\ncomo era en el principio,\nahora y siempre\npor los siglos de los siglos.\nAmén.",
-    "portuguese": "Glória ao Pai,\nao Filho\ne ao Espírito Santo,\ncomo era no princípio,\nagora e sempre\npelos séculos dos séculos.\nAmém.",
-    "polish": "Chwała Ojcu\ni Synowi,\ni Duchowi Świętemu,\njak była na początku,\nteraz i zawsze\ni na wieki wieków.\nAmen."
+  lords: {
+    english:    "Our Father, who art in heaven,\nhallowed be thy name.\nThy kingdom come, thy will be done,\non earth as it is in heaven.\nGive us this day our daily bread,\nand forgive us our trespasses,\nas we forgive those who trespass against us.\nAnd lead us not into temptation,\nbut deliver us from evil.\nFor thine is the kingdom, the power, and the glory,\nfor ever and ever. Amen.",
+    german:     "Vater unser im Himmel,\ngeheiligt werde dein Name.\nDein Reich komme, dein Wille geschehe,\nwie im Himmel, so auf Erden.\nUnser tägliches Brot gib uns heute.\nUnd vergib uns unsere Schuld,\nwie auch wir vergeben unsern Schuldigern.\nUnd führe uns nicht in Versuchung,\nsondern erlöse uns von dem Bösen.\nDenn dein ist das Reich und die Kraft\nund die Herrlichkeit in Ewigkeit. Amen.",
+    italian:    "Padre nostro, che sei nei cieli,\nsia santificato il tuo nome.\nVenga il tuo regno, sia fatta la tua volontà,\ncome in cielo così in terra.\nDacci oggi il nostro pane quotidiano,\ne rimetti a noi i nostri debiti,\ncome noi li rimettiamo ai nostri debitori.\nE non ci indurre in tentazione,\nma liberaci dal male.\nAmen.",
+    latin:      "Pater noster, qui es in caelis,\nsanctificetur nomen tuum.\nAdveniat regnum tuum,\nfiat voluntas tua,\nsicut in caelo, et in terra.\nPanem nostrum quotidianum da nobis hodie,\net dimitte nobis debita nostra,\nsicut et nos dimittimus debitoribus nostris.\nEt ne nos inducas in tentationem,\nsed libera nos a malo.\nAmen.",
+    french:     "Notre Père, qui es aux cieux,\nque ton nom soit sanctifié.\nQue ton règne vienne,\nque ta volonté soit faite\nsur la terre comme au ciel.\nDonne-nous aujourd'hui notre pain de ce jour.\nPardonne-nous nos offenses,\ncomme nous pardonnons aussi à ceux qui nous ont offensés.\nEt ne nous soumets pas à la tentation,\nmais délivre-nous du mal.\nAmen.",
+    spanish:    "Padre nuestro, que estás en el cielo,\nsantificado sea tu nombre.\nVenga tu reino,\nhágase tu voluntad\nen la tierra como en el cielo.\nDanos hoy nuestro pan de cada día.\nPerdona nuestras ofensas,\ncomo también nosotros perdonamos\na los que nos ofenden.\nNo nos dejes caer en tentación\ny líbranos del mal. Amén.",
+    portuguese: "Pai nosso, que estais nos céus,\nsantificado seja o vosso nome.\nVenha a nós o vosso reino.\nSeja feita a vossa vontade,\nassim na terra como no céu.\nO pão nosso de cada dia nos dai hoje.\nPerdoai-nos as nossas ofensas,\nassim como nós perdoamos\na quem nos tem ofendido.\nE não nos deixeis cair em tentação,\nmas livrai-nos do mal. Amém.",
+    polish:     "Ojcze nasz, któryś jest w niebie,\nświęć się imię Twoje.\nPrzyjdź królestwo Twoje,\nbądź wola Twoja,\njako w niebie tak i na ziemi.\nChleba naszego powszedniego daj nam dzisiaj.\nI odpuść nam nasze winy,\njako i my odpuszczamy naszym winowajcom.\nI nie wódź nas na pokuszenie,\nale nas zbaw ode złego. Amen."
   },
-  "lords": {
-    "english": "Our Father, who art in heaven,\nhallowed be thy name.\nThy kingdom come, thy will be done,\non earth as it is in heaven.\nGive us this day our daily bread,\nand forgive us our trespasses,\nas we forgive those who trespass against us.\nAnd lead us not into temptation,\nbut deliver us from evil.\nFor thine is the kingdom, the power, and the glory,\nfor ever and ever. Amen.",
-    "german": "Vater unser im Himmel,\ngeheiligt werde dein Name.\nDein Reich komme, dein Wille geschehe,\nwie im Himmel, so auf Erden.\nUnser tägliches Brot gib uns heute.\nUnd vergib uns unsere Schuld,\nwie auch wir vergeben unsern Schuldigern.\nUnd führe uns nicht in Versuchung,\nsondern erlöse uns von dem Bösen.\nDenn dein ist das Reich und die Kraft\nund die Herrlichkeit in Ewigkeit. Amen.",
-    "italian": "Padre nostro, che sei nei cieli,\nsia santificato il tuo nome.\nVenga il tuo regno, sia fatta la tua volontà,\ncome in cielo così in terra.\nDacci oggi il nostro pane quotidiano,\ne rimetti a noi i nostri debiti,\ncome noi li rimettiamo ai nostri debitori.\nE non ci indurre in tentazione,\nma liberaci dal male.\nAmen.",
-    "latin": "Pater noster, qui es in caelis,\nsanctificetur nomen tuum.\nAdveniat regnum tuum,\nfiat voluntas tua,\nsicut in caelo, et in terra.\nPanem nostrum quotidianum da nobis hodie,\net dimitte nobis debita nostra,\nsicut et nos dimittimus debitoribus nostris.\nEt ne nos inducas in tentationem,\nsed libera nos a malo.\nAmen.",
-    "french": "Notre Père, qui es aux cieux,\nque ton nom soit sanctifié.\nQue ton règne vienne,\nque ta volonté soit faite\nsur la terre comme au ciel.\nDonne-nous aujourd'hui notre pain de ce jour.\nPardonne-nous nos offenses,\ncomme nous pardonnons aussi à ceux qui nous ont offensés.\nEt ne nous soumets pas à la tentation,\nmais délivre-nous du mal.\nCar c'est à toi qu'appartiennent le règne,\nla puissance et la gloire, aux siècles des siècles. Amen.",
-    "spanish": "Padre nuestro, que estás en el cielo,\nsantificado sea tu nombre.\nVenga tu reino,\nhágase tu voluntad\nen la tierra como en el cielo.\nDanos hoy nuestro pan de cada día.\nPerdona nuestras ofensas,\ncomo también nosotros perdonamos\na los que nos ofenden.\nNo nos dejes caer en tentación\ny líbranos del mal. Amén.",
-    "portuguese": "Pai nosso, que estais nos céus,\nsantificado seja o vosso nome.\nVenha a nós o vosso reino.\nSeja feita a vossa vontade,\nassim na terra como no céu.\nO pão nosso de cada dia nos dai hoje.\nPerdoai-nos as nossas ofensas,\nassim como nós perdoamos\na quem nos tem ofendido.\nE não nos deixeis cair em tentação,\nmas livrai-nos do mal. Amém.",
-    "polish": "Ojcze nasz, któryś jest w niebie,\nświęć się imię Twoje.\nPrzyjdź królestwo Twoje,\nbądź wola Twoja,\njako w niebie tak i na ziemi.\nChleba naszego powszedniego daj nam dzisiaj.\nI odpuść nam nasze winy,\njako i my odpuszczamy naszym winowajcom.\nI nie wódź nas na pokuszenie,\nale nas zbaw ode złego. Amen."
+  serenity: {
+    english:    "God, grant me the serenity\nto accept the things I cannot change,\ncourage to change the things I can,\nand wisdom to know the difference.\nAmen.",
+    german:     "Gott, gib mir die Gelassenheit,\nDinge hinzunehmen, die ich nicht ändern kann,\nden Mut, Dinge zu ändern, die ich ändern kann,\nund die Weisheit, das eine vom anderen zu unterscheiden.\nAmen.",
+    italian:    "Dio, concedimi la serenità\ndi accettare le cose che non posso cambiare,\nil coraggio di cambiare le cose che posso,\ne la saggezza di conoscere la differenza.\nAmen.",
+    latin:      "Deus, da mihi serenitatem\naccipere ea quae mutare non possum,\nfortitudinem mutare ea quae possum,\net sapientiam differentiam cognoscere.\nAmen.",
+    french:     "Seigneur, accorde-moi la sérénité\nd'accepter les choses que je ne peux pas changer,\nle courage de changer les choses que je peux,\net la sagesse d'en connaître la différence.\nAmen.",
+    spanish:    "Dios, concédeme la serenidad\npara aceptar las cosas que no puedo cambiar,\nel valor para cambiar las que sí puedo,\ny la sabiduría para reconocer la diferencia.\nAmén.",
+    portuguese: "Deus, concede-me a serenidade\npara aceitar as coisas que não posso mudar,\ncoragem para mudar as que posso,\ne sabedoria para distinguir uma das outras.\nAmém.",
+    polish:     "Boże, użycz mi pogody ducha,\nabym godził się z tym, czego nie mogę zmienić,\nodwagi, abym zmieniał to, co mogę zmienić,\ni mądrości, abym odróżniał jedno od drugiego.\nAmen."
   },
-  "magnificat": {
-    "english": "My soul magnifies the Lord,\nand my spirit rejoices in God my Saviour.\nFor he hath regarded the low estate of his handmaiden:\nfor behold, from henceforth all generations shall call me blessed.\nFor he that is mighty hath done to me great things;\nand holy is his name.\nAnd his mercy is on them that fear him\nfrom generation to generation.\nHe hath showed strength with his arm;\nhe hath scattered the proud in the imagination of their hearts.\nHe hath put down the mighty from their seat,\nand exalted them of low degree.\nHe hath filled the hungry with good things;\nand the rich he hath sent empty away.\nHe hath holpen his servant Israel,\nin remembrance of his mercy.\nAs he spake to our fathers,\nto Abraham, and to his seed for ever.",
-    "german": "Meine Seele erhebt den Herrn,\nund mein Geist freut sich Gottes, meines Heilands.\nDenn er hat die Niedrigkeit seiner Magd angesehen.\nSiehe, von nun an werden mich selig preisen alle Kindeskinder.\nDenn der Mächtige hat Großes an mir getan,\nund sein Name ist heilig.\nUnd seine Barmherzigkeit währet für und für\nbei denen, die ihn fürchten.\nEr übet Gewalt mit seinem Arm\nund zerstreuet, die hoffärtig sind in ihres Herzens Sinn.\nEr stößet die Gewaltigen von Stuhl\nund erhebet die Niedrigen.\nHungrige füllet er mit Gütern\nund läßt die Reichen ledig ausgehen.\nEr denket der Barmherzigkeit\nund hilft seinem Knechte Israel auf.\nWie er geredet hat zu unsern Vätern,\nAbraham und seinen Samen ewiglich.",
-    "italian": "L'anima mia magnifica il Signore,\ne lo spirito mio esulta in Dio, mio salvatore.\nPerché ha guardato l'umiltà della sua serva.\nEcco, d'ora in poi tutte le generazioni mi chiameranno beata.\nGrandi cose ha fatto in me l'Onnipotente,\ne santo è il suo nome.\nLa sua misericordia si estende\ndi generazione in generazione su quelli che lo temono.\nHa manifestato la forza del suo braccio,\nha disperso i superbi nei pensieri del loro cuore.\nHa rovesciato i potenti dai troni,\nha innalzato gli umili.\nHa ricolmato di beni gli affamati,\nha rimandato i ricchi a mani vuote.\nHa soccorso Israele, suo servo,\nricordandosi della sua misericordia.\nCome aveva promesso ai nostri padri,\nad Abramo e alla sua discendenza per sempre.",
-    "latin": "Magnificat anima mea Dominum,\net exultavit spiritus meus in Deo salutari meo,\nquia respexit humilitatem ancillae suae.\nEcce enim ex hoc beatam me dicent omnes generationes,\nquia fecit mihi magna qui potens est,\net sanctum nomen eius,\net misericordia eius in progenies et progenies\ntimientibus eum.\nFecit potentiam in brachio suo,\ndispersit superbos mente cordis sui.\nDeposuit potentes de sede\net exaltavit humiles.\nEsurientes implevit bonis\net divites dimisit inanes.\nSuscepit Israel, puer suus,\nrecordatus misericordiae suae,\nsicut locutus est ad patres nostros,\nAbraham et semini eius in saecula.",
-    "french": "Mon âme exalte le Seigneur,\net mon esprit tressaille en Dieu, mon Sauveur,\ncar il a jeté les yeux sur l'humilité de sa servante.\nDésormais toutes les générations m'appelleront bienheureuse,\ncar le Tout-Puissant a fait en moi de grandes choses.\nSaint est son nom,\net sa miséricorde s'étend d'âge en âge\nsur ceux qui le craignent.\nIl a montré la force de son bras;\nil a dispersé ceux qui s'enorgueillissaient dans les pensées de leur cœur.\nIl a précipité les puissants de leurs trônes,\net il a élevé les humbles.\nIl a comblé de biens les affamés,\net il a renvoyé les riches les mains vides.\nIl a secouru Israël, son serviteur,\nse souvenant de sa miséricorde,\nselon qu'il l'avait dit à nos pères,\nà Abraham et à sa descendance pour jamais.",
-    "spanish": "Engrandece mi alma al Señor,\ny mi espíritu se alegra en Dios mi Salvador.\nPorque ha mirado la bajeza de su sierva;\npues he aquí, desde ahora me dirán bienaventurada todas las generaciones.\nPorque el Poderoso ha hecho obras grandes en mí;\nsanto es su nombre.\nY su misericordia es de generación en generación\na los que le temen.\nHizo proezas con su brazo;\nesparció a los soberbios en el pensamiento de sus corazones.\nQuitó de los tronos a los poderosos,\ny exaltó a los humildes.\nA los hambrientos colmó de bienes,\ny a los ricos envió vacíos.\nSocorrió a Israel su siervo,\nacordándose de la misericordia,\nde la cual habló a nuestros padres,\na Abraham y a su descendencia para siempre.",
-    "portuguese": "A minha alma engrandece o Senhor,\ne o meu espírito se alegra em Deus, meu Salvador,\nporque atentou na humildade de sua serva.\nPois, eis que desde agora todas as gerações me chamarão bem-aventurada,\nporquanto o Onipotente fez em mim grandes coisas,\ne seu nome é santo.\nE a sua misericórdia é de geração em geração\nsobre aqueles que o temem.\nDemonstrou o seu poder com o seu braço\ne dispersou os soberbos no pensamento de seus corações.\nDerrubou dos tronos os poderosos\ne exaltou os humildes.\nEncheu os famintos de bens\ne despediu vazios os ricos.\nSocorreu a Israel, seu servo,\nlembrando-se da sua misericórdia,\ncomo falou a nossos pais,\na Abraão e à sua descendência para sempre.",
-    "polish": "Wielbi dusza moja Pana,\ni raduje się duch mój w Bogu, moim Zbawicielu.\nBo wejrzał na uniżenie służebnicy swojej.\nOtóż, od tego czasu będą mnie nazywać błogosławioną wszystkie pokolenia.\nBo uczynił mi rzeczy wielkie Wszechmogący,\ni święte jest jego imię.\nA jego miłosierdzie rozciąga się ponad pokoleniami\nna tych, którzy się go boją.\nWykazał moc ramienia swojego;\nrozpędził pychowych w myślach serca ich.\nZdjął z tronu możnych\ni wywyższył pokory.\nGłodnych napełnił dobrami\ni bogatych odesłał z niczym.\nWziął w opiekę Izraela, sługę swojego,\npamiętając o miłosierdziu,\njak mówił do ojców naszych,\ndo Abrahama i jego potomstwa na wieki."
+  psalm23: {
+    english:    "The Lord is my shepherd; I shall not want.\nHe maketh me to lie down in green pastures:\nhe leadeth me beside the still waters.\nHe restoreth my soul:\nhe leadeth me in the paths of righteousness\nfor his name's sake.\nYea, though I walk through the valley\nof the shadow of death,\nI will fear no evil: for thou art with me;\nthy rod and thy staff they comfort me.\nThou preparest a table before me\nin the presence of mine enemies:\nthou anointest my head with oil;\nmy cup runneth over.\nSurely goodness and mercy shall follow me\nall the days of my life:\nand I will dwell in the house of the Lord for ever.\nAmen.",
+    german:     "Der Herr ist mein Hirte, mir wird nichts mangeln.\nEr weidet mich auf einer grünen Aue\nund führet mich zum frischen Wasser.\nEr erquicket meine Seele.\nEr führet mich auf rechter Straße\num seines Namens willen.\nUnd ob ich schon wanderte im finstern Tal,\nfürchte ich kein Unglück;\ndenn du bist bei mir,\ndein Stecken und Stab trösten mich.\nDu bereitest vor mir einen Tisch\nim Angesicht meiner Feinde.\nDu salbest mein Haupt mit Öl\nund schenkest mir voll ein.\nGutes und Barmherzigkeit werden mir folgen\nmein Leben lang,\nund ich werde bleiben im Hause des Herrn immerdar.\nAmen.",
+    italian:    "Il Signore è il mio pastore: non manco di nulla.\nSu pascoli erbosi mi fa riposare,\nad acque tranquille mi conduce.\nRinfranca l'anima mia.\nMi guida per il giusto cammino\na motivo del suo nome.\nAnche se vado per una valle oscura,\nnon temo alcun male, perché tu sei con me.\nIl tuo bastone e il tuo vincastro\nmi danno sicurezza.\nDavanti a me tu prepari una mensa\nsotto gli occhi dei miei nemici.\nUngi di olio il mio capo;\nil mio calice trabocca.\nSì, bontà e fedeltà mi saranno compagne\ntutti i giorni della mia vita,\nabiterò nella casa del Signore per lunghi giorni.\nAmen.",
+    latin:      "Dominus pascit me, nihil mihi deerit.\nIn pascuis virentibus me collocat,\nsuper aquas quietis me adducit.\nAnimam meam reficit.\nDeducit me per semitas iustitiae\npropter nomen suum.\nNam et si ambulavero in valle umbrae mortis,\nnon timebo mala, quoniam tu mecum es.\nVirga tua et baculus tuus,\nipsa me consolabuntur.\nPones coram me mensam\nadversus eos qui tribulant me.\nImpinguasti in oleo caput meum;\ncalix meus inebrians quam praeclarus est.\nEt misericordia tua subsequetur me\nomnibus diebus vitae meae,\net ut inhabitem in domo Domini\nin longitudinem dierum.\nAmen.",
+    french:     "L'Éternel est mon berger: je ne manquerai de rien.\nIl me fait reposer dans de verts pâturages,\nil me dirige près des eaux paisibles.\nIl restaure mon âme.\nIl me conduit dans les sentiers de la justice,\nà cause de son nom.\nQuand je marche dans la vallée de l'ombre de la mort,\nje ne crains aucun mal, car tu es avec moi:\nta houlette et ton bâton me rassurent.\nTu dresses devant moi une table,\nen face de mes adversaires;\ntu oins d'huile ma tête,\net ma coupe déborde.\nOui, le bonheur et la grâce m'accompagneront\ntous les jours de ma vie,\net j'habiterai dans la maison de l'Éternel\npour de longs jours.\nAmen.",
+    spanish:    "El Señor es mi pastor; nada me faltará.\nEn lugares de delicados pastos me hará descansar;\njunto a aguas de reposo me pastoreará.\nConfortará mi alma.\nMe guiará por sendas de justicia\npor amor de su nombre.\nAunque ande en valle de sombra de muerte,\nno temeré mal alguno, porque tú estarás conmigo;\ntu vara y tu cayado me infundirán aliento.\nAderezas mesa delante de mí\nen presencia de mis angustiadores;\nunges mi cabeza con aceite;\nmi copa está rebosando.\nCiertamente el bien y la misericordia me seguirán\ntodos los días de mi vida,\ny en la casa del Señor moraré por largos días.\nAmén.",
+    portuguese: "O Senhor é o meu pastor; nada me faltará.\nEle me faz repousar em pastos verdejantes.\nLeva-me para junto das águas tranquilas.\nRefrigera a minha alma.\nGuia-me pelas veredas da justiça\npor amor do seu nome.\nAinda que eu andasse pelo vale da sombra da morte,\nnão temeria mal algum, porque tu estás comigo;\no teu cajado e o teu bordão me consolam.\nPreparas uma mesa perante mim\nna presença dos meus adversários.\nUnges a minha cabeça com óleo;\no meu cálice transborda.\nCertamente que a bondade e a misericórdia\nme seguirão todos os dias da minha vida,\ne habitarei na casa do Senhor por longos dias.\nAmém.",
+    polish:     "Pan jest moim pasterzem, nie brak mi niczego.\nPozwala mi leżeć na zielonych pastwiskach.\nProwadzi mnie nad wody, gdzie mogę odpocząć.\nOrzeźwia moją duszę.\nWiedzie mnie po właściwych ścieżkach\nprzez wzgląd na swoją chwałę.\nChociażbym chodził ciemną doliną,\nzła się nie ulęknę, bo Ty jesteś ze mną.\nTwój kij i Twoja laska są moją pociechą.\nZastawiasz przede mną stół\nwobec moich przeciwników.\nNamaszczasz olejkiem moją głowę,\nmój kielich jest pełny po brzegi.\nDobroć i łaska będą mi towarzyszyć\nprzez wszystkie dni mego życia\ni zamieszkam w domu Pana\npo najdłuższe czasy.\nAmen."
   },
-  "miserere": {
-    "english": "Have mercy upon me, O God,\naccording to thy lovingkindness:\naccording unto the multitude of thy tender mercies\nblot out my transgressions.\nWash me thoroughly from mine iniquity,\nand cleanse me from my sin.\nFor I acknowledge my transgressions:\nand my sin is ever before me.\nCreate in me a clean heart, O God;\nand renew a right spirit within me.\nCast me not away from thy presence;\nand take not thy holy spirit from me.\nRestore unto me the joy of thy salvation;\nand uphold me with thy free spirit.\nThe sacrifices of God are a broken spirit:\na broken and a contrite heart, O God,\nthou wilt not despise.\nAmen.",
-    "german": "Gott, sei mir gnädig nach deiner Güte,\nund tilge meine Sünden nach deiner großen Barmherzigkeit.\nWasche mich rein von meiner Missetat\nund reinige mich von meiner Sünde.\nDenn ich erkenne meine Missetat,\nund meine Sünde ist immer vor mir.\nSchaffe in mir, Gott, ein reines Herz\nund gib mir einen neuen, beständigen Geist.\nVerwirf mich nicht von deinem Angesicht\nund nimm deinen heiligen Geist nicht von mir.\nErfreue mich wieder mit deiner Hilfe,\nund mit einem willigen Geist rüste mich aus.\nDas Opfer, das Gott gefällt, ist ein geängsteter Geist;\nein geängstetes, zerschlagenes Herz\nwirst du, Gott, nicht verachten.\nAmen.",
-    "italian": "Pietà di me, o Dio, nel tuo amore,\nnella tua grande misericordia cancella il mio peccato.\nLavami da tutte le mie colpe,\nmondami dal mio peccato.\nRiconosco la mia colpa,\nil mio peccato mi sta sempre dinanzi.\nCrea in me, o Dio, un cuore puro,\nrinnova in me uno spirito saldo.\nNon scacciarmi dalla tua presenza\ne non togliermi il tuo santo spirito.\nRendimi la gioia della tua salvezza,\nsostienimi con uno spirito generoso.\nUno spirito contrito è sacrificio a Dio;\nun cuore contrito e affranto\ntu, o Dio, non disprezzi.\nAmen.",
-    "latin": "Miserere mei, Deus,\nsecundum magnam misericordiam tuam;\net secundum multitudinem miserationum tuarum\ndele iniquitatem meam.\nAmplius lava me ab iniquitate mea,\net a peccato meo munda me.\nQuoniam iniquitatem meam ego cognosco,\net peccatum meum contra me est semper.\nCor mundum crea in me, Deus,\net spiritum rectum innova in visceribus meis.\nNe proicias me a facie tua,\net spiritum sanctum tuum ne auferas a me.\nRedde mihi laetitiam salutaris tui,\net spiritu principali confirma me.\nSacrificium Deo spiritus contribulatus;\ncor contritum et humiliatum, Deus, non despicies.\nAmen.",
-    "french": "Aie pitié de moi, ô Dieu, dans ta bonté;\nselon ta grande miséricorde, efface mes transgressions.\nLave-moi complètement de mon iniquité,\net purifie-moi de mon péché.\nCar je reconnais mes transgressions,\net mon péché est constamment devant moi.\nCrée en moi un cœur pur, ô Dieu,\net renouvelle en moi un esprit bien disposé.\nNe me rejette pas loin de ta face,\net ne me retire pas ton Esprit Saint.\nRends-moi la joie de ton salut,\net qu'un esprit généreux me soutienne.\nLes sacrifices qui plaisent à Dieu, c'est un esprit brisé;\nun cœur brisé et contrit,\ntu ne le mépriseras pas, ô Dieu.\nAmen.",
-    "spanish": "Ten misericordia de mí, oh Dios, conforme a tu bondad;\nconforme a la multitud de tus piedades borra mis rebeliones.\nLávame más y más de mi maldad,\ny límpiame de mi pecado.\nPorque yo reconozco mis rebeliones,\ny mi pecado está siempre delante de mí.\nCrea en mí, oh Dios, un corazón limpio,\ny renueva un espíritu recto dentro de mí.\nNo me eches de delante de ti,\ny no quites de mí tu Santo Espíritu.\nVuélveme el gozo de tu salvación,\ny espíritu noble me sustente.\nLos sacrificios de Dios son el espíritu quebrantado;\nal corazón contrito y humillado\nno despreciarás tú, oh Dios.\nAmén.",
-    "portuguese": "Tem misericórdia de mim, ó Deus, segundo a tua benignidade;\napaga as minhas transgressões segundo a multidão das tuas misericórdias.\nLava-me completamente da minha iniquidade\ne purifica-me do meu pecado.\nPorque eu conheço as minhas transgressões,\ne o meu pecado está sempre diante de mim.\nCria em mim, ó Deus, um coração puro,\ne renova em mim um espírito reto.\nNão me lances fora da tua presença\ne não retires de mim o teu Espírito Santo.\nRestitui-me a alegria da tua salvação\ne sustenta-me com um espírito voluntário.\nOs sacrifícios de Deus são o espírito quebrantado;\na um coração quebrantado e contrito\nnão desprezarás, ó Deus.\nAmém.",
-    "polish": "Zmiłuj się nade mną, Boże, w swojej łaskawości,\nw ogromie swego miłosierdzia wymaż moją nieprawość.\nObmyj mnie zupełnie z mojej winy\ni oczyść mnie z grzechu.\nUznaję bowiem moją nieprawość,\nmój grzech jest zawsze przede mną.\nStwórz we mnie, Boże, serce czyste\ni odnów we mnie moc ducha.\nNie odrzucaj mnie od swojego oblicza\ni nie odbieraj mi swego Ducha Świętego.\nPrzywróć mi radość Twojego zbawienia\ni wzmocnij mnie duchem ofiarnym.\nOfiarą Bogu miłą jest duch skruszony;\nsercem skruszonym i pokornym\nTy, Boże, nie gardzisz.\nAmen."
+  peace: {
+    english:    "Lord, make me an instrument of your peace.\nWhere there is hatred, let me sow love;\nwhere there is injury, pardon;\nwhere there is doubt, faith;\nwhere there is despair, hope;\nwhere there is darkness, light;\nwhere there is sadness, joy.\nO Divine Master, grant that I may not so much seek\nto be consoled as to console,\nto be understood as to understand,\nto be loved as to love.\nFor it is in giving that we receive,\nit is in pardoning that we are pardoned,\nand it is in dying that we are born to eternal life.\nAmen.",
+    german:     "Herr, mach mich zu einem Werkzeug deines Friedens,\ndass ich Liebe übe, wo man sich hasst,\ndass ich verzeihe, wo man sich beleidigt,\ndass ich verbinde, wo Streit ist,\ndass ich die Wahrheit sage, wo Irrtum ist,\ndass ich den Glauben bringe, wo Zweifel droht,\ndass ich Hoffnung wecke, wo Verzweiflung quält,\ndass ich Licht entzünde, wo Finsternis regiert,\ndass ich Freude bringe, wo der Kummer wohnt.\nHerr, lass mich trachten,\nnicht, dass ich getröstet werde, sondern dass ich tröste,\nnicht, dass ich verstanden werde, sondern dass ich verstehe,\nnicht, dass ich geliebt werde, sondern dass ich liebe.\nDenn wer sich hingibt, der empfängt,\nwer verzeiht, dem wird verziehen,\nund wer stirbt, der erwacht zum ewigen Leben.\nAmen.",
+    italian:    "Signore, fa' di me uno strumento della tua pace:\ndove è odio, fa' ch'io porti amore;\ndove è offesa, ch'io porti il perdono;\ndove è discordia, ch'io porti l'unione;\ndove è dubbio, ch'io porti la fede;\ndove è errore, ch'io porti la verità;\ndove è disperazione, ch'io porti la speranza;\ndove è tristezza, ch'io porti la gioia;\ndove sono le tenebre, ch'io porti la luce.\nO Maestro Divino, fa' che io non cerchi tanto\ndi essere consolato, quanto di consolare;\ndi essere compreso, quanto di comprendere;\ndi essere amato, quanto di amare.\nPoiché è dando che si riceve,\nè perdonando che si è perdonati,\ned è morendo che si risuscita a vita eterna.\nAmen.",
+    latin:      "Domine, fac me instrumentum pacis tuae:\nubi odium, amorem seram;\nubi iniuria, veniam;\nubi discordia, unionem;\nubi dubium, fidem;\nubi error, veritatem;\nubi desperatio, spem;\nubi tristitia, laetitiam;\nubi tenebrae, lucem.\nO Magister Divine, concede ut non tam\nconsolationem quaeram quam consolare;\nintelligi quam intelligere;\namari quam amare.\nNam in dando accipitur,\nin ignoscendo ignoscitur,\net in moriendo ad vitam aeternam resurgetur.\nAmen.",
+    french:     "Seigneur, fais de moi un instrument de ta paix.\nLà où il y a de la haine, que je mette l'amour;\nlà où il y a une offense, que je mette le pardon;\nlà où il y a la discorde, que je mette l'union;\nlà où il y a l'erreur, que je mette la vérité;\nlà où il y a le doute, que je mette la foi;\nlà où il y a le désespoir, que je mette l'espérance;\nlà où il y a les ténèbres, que je mette ta lumière;\nlà où il y a la tristesse, que je mette la joie.\nÔ Maître, que je ne cherche pas tant\nà être consolé qu'à consoler,\nà être compris qu'à comprendre,\nà être aimé qu'à aimer.\nCar c'est en donnant qu'on reçoit,\nc'est en pardonnant qu'on est pardonné,\nc'est en mourant qu'on ressuscite à l'éternelle vie.\nAmen.",
+    spanish:    "Señor, hazme un instrumento de tu paz:\ndonde haya odio, que yo lleve el amor;\ndonde haya ofensa, que yo lleve el perdón;\ndonde haya discordia, que yo lleve la unión;\ndonde haya duda, que yo lleve la fe;\ndonde haya error, que yo lleve la verdad;\ndonde haya desesperación, que yo lleve la esperanza;\ndonde haya tristeza, que yo lleve la alegría;\ndonde haya tinieblas, que yo lleve la luz.\nOh, Maestro Divino, concédeme que no busque tanto\nser consolado como consolar,\nser comprendido como comprender,\nser amado como amar.\nPorque es dando como se recibe,\nes perdonando como se es perdonado,\ny es muriendo como se resucita a la vida eterna.\nAmén.",
+    portuguese: "Senhor, fazei-me instrumento da vossa paz.\nOnde houver ódio, que eu leve o amor;\nonde houver ofensa, que eu leve o perdão;\nonde houver discórdia, que eu leve a união;\nonde houver dúvida, que eu leve a fé;\nonde houver erro, que eu leve a verdade;\nonde houver desespero, que eu leve a esperança;\nonde houver tristeza, que eu leve a alegria;\nonde houver trevas, que eu leve a luz.\nÓ Divino Mestre, concedei-me que eu não procure tanto\nser consolado como consolar,\nser compreendido como compreender,\nser amado como amar.\nPois é dando que se recebe,\né perdoando que se é perdonado,\ne é morrendo que se ressuscita para a vida eterna.\nAmém.",
+    polish:     "Panie, uczyń mnie narzędziem Twojego pokoju,\nabym siał miłość tam, gdzie panuje nienawiść;\nprzebaczenie tam, gdzie panuje krzywda;\njedność tam, gdzie panuje niezgoda;\nprawdę tam, gdzie panuje błąd;\nwiarę tam, gdzie panuje wątpliwość;\nnadzieję tam, gdzie panuje rozpacz;\nświatło tam, gdzie panuje mrok;\nradość tam, gdzie panuje smutek.\nO Panie, spraw, abym nie szukał tak bardzo\npociechy, jak pocieszania;\nzrozumienia, jak rozumienia;\nmiłości, jak miłowania.\nBo przez dawanie — otrzymujemy,\nprzez przebaczanie — otrzymujemy przebaczenie,\na przez umieranie — rodzimy się do życia wiecznego.\nAmen."
   },
-  "nunc": {
-    "english": "Lord, now lettest thou thy servant depart in peace,\naccording to thy word.\nFor mine eyes have seen thy salvation,\nwhich thou hast prepared before the face of all people;\na light to lighten the Gentiles,\nand the glory of thy people Israel.\nGlory be to the Father, and to the Son,\nand to the Holy Ghost;\nas it was in the beginning, is now, and ever shall be,\nworld without end. Amen.",
-    "german": "Herr, nun lässest du deinen Diener in Frieden fahren,\nwie du gesagt hast.\nDenn meine Augen haben deinen Heiland gesehen,\nwelchen du bereitet hast vor allen Völkern,\nein Licht zur Erleuchtung der Heiden\nund zum Preis deines Volkes Israel.\nEhre sei dem Vater und dem Sohn\nund dem Heiligen Geist,\nwie es war im Anfang, jetzt und immerdar\nund in Ewigkeit. Amen.",
-    "italian": "Ora lascia, o Signore, che il tuo servo vada in pace,\nsecondo la tua parola.\nPerché i miei occhi hanno visto la tua salvezza,\nche hai preparata davanti a tutti i popoli:\nluce per illuminare le genti\ne gloria del tuo popolo Israele.\nGloria al Padre, al Figlio\ne allo Spirito Santo,\ncome era nel principio, ora e sempre\nnei secoli dei secoli. Amen.",
-    "latin": "Nunc dimittis servum tuum, Domine,\nsecundum verbum tuum in pace.\nQuia viderunt oculi mei salutare tuum,\nquod parasti ante faciem omnium populorum:\nlumen ad revelationem gentium\net gloriam plebis tuae Israel.\nGloria Patri et Filio\net Spiritui Sancto,\nsicut erat in principio et nunc et semper\net in saecula saeculorum. Amen.",
-    "french": "Maintenant, Seigneur, tu laisses ton serviteur s'en aller en paix,\nselon ta parole.\nCar mes yeux ont vu ton salut,\nque tu as préparé devant tous les peuples:\nlumière pour éclairer les nations\net gloire d'Israël ton peuple.\nGloire au Père, au Fils\net au Saint-Esprit,\ncomme il était au commencement, maintenant et toujours\ndans les siècles des siècles. Amen.",
-    "spanish": "Ahora, Señor, despides a tu siervo en paz,\nconforme a tu palabra.\nPorque han visto mis ojos tu salvación,\nla cual has preparado en presencia de todos los pueblos:\nluz para iluminar a las naciones\ny gloria de tu pueblo Israel.\nGloria al Padre, al Hijo\ny al Espíritu Santo,\ncomo era en el principio, ahora y siempre\npor los siglos de los siglos. Amén.",
-    "portuguese": "Agora, Senhor, despedes o teu servo em paz,\nsegundo a tua palavra.\nPorque os meus olhos viram a tua salvação,\na qual preparaste em presença de todos os povos:\nluz para iluminar as nações\ne glória do teu povo Israel.\nGlória ao Pai, ao Filho\ne ao Espírito Santo,\ncomo era no princípio, agora e sempre\npelos séculos dos séculos. Amém.",
-    "polish": "Teraz, o Panie, pozwalasz odejść swojemu słudze w pokoju,\nwedług Twojego słowa.\nBo moje oczy ujrzały Twoje zbawienie,\nktóre przygotowałeś wobec wszystkich narodów:\nświatło na oświecenie pogan\ni chwałę ludu Twego, Izraela.\nChwała Ojcu i Synowi\ni Duchowi Świętemu,\njak była na początku, teraz i zawsze\ni na wieki wieków. Amen."
+  nunc: {
+    english:    "Lord, now lettest thou thy servant depart in peace,\naccording to thy word.\nFor mine eyes have seen thy salvation,\nwhich thou hast prepared before the face of all people;\na light to lighten the Gentiles,\nand the glory of thy people Israel.\nGlory be to the Father, and to the Son,\nand to the Holy Ghost;\nas it was in the beginning, is now, and ever shall be,\nworld without end. Amen.",
+    german:     "Herr, nun lässest du deinen Diener in Frieden fahren,\nwie du gesagt hast.\nDenn meine Augen haben deinen Heiland gesehen,\nwelchen du bereitet hast vor allen Völkern,\nein Licht zur Erleuchtung der Heiden\nund zum Preis deines Volkes Israel.\nEhre sei dem Vater und dem Sohn\nund dem Heiligen Geist,\nwie es war im Anfang, jetzt und immerdar\nund in Ewigkeit. Amen.",
+    italian:    "Ora lascia, o Signore, che il tuo servo vada in pace,\nsecondo la tua parola.\nPerché i miei occhi hanno visto la tua salvezza,\nche hai preparata davanti a tutti i popoli:\nluce per illuminare le genti\ne gloria del tuo popolo Israele.\nGloria al Padre, al Figlio\ne allo Spirito Santo,\ncome era nel principio, ora e sempre\nnei secoli dei secoli. Amen.",
+    latin:      "Nunc dimittis servum tuum, Domine,\nsecundum verbum tuum in pace.\nQuia viderunt oculi mei salutare tuum,\nquod parasti ante faciem omnium populorum:\nlumen ad revelationem gentium\net gloriam plebis tuae Israel.\nGloria Patri et Filio\net Spiritui Sancto,\nsicut erat in principio et nunc et semper\net in saecula saeculorum. Amen.",
+    french:     "Maintenant, Seigneur, tu laisses ton serviteur s'en aller en paix,\nselon ta parole.\nCar mes yeux ont vu ton salut,\nque tu as préparé devant tous les peuples:\nlumière pour éclairer les nations\net gloire d'Israël ton peuple.\nGloire au Père, au Fils\net au Saint-Esprit,\ncomme il était au commencement, maintenant et toujours\ndans les siècles des siècles. Amen.",
+    spanish:    "Ahora, Señor, despides a tu siervo en paz,\nconforme a tu palabra.\nPorque han visto mis ojos tu salvación,\nla cual has preparado en presencia de todos los pueblos:\nluz para iluminar a las naciones\ny gloria de tu pueblo Israel.\nGloria al Padre, al Hijo\ny al Espíritu Santo,\ncomo era en el principio, ahora y siempre\npor los siglos de los siglos. Amén.",
+    portuguese: "Agora, Senhor, despedes o teu servo em paz,\nsegundo a tua palavra.\nPorque os meus olhos viram a tua salvação,\na qual preparaste em presença de todos os povos:\nluz para iluminar as nações\ne glória do teu povo Israel.\nGlória ao Pai, ao Filho\ne ao Espírito Santo,\ncomo era no princípio, agora e sempre\npelos séculos dos séculos. Amém.",
+    polish:     "Teraz, o Panie, pozwalasz odejść swojemu słudze w pokoju,\nwedług Twojego słowa.\nBo moje oczy ujrzały Twoje zbawienie,\nktóre przygotowałeś wobec wszystkich narodów:\nświatło na oświecenie pogan\ni chwałę ludu Twego, Izraela.\nChwała Ojcu i Synowi\ni Duchowi Świętemu,\njak była na początku, teraz i zawsze\ni na wieki wieków. Amen."
   },
-  "peace": {
-    "english": "Lord, make me an instrument of your peace.\nWhere there is hatred, let me sow love;\nwhere there is injury, pardon;\nwhere there is doubt, faith;\nwhere there is despair, hope;\nwhere there is darkness, light;\nwhere there is sadness, joy.\nO Divine Master, grant that I may not so much seek\nto be consoled as to console,\nto be understood as to understand,\nto be loved as to love.\nFor it is in giving that we receive,\nit is in pardoning that we are pardoned,\nand it is in dying that we are born to eternal life.\nAmen.",
-    "german": "Herr, mach mich zu einem Werkzeug deines Friedens,\ndass ich Liebe übe, wo man sich hasst,\ndass ich verzeihe, wo man sich beleidigt,\ndass ich verbinde, wo Streit ist,\ndass ich die Wahrheit sage, wo Irrtum ist,\ndass ich den Glauben bringe, wo Zweifel droht,\ndass ich Hoffnung wecke, wo Verzweiflung quält,\ndass ich Licht entzünde, wo Finsternis regiert,\ndass ich Freude bringe, wo der Kummer wohnt.\nHerr, lass mich trachten,\nnicht, dass ich getröstet werde, sondern dass ich tröste,\nnicht, dass ich verstanden werde, sondern dass ich verstehe,\nnicht, dass ich geliebt werde, sondern dass ich liebe.\nDenn wer sich hingibt, der empfängt,\nwer sich selbst vergisst, der findet,\nwer verzeiht, dem wird verziehen,\nund wer stirbt, der erwacht zum ewigen Leben.\nAmen.",
-    "italian": "Signore, fa' di me uno strumento della tua pace:\ndove è odio, fa' ch'io porti amore;\ndove è offesa, ch'io porti il perdono;\ndove è discordia, ch'io porti l'unione;\ndove è dubbio, ch'io porti la fede;\ndove è errore, ch'io porti la verità;\ndove è disperazione, ch'io porti la speranza;\ndove è tristezza, ch'io porti la gioia;\ndove sono le tenebre, ch'io porti la luce.\nO Maestro Divino, fa' che io non cerchi tanto\ndi essere consolato, quanto di consolare;\ndi essere compreso, quanto di comprendere;\ndi essere amato, quanto di amare.\nPoiché è dando che si riceve,\nè perdonando che si è perdonati,\ned è morendo che si risuscita a vita eterna.\nAmen.",
-    "latin": "Domine, fac me instrumentum pacis tuae:\nubi odium, amorem seram;\nubi iniuria, veniam;\nubi discordia, unionem;\nubi dubium, fidem;\nubi error, veritatem;\nubi desperatio, spem;\nubi tristitia, laetitiam;\nubi tenebrae, lucem.\nO Magister Divine, concede ut non tam\nconsolationem quaeram quam consolare;\nintelligi quam intelligere;\namari quam amare.\nNam in dando accipitur,\nin ignoscendo ignoscitur,\net in moriendo ad vitam aeternam resurgetur.\nAmen.",
-    "french": "Seigneur, fais de moi un instrument de ta paix.\nLà où il y a de la haine, que je mette l'amour;\nlà où il y a une offense, que je mette le pardon;\nlà où il y a la discorde, que je mette l'union;\nlà où il y a l'erreur, que je mette la vérité;\nlà où il y a le doute, que je mette la foi;\nlà où il y a le désespoir, que je mette l'espérance;\nlà où il y a les ténèbres, que je mette ta lumière;\nlà où il y a la tristesse, que je mette la joie.\nÔ Maître, que je ne cherche pas tant\nà être consolé qu'à consoler,\nà être compris qu'à comprendre,\nà être aimé qu'à aimer.\nCar c'est en donnant qu'on reçoit,\nc'est en s'oubliant qu'on trouve,\nc'est en pardonnant qu'on est pardonné,\nc'est en mourant qu'on ressuscite à l'éternelle vie.\nAmen.",
-    "spanish": "Señor, hazme un instrumento de tu paz:\ndonde haya odio, que yo lleve el amor;\ndonde haya ofensa, que yo lleve el perdón;\ndonde haya discordia, que yo lleve la unión;\ndonde haya duda, que yo lleve la fe;\ndonde haya error, que yo lleve la verdad;\ndonde haya desesperación, que yo lleve la esperanza;\ndonde haya tristeza, que yo lleve la alegría;\ndonde haya tinieblas, que yo lleve la luz.\nOh, Maestro Divino, concédeme que no busque tanto\nser consolado como consolar,\nser comprendido como comprender,\nser amado como amar.\nPorque es dando como se recibe,\nes perdonando como se es perdonado,\ny es muriendo como se resucita a la vida eterna.\nAmén.",
-    "portuguese": "Senhor, fazei-me instrumento da vossa paz.\nOnde houver ódio, que eu leve o amor;\nonde houver ofensa, que eu leve o perdão;\nonde houver discórdia, que eu leve a união;\nonde houver dúvida, que eu leve a fé;\nonde houver erro, que eu leve a verdade;\nonde houver desespero, que eu leve a esperança;\nonde houver tristeza, que eu leve a alegria;\nonde houver trevas, que eu leve a luz.\nÓ Divino Mestre, concedei-me que eu não procure tanto\nser consolado como consolar,\nser compreendido como compreender,\nser amado como amar.\nPois é dando que se recebe,\né perdoando que se é perdoado,\ne é morrendo que se ressuscita para a vida eterna.\nAmém.",
-    "polish": "Panie, uczyń mnie narzędziem Twojego pokoju,\nabym siał miłość tam, gdzie panuje nienawiść;\nprzebaczenie tam, gdzie panuje krzywda;\njedność tam, gdzie panuje niezgoda;\nprawdę tam, gdzie panuje błąd;\nwiarę tam, gdzie panuje wątpliwość;\nnadzieję tam, gdzie panuje rozpacz;\nświatło tam, gdzie panuje mrok;\nradość tam, gdzie panuje smutek.\nO Panie, spraw, abym nie szukał tak bardzo\npociechy, jak pocieszania;\nzrozumienia, jak rozumienia;\nmiłości, jak miłowania.\nBo przez dawanie — otrzymujemy,\nprzez przebaczanie — otrzymujemy przebaczenie,\na przez umieranie — rodzimy się do życia wiecznego.\nAmen."
+  miserere: {
+    english:    "Have mercy upon me, O God,\naccording to thy lovingkindness:\naccording unto the multitude of thy tender mercies\nblot out my transgressions.\nWash me thoroughly from mine iniquity,\nand cleanse me from my sin.\nFor I acknowledge my transgressions:\nand my sin is ever before me.\nCreate in me a clean heart, O God;\nand renew a right spirit within me.\nCast me not away from thy presence;\nand take not thy holy spirit from me.\nRestore unto me the joy of thy salvation;\nand uphold me with thy free spirit.\nThe sacrifices of God are a broken spirit:\na broken and a contrite heart, O God,\nthou wilt not despise.\nAmen.",
+    german:     "Gott, sei mir gnädig nach deiner Güte,\nund tilge meine Sünden nach deiner großen Barmherzigkeit.\nWasche mich rein von meiner Missetat\nund reinige mich von meiner Sünde.\nDenn ich erkenne meine Missetat,\nund meine Sünde ist immer vor mir.\nSchaffe in mir, Gott, ein reines Herz\nund gib mir einen neuen, beständigen Geist.\nVerwirf mich nicht von deinem Angesicht\nund nimm deinen heiligen Geist nicht von mir.\nErfreue mich wieder mit deiner Hilfe,\nund mit einem willigen Geist rüste mich aus.\nDas Opfer, das Gott gefällt, ist ein geängsteter Geist;\nein geängstetes, zerschlagenes Herz\nwirst du, Gott, nicht verachten.\nAmen.",
+    italian:    "Pietà di me, o Dio, nel tuo amore,\nnella tua grande misericordia cancella il mio peccato.\nLavami da tutte le mie colpe,\nmondami dal mio peccato.\nRiconosco la mia colpa,\nil mio peccato mi sta sempre dinanzi.\nCrea in me, o Dio, un cuore puro,\nrinnova in me uno spirito saldo.\nNon scacciarmi dalla tua presenza\ne non togliermi il tuo santo spirito.\nRendimi la gioia della tua salvezza,\nsostienimi con uno spirito generoso.\nUno spirito contrito è sacrificio a Dio;\nun cuore contrito e affranto\ntu, o Dio, non disprezzi.\nAmen.",
+    latin:      "Miserere mei, Deus,\nsecundum magnam misericordiam tuam;\net secundum multitudinem miserationum tuarum\ndele iniquitatem meam.\nAmplius lava me ab iniquitate mea,\net a peccato meo munda me.\nQuoniam iniquitatem meam ego cognosco,\net peccatum meum contra me est semper.\nCor mundum crea in me, Deus,\net spiritum rectum innova in visceribus meis.\nNe proicias me a facie tua,\net spiritum sanctum tuum ne auferas a me.\nRedde mihi laetitiam salutaris tui,\net spiritu principali confirma me.\nSacrificium Deo spiritus contribulatus;\ncor contritum et humiliatum, Deus, non despicies.\nAmen.",
+    french:     "Aie pitié de moi, ô Dieu, dans ta bonté;\nselon ta grande miséricorde, efface mes transgressions.\nLave-moi complètement de mon iniquité,\net purifie-moi de mon péché.\nCar je reconnais mes transgressions,\net mon péché est constamment devant moi.\nCrée en moi un cœur pur, ô Dieu,\net renouvelle en moi un esprit bien disposé.\nNe me rejette pas loin de ta face,\net ne me retire pas ton Esprit Saint.\nRends-moi la joie de ton salut,\net qu'un esprit généreux me soutienne.\nLes sacrifices qui plaisent à Dieu, c'est un esprit brisé;\nun cœur brisé et contrit,\ntu ne le mépriseras pas, ô Dieu.\nAmen.",
+    spanish:    "Ten misericordia de mí, oh Dios, conforme a tu bondad;\nconforme a la multitud de tus piedades borra mis rebeliones.\nLávame más y más de mi maldad,\ny límpiame de mi pecado.\nPorque yo reconozco mis rebeliones,\ny mi pecado está siempre delante de mí.\nCrea en mí, oh Dios, un corazón limpio,\ny renueva un espíritu recto dentro de mí.\nNo me eches de delante de ti,\ny no quites de mí tu Santo Espíritu.\nVuélveme el gozo de tu salvación,\ny espíritu noble me sustente.\nLos sacrificios de Dios son el espíritu quebrantado;\nal corazón contrito y humillado\nno despreciarás tú, oh Dios.\nAmén.",
+    portuguese: "Tem misericórdia de mim, ó Deus, segundo a tua benignidade;\napaga as minhas transgressões segundo a multidão das tuas misericórdias.\nLava-me completamente da minha iniquidade\ne purifica-me do meu pecado.\nPorque eu conheço as minhas transgressões,\ne o meu pecado está sempre diante de mim.\nCria em mim, ó Deus, um coração puro,\ne renova em mim um espírito reto.\nNão me lances fora da tua presença\ne não retires de mim o teu Espírito Santo.\nRestitui-me a alegria da tua salvação\ne sustenta-me com um espírito voluntário.\nOs sacrifícios de Deus são o espírito quebrantado;\na um coração quebrantado e contrito\nnão desprezarás, ó Deus.\nAmém.",
+    polish:     "Zmiłuj się nade mną, Boże, w swojej łaskawości,\nw ogromie swego miłosierdzia wymaż moją nieprawość.\nObmyj mnie zupełnie z mojej winy\ni oczyść mnie z grzechu.\nUznaję bowiem moją nieprawość,\nmój grzech jest zawsze przede mną.\nStwórz we mnie, Boże, serce czyste\ni odnów we mnie moc ducha.\nNie odrzucaj mnie od swojego oblicza\ni nie odbieraj mi swego Ducha Świętego.\nPrzywróć mi radość Twojego zbawienia\ni wzmocnij mnie duchem ofiarnym.\nOfiarą Bogu miłą jest duch skruszony;\nsercem skruszonym i pokornym\nTy, Boże, nie gardzisz.\nAmen."
   },
-  "psalm23": {
-    "english": "The Lord is my shepherd; I shall not want.\nHe maketh me to lie down in green pastures:\nhe leadeth me beside the still waters.\nHe restoreth my soul:\nhe leadeth me in the paths of righteousness\nfor his name's sake.\nYea, though I walk through the valley\nof the shadow of death,\nI will fear no evil: for thou art with me;\nthy rod and thy staff they comfort me.\nThou preparest a table before me\nin the presence of mine enemies:\nthou anointest my head with oil;\nmy cup runneth over.\nSurely goodness and mercy shall follow me\nall the days of my life:\nand I will dwell in the house of the Lord for ever.\nAmen.",
-    "german": "Der Herr ist mein Hirte, mir wird nichts mangeln.\nEr weidet mich auf einer grünen Aue\nund führet mich zum frischen Wasser.\nEr erquicket meine Seele.\nEr führet mich auf rechter Straße\num seines Namens willen.\nUnd ob ich schon wanderte im finstern Tal,\nfürchte ich kein Unglück;\ndenn du bist bei mir,\ndein Stecken und Stab trösten mich.\nDu bereitest vor mir einen Tisch\nim Angesicht meiner Feinde.\nDu salbest mein Haupt mit Öl\nund schenkest mir voll ein.\nGutes und Barmherzigkeit werden mir folgen\nmein Leben lang,\nund ich werde bleiben im Hause des Herrn immerdar.\nAmen.",
-    "italian": "Il Signore è il mio pastore: non manco di nulla.\nSu pascoli erbosi mi fa riposare,\nad acque tranquille mi conduce.\nRinfranca l'anima mia.\nMi guida per il giusto cammino\na motivo del suo nome.\nAnche se vado per una valle oscura,\nnon temo alcun male, perché tu sei con me.\nIl tuo bastone e il tuo vincastro\nmi danno sicurezza.\nDavanti a me tu prepari una mensa\nsotto gli occhi dei miei nemici.\nUngi di olio il mio capo;\nil mio calice trabocca.\nSì, bontà e fedeltà mi saranno compagne\ntutti i giorni della mia vita,\nabiterò nella casa del Signore per lunghi giorni.\nAmen.",
-    "latin": "Dominus pascit me, nihil mihi deerit.\nIn pascuis virentibus me collocat,\nsuper aquas quietis me adducit.\nAnimam meam reficit.\nDeducit me per semitas iustitiae\npropter nomen suum.\nNam et si ambulavero in valle umbrae mortis,\nnon timebo mala, quoniam tu mecum es.\nVirga tua et baculus tuus,\nipsa me consolabuntur.\nPones coram me mensam\nadversus eos qui tribulant me.\nImpinguasti in oleo caput meum;\ncalix meus inebrians quam praeclarus est.\nEt misericordia tua subsequetur me\nomnibus diebus vitae meae,\net ut inhabitem in domo Domini\nin longitudinem dierum.\nAmen.",
-    "french": "L'Éternel est mon berger: je ne manquerai de rien.\nIl me fait reposer dans de verts pâturages,\nil me dirige près des eaux paisibles.\nIl restaure mon âme.\nIl me conduit dans les sentiers de la justice,\nà cause de son nom.\nQuand je marche dans la vallée de l'ombre de la mort,\nje ne crains aucun mal, car tu es avec moi:\nta houlette et ton bâton me rassurent.\nTu dresses devant moi une table,\nen face de mes adversaires;\ntu oins d'huile ma tête,\net ma coupe déborde.\nOui, le bonheur et la grâce m'accompagneront\ntous les jours de ma vie,\net j'habiterai dans la maison de l'Éternel\npour de longs jours.\nAmen.",
-    "spanish": "El Señor es mi pastor; nada me faltará.\nEn lugares de delicados pastos me hará descansar;\njunto a aguas de reposo me pastoreará.\nConfortará mi alma.\nMe guiará por sendas de justicia\npor amor de su nombre.\nAunque ande en valle de sombra de muerte,\nno temeré mal alguno, porque tú estarás conmigo;\ntu vara y tu cayado me infundirán aliento.\nAderezas mesa delante de mí\nen presencia de mis angustiadores;\nunges mi cabeza con aceite;\nmi copa está rebosando.\nCiertamente el bien y la misericordia me seguirán\ntodos los días de mi vida,\ny en la casa del Señor moraré por largos días.\nAmén.",
-    "portuguese": "O Senhor é o meu pastor; nada me faltará.\nEle me faz repousar em pastos verdejantes.\nLeva-me para junto das águas tranquilas.\nRefrigera a minha alma.\nGuia-me pelas veredas da justiça\npor amor do seu nome.\nAinda que eu andasse pelo vale da sombra da morte,\nnão temeria mal algum, porque tu estás comigo;\no teu cajado e o teu bordão me consolam.\nPreparas uma mesa perante mim\nna presença dos meus adversários.\nUnges a minha cabeça com óleo;\no meu cálice transborda.\nCertamente que a bondade e a misericórdia\nme seguirão todos os dias da minha vida,\ne habitarei na casa do Senhor por longos dias.\nAmém.",
-    "polish": "Pan jest moim pasterzem, nie brak mi niczego.\nPozwala mi leżeć na zielonych pastwiskach.\nProwadzi mnie nad wody, gdzie mogę odpocząć.\nOrzeźwia moją duszę.\nWiedzie mnie po właściwych ścieżkach\nprzez wzgląd na swoją chwałę.\nChociażbym chodził ciemną doliną,\nzła się nie ulęknę, bo Ty jesteś ze mną.\nTwój kij i Twoja laska są moją pociechą.\nZastawiasz przede mną stół\nwobec moich przeciwników.\nNamaszczasz olejkiem moją głowę,\nmój kielich jest pełny po brzegi.\nDobroć i łaska będą mi towarzyszyć\nprzez wszystkie dni mego życia\ni zamieszkam w domu Pana\npo najdłuższe czasy.\nAmen."
-  },
-  "sanctus": {
-    "english": "Holy, holy, holy, Lord God of hosts.\nHeaven and earth are full of thy glory.\nGlory be to thee, O Lord Most High.\nBlessed is he that cometh in the name of the Lord.\nHosanna in the highest.",
-    "german": "Heilig, heilig, heilig ist der Herr, Gott der Heerscharen.\nHimmel und Erde sind erfüllt von deiner Herrlichkeit.\nGelobt seist du, Herr in der Höhe.\nGesegnet ist, der da kommt im Namen des Herrn.\nHosanna in der Höhe.",
-    "italian": "Santo, Santo, Santo il Signore Dio dell'universo.\nI cieli e la terra sono pieni della tua gloria.\nOsanna nell'alto dei cieli.\nBenedetto colui che viene nel nome del Signore.\nOsanna nell'alto dei cieli.",
-    "latin": "Sanctus, Sanctus, Sanctus Dominus Deus Sabaoth.\nPleni sunt caeli et terra gloria tua.\nHosanna in excelsis.\nBenedictus qui venit in nomine Domini.\nHosanna in excelsis.",
-    "french": "Saint, Saint, Saint est le Seigneur, Dieu de l'univers.\nLe ciel et la terre sont remplis de ta gloire.\nHosanna au plus haut des cieux.\nBéni soit celui qui vient au nom du Seigneur.\nHosanna au plus haut des cieux.",
-    "spanish": "Santo, Santo, Santo es el Señor, Dios del universo.\nLlenos están el cielo y la tierra de tu gloria.\nHosanna en el cielo.\nBendito el que viene en nombre del Señor.\nHosanna en el cielo.",
-    "portuguese": "Santo, Santo, Santo é o Senhor, Deus do universo.\nCheios estão o céu e a terra da tua glória.\nHosana nas alturas.\nBendito o que vem em nome do Senhor.\nHosana nas alturas.",
-    "polish": "Święty, Święty, Święty jest Pan, Bóg mocy.\nPełne są niebiosa i ziemia Twojej chwały.\nHosanna na wysokościach.\nBłogosławiony, który przychodzi w imię Pańskie.\nHosanna na wysokościach."
-  },
-  "serenity": {
-    "english": "God, grant me the serenity\nto accept the things I cannot change,\ncourage to change the things I can,\nand wisdom to know the difference.\nAmen.",
-    "german": "Gott, gib mir die Gelassenheit,\nDinge hinzunehmen, die ich nicht ändern kann,\nden Mut, Dinge zu ändern, die ich ändern kann,\nund die Weisheit, das eine vom anderen zu unterscheiden.\nAmen.",
-    "italian": "Dio, concedimi la serenità\ndi accettare le cose che non posso cambiare,\nil coraggio di cambiare le cose che posso,\ne la saggezza di conoscere la differenza.\nAmen.",
-    "latin": "Deus, da mihi serenitatem\naccipere ea quae mutare non possum,\nfortitudinem mutare ea quae possum,\net sapientiam differentiam cognoscere.\nAmen.",
-    "french": "Seigneur, accorde-moi la sérénité\nd'accepter les choses que je ne peux pas changer,\nle courage de changer les choses que je peux,\net la sagesse d'en connaître la différence.\nAmen.",
-    "spanish": "Dios, concédeme la serenidad\npara aceptar las cosas que no puedo cambiar,\nel valor para cambiar las que sí puedo,\ny la sabiduría para reconocer la diferencia.\nAmén.",
-    "portuguese": "Deus, concede-me a serenidade\npara aceitar as coisas que não posso mudar,\ncoragem para mudar as que posso,\ne sabedoria para distinguir uma das outras.\nAmém.",
-    "polish": "Boże, użycz mi pogody ducha,\nabym godził się z tym, czego nie mogę zmienić,\nodwagi, abym zmieniał to, co mogę zmienić,\ni mądrości, abym odróżniał jedno od drugiego.\nAmen."
+  gloria: {
+    english:    "Glory to God in the highest,\nand peace to his people on earth.\nLord God, heavenly King, almighty God and Father,\nwe worship you, we give you thanks,\nwe praise you for your glory.\nLord Jesus Christ, only Son of the Father,\nLord God, Lamb of God,\nyou take away the sin of the world: have mercy on us;\nyou are seated at the right hand of the Father; receive our prayer.\nFor you alone are the Holy One,\nYou alone are the Lord, You alone are the Most High, Jesus Christ,\nWith the Holy Spirit, in the glory of God the Father,\nAmen! Amen!",
+    german:     "Ehre sei Gott in der Höhe\nund Friede auf Erden den Menschen seiner Gnade.\nWir loben dich, wir preisen dich,\nwir beten dich an, wir rühmen dich und danken dir,\ndenn groß ist deine Herrlichkeit.\nHerr und Gott, König des Himmels,\nGott und Vater, Herrscher über das All.\nHerr, eingeborener Sohn, Jesus Christus.\nHerr und Gott, Lamm Gottes, Sohn des Vaters:\ndu nimmst hinweg die Sünde der Welt: erbarme dich unser;\ndu nimmst hinweg die Sünde der Welt: nimm an unser Gebet;\ndu sitzest zur Rechten des Vaters: erbarme dich unser.\nDenn du allein bist der Heilige,\ndu allein der Herr, du allein der Höchste, Jesus Christus,\nmit dem Heiligen Geist, zur Ehre Gottes des Vaters. Amen.",
+    italian:    "Gloria a Dio nell'alto dei cieli\ne pace in terra agli uomini di buona volontà.\nNoi ti lodiamo, ti benediciamo,\nti adoriamo, ti glorifichiamo,\nti rendiamo grazie per la tua gloria immensa,\nSignore Dio, Re del cielo,\nDio Padre onnipotente.\nSignore, Figlio unigenito, Gesù Cristo,\nSignore Dio, Agnello di Dio, Figlio del Padre,\ntu che togli i peccati del mondo, abbi pietà di noi;\ntu che togli i peccati del mondo, accogli la nostra supplica;\ntu che siedi alla destra del Padre, abbi pietà di noi.\nPerché tu solo il Santo, tu solo il Signore,\ntu solo l'Altissimo, Gesù Cristo,\ncon lo Spirito Santo: nella gloria di Dio Padre. Amen.",
+    latin:      "Gloria in excelsis Deo,\net in terra pax hominibus bonae voluntatis.\nLaudamus te, benedicimus te,\nadoramus te, glorificamus te,\ngratias agimus tibi propter magnam gloriam tuam,\nDomine Deus, Rex caelestis,\nDeus Pater omnipotens.\nDomine Fili unigenite, Iesu Christe,\nDomine Deus, Agnus Dei, Filius Patris,\nqui tollis peccata mundi, miserere nobis;\nqui tollis peccata mundi, suscipe deprecationem nostram.\nQui sedes ad dexteram Patris, miserere nobis.\nQuoniam tu solus Sanctus, tu solus Dominus,\ntu solus Altissimus, Iesu Christe,\ncum Sancto Spiritu: in gloria Dei Patris. Amen.",
+    french:     "Gloire à Dieu, au plus haut des cieux,\net paix sur la terre aux hommes qu'il aime.\nNous te louons, nous te bénissons,\nnous t'adorons, nous te glorifions,\nnous te rendons grâce, pour ton immense gloire,\nSeigneur Dieu, Roi du ciel,\nDieu le Père tout-puissant.\nSeigneur, Fils unique, Jésus Christ,\nSeigneur Dieu, Agneau de Dieu, le Fils du Père,\ntoi qui enlèves le péché du monde, prends pitié de nous;\ntoi qui enlèves le péché du monde, reçois notre prière;\ntoi qui es assis à la droite du Père, prends pitié de nous.\nCar toi seul es saint, toi seul es Seigneur,\ntoi seul es le Très-Haut, Jésus Christ,\navec le Saint-Esprit, dans la gloire de Dieu le Père. Amen.",
+    spanish:    "Gloria a Dios en el cielo,\ny en la tierra paz a los hombres que ama el Señor.\nPor tu inmensa gloria te alabamos,\nte bendecimos, te adoramos,\nte glorificamos, te damos gracias,\nSeñor Dios, Rey celestial,\nDios Padre todopoderoso.\nSeñor, Hijo único, Jesucristo.\nSeñor Dios, Cordero de Dios, Hijo del Padre,\ntú que quitas el pecado del mundo, ten piedad de nosotros;\ntú que quitas el pecado del mundo, atiende nuestra súplica;\ntú que estás sentado a la derecha del Padre, ten piedad de nosotros.\nPorque sólo tú eres Santo, sólo tú Señor,\nsólo tú Altísimo, Jesucristo,\ncon el Espíritu Santo en la gloria de Dios Padre. Amén.",
+    portuguese: "Glória a Deus nas alturas,\ne paz na terra aos homens por Ele amados.\nSenhor Deus, Rei dos céus,\nDeus Pai todo-poderoso:\nnós Vos louvamos, nós Vos bendizemos,\nnós Vos adoramos, nós Vos glorificamos,\nnós Vos damos graças por vossa imensa glória.\nSenhor Jesus Cristo, Filho Unigénito,\nSenhor Deus, Cordeiro de Deus, Filho de Deus Pai:\nVós que tirais o pecado do mundo, tende piedade de nós;\nVós que tirais o pecado do mundo, acolhei a nossa súplica;\nVós que estais à direita do Pai, tende piedade de nós.\nSó Vós sois o Santo; só Vós, o Senhor;\nsó Vós, o Altíssimo, Jesus Cristo;\ncom o Espírito Santo, na glória de Deus Pai. Amém.",
+    polish:     "Chwała na wysokości Bogu,\na na ziemi pokój ludziom dobrej woli.\nChwalimy Cię, błogosławimy Cię,\nwielbimy Cię, wysławiamy Cię,\ndzięki Ci składamy, bo wielka jest chwała Twoja.\nPanie Boże, Królu nieba,\nBoże, Ojcze wszechmogący.\nPanie, Synu Jednorodzony, Jezu Chryste.\nPanie Boże, Baranku Boży, Synu Ojca.\nKtóry gładzisz grzechy świata, zmiłuj się nad nami;\nKtóry gładzisz grzechy świata, przyjm błaganie nasze;\nKtóry siedzisz po prawicy Ojca, zmiłuj się nad nami.\nAlbowiem tylko Tyś jest święty,\ntylko Tyś jest Panem, tylko Tyś Najwyższy, Jezu Chryste,\nz Duchem Świętym, w chwale Boga Ojca. Amen."
   }
 };
-const PRAYER_IMAGES = {"ave": "ave-maria.png", "lords": "Breaking_of_The_Bread.png", "serenity": "serenity.png", "psalm23": "psalm23.png", "peace": "peace.png", "nunc": "nunc-dimittis.png", "miserere": "miserere.png", "gloria": "gloria.png", "sanctus": "sanctus.png", "magnificat": "magnificat.png"};
-const PRAYER_NAMES = {"ave": "Ave Maria", "gloria": "Gloria", "peace": "Instrument of Thy Peace", "lords": "Lord's Prayer", "magnificat": "Magnificat", "miserere": "Miserere Psalm 51", "nunc": "Nunc", "sanctus": "Sanctus", "serenity": "Serenity Prayer", "psalm23": "The Lord is My Shepherd"};
+
 const LANG_CODES = {
   english:'en', german:'de', italian:'it', latin:'it',
   french:'fr', spanish:'es', portuguese:'pt', polish:'pl'
 };
 
-const prayerSel    = document.getElementById('prayer');
-const langSel      = document.getElementById('language');
-const voiceSel     = document.getElementById('voice-select');
-const rateSlider   = document.getElementById('rate');
-const rateOut      = document.getElementById('rate-out');
-const textDiv      = document.getElementById('prayer-text');
-const galleryDiv   = document.getElementById('prayer-gallery');
-const btnPray      = document.getElementById('btn-pray');
-const btnStop      = document.getElementById('btn-stop');
-const statusEl     = document.getElementById('status');
-const imageModal   = document.getElementById('image-modal');
-const modalImage   = document.getElementById('modal-image');
+const prayerSel  = document.getElementById('prayer');
+const langSel    = document.getElementById('language');
+const voiceSel   = document.getElementById('voice-select');
+const rateSlider = document.getElementById('rate');
+const rateOut    = document.getElementById('rate-out');
+const textDiv    = document.getElementById('prayer-text');
+const btnPray    = document.getElementById('btn-pray');
+const btnStop    = document.getElementById('btn-stop');
+const statusEl   = document.getElementById('status');
 
 function updateText() {
   const p = TEXTS[prayerSel.value];
   textDiv.textContent = p ? (p[langSel.value] || '') : '';
-  document.getElementById('prayer-name').textContent = PRAYER_NAMES[prayerSel.value] || '';
-  updateGallery();
 }
-
-function updateGallery() {
-  const imgFile = PRAYER_IMAGES[prayerSel.value];
-  galleryDiv.innerHTML = '';
-  if (imgFile) {
-    const path = `images/${imgFile}`;
-    const small = document.createElement('img');
-    small.src = path;
-    small.className = 'gallery-thumb small';
-    small.alt = 'Prayer artwork (small)';
-    small.addEventListener('click', () => openImage(path));
-    
-    const medium = document.createElement('img');
-    medium.src = path;
-    medium.className = 'gallery-thumb medium';
-    medium.alt = 'Prayer artwork (full)';
-    medium.addEventListener('click', () => openImage(path));
-    
-    galleryDiv.appendChild(small);
-    galleryDiv.appendChild(medium);
-  }
-}
-
-function openImage(src) {
-  modalImage.src = src;
-  imageModal.hidden = false;
-}
-
-imageModal.addEventListener('click', () => {
-  imageModal.hidden = true;
-});
 
 function populateVoices() {
-  const all    = window.speechSynthesis.getVoices();
-  const code   = LANG_CODES[langSel.value] || 'en';
+  const all     = window.speechSynthesis.getVoices();
+  const code    = LANG_CODES[langSel.value] || 'en';
   const matched = all.filter(v => v.lang.toLowerCase().startsWith(code));
   const pool    = matched.length ? matched : all.filter(v => v.lang.startsWith('en'));
   voiceSel.innerHTML = pool.map((v, i) =>
@@ -384,7 +286,7 @@ function pray() {
   const p = TEXTS[prayerSel.value];
   const text = p ? p[langSel.value] : null;
   if (!text) return;
-  const u    = new SpeechSynthesisUtterance(text);
+  const u     = new SpeechSynthesisUtterance(text);
   const pool  = voiceSel._pool || [];
   const voice = pool[parseInt(voiceSel.value)];
   if (voice) { u.voice = voice; u.lang = voice.lang; }
@@ -397,22 +299,10 @@ function pray() {
 rateSlider.addEventListener('input', () => { rateOut.textContent = rateSlider.value; });
 prayerSel.addEventListener('change', updateText);
 langSel.addEventListener('change', () => { updateText(); populateVoices(); });
-const btnMusic = document.getElementById('btn-music');
-const audio = document.getElementById('gregorian-audio');
-
 btnPray.addEventListener('click', pray);
 btnStop.addEventListener('click', () => {
   window.speechSynthesis.cancel();
   statusEl.textContent = ''; btnPray.disabled = false; btnStop.disabled = true;
-});
-btnMusic.addEventListener('click', () => {
-  if (audio.paused) {
-    audio.play();
-    btnMusic.style.opacity = '1';
-  } else {
-    audio.pause();
-    btnMusic.style.opacity = '0.6';
-  }
 });
 
 if ('onvoiceschanged' in window.speechSynthesis) {
@@ -421,7 +311,7 @@ if ('onvoiceschanged' in window.speechSynthesis) {
 setTimeout(populateVoices, 400);
 updateText();
 
-// About modal
+// --- About modal ---
 const aboutBtn     = document.getElementById('about-btn');
 const aboutOverlay = document.getElementById('about-overlay');
 const aboutClose   = document.getElementById('about-close');

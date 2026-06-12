@@ -131,21 +131,22 @@
 <div id="panel">
 <button id="about-btn" aria-label="About Pray" title="About Pray">i</button>
 <h1>Pray</h1>
+<h2 id="prayer-name" style="font-size: 1.1rem; font-weight: 400; color: #ccc; margin: 0 0 1rem; text-align: center;"></h2>
 <p class="sub">"Ask, and it shall be given you; seek, and ye shall find." — Matthew 7:7</p>
 <div class="grid">
   <div>
     <label for="prayer">Prayer</label>
     <select id="prayer">
-      <option value="ave">ave</option>
-      <option value="gloria">gloria</option>
-      <option value="lords">lords</option>
-      <option value="magnificat">magnificat</option>
-      <option value="miserere">miserere</option>
-      <option value="nunc">nunc</option>
-      <option value="peace">peace</option>
-      <option value="psalm23">psalm23</option>
-      <option value="sanctus">sanctus</option>
-      <option value="serenity">serenity</option>
+      <option value="ave">Ave Maria</option>
+      <option value="gloria">Gloria</option>
+      <option value="peace">Instrument of Thy Peace</option>
+      <option value="lords">Lord's Prayer</option>
+      <option value="magnificat">Magnificat</option>
+      <option value="miserere">Miserere Psalm 51</option>
+      <option value="nunc">Nunc</option>
+      <option value="sanctus">Sanctus</option>
+      <option value="serenity">Serenity Prayer</option>
+      <option value="psalm23">The Lord is My Shepherd</option>
     </select>
   </div>
   <div>
@@ -202,7 +203,7 @@
     <p>Prayer texts are traditional liturgical and biblical texts in the public domain.</p>
     <p>Background: alpine landscape.</p>
     <p>Pray is open source: <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
-    <p class="modal-ver">Version 2026-06-11 09:22 · 7fb3deb</p>
+    <p class="modal-ver">Version 2026-06-11 19:44 · af1a2ce</p>
   </div>
 </div>
 
@@ -310,6 +311,7 @@ const TEXTS = {
   }
 };
 const PRAYER_IMAGES = {"ave": "ave-maria.png", "lords": "Breaking_of_The_Bread.png", "serenity": "serenity.png", "psalm23": "psalm23.png", "peace": "peace.png", "nunc": "nunc-dimittis.png", "miserere": "miserere.png", "gloria": "gloria.png", "sanctus": "sanctus.png", "magnificat": "magnificat.png"};
+const PRAYER_NAMES = {"ave": "Ave Maria", "gloria": "Gloria", "peace": "Instrument of Thy Peace", "lords": "Lord's Prayer", "magnificat": "Magnificat", "miserere": "Miserere Psalm 51", "nunc": "Nunc", "sanctus": "Sanctus", "serenity": "Serenity Prayer", "psalm23": "The Lord is My Shepherd"};
 const LANG_CODES = {
   english:'en', german:'de', italian:'it', latin:'it',
   french:'fr', spanish:'es', portuguese:'pt', polish:'pl'
@@ -331,6 +333,7 @@ const modalImage   = document.getElementById('modal-image');
 function updateText() {
   const p = TEXTS[prayerSel.value];
   textDiv.textContent = p ? (p[langSel.value] || '') : '';
+  document.getElementById('prayer-name').textContent = PRAYER_NAMES[prayerSel.value] || '';
   updateGallery();
 }
 

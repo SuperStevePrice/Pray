@@ -336,6 +336,7 @@ function updateText() {
   updateGallery();
   // Update audio src for current prayer
   audio.src = 'audio/' + PRAYER_AUDIO[prayerSel.value];
+  audio.load();
   audio.pause();
   btnMusic.style.opacity = '0.6';
 }

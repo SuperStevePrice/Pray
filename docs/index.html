@@ -14,7 +14,7 @@
         
         body {
             font-family: Georgia, serif;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
                         url('images/bg_alps.png') center/cover fixed no-repeat;
             min-height: 100vh;
             display: flex;
@@ -24,40 +24,38 @@
         }
         
         .container {
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(0, 0, 0, 0.85);
             border: 2px solid #d4af37;
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 600px;
+            border-radius: 20px;
+            padding: 60px 80px;
+            max-width: 650px;
             width: 100%;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
         }
         
         h1 {
             color: #d4af37;
             text-align: center;
-            margin-bottom: 10px;
-            font-size: 2em;
-            letter-spacing: 2px;
+            margin-bottom: 40px;
+            font-size: 3em;
+            letter-spacing: 4px;
+            font-weight: normal;
         }
         
-        .prayer-selector {
-            margin: 30px 0;
-        }
-        
-        label {
-            color: #c0a070;
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9em;
+        .label {
+            color: #d4af37;
+            text-align: center;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            font-weight: normal;
         }
         
         select {
             width: 100%;
-            padding: 12px;
-            background: #1a1a1a;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.5);
             color: #d4af37;
             border: 2px solid #d4af37;
             border-radius: 6px;
@@ -66,72 +64,99 @@
             cursor: pointer;
         }
         
+        .prayer-content {
+            margin-top: 40px;
+        }
+        
         .prayer-title {
             color: #d4af37;
             text-align: center;
-            margin: 20px 0;
-            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-size: 1.8em;
             font-style: italic;
+            font-weight: normal;
         }
         
         .prayer-text {
-            background: rgba(40, 40, 40, 0.8);
+            background: rgba(40, 40, 40, 0.5);
             border-left: 3px solid #d4af37;
-            padding: 20px;
-            margin: 20px 0;
-            color: #d0d0d0;
-            line-height: 1.8;
+            padding: 25px;
+            margin: 30px 0;
+            color: #e0e0e0;
+            line-height: 1.9;
             font-size: 0.95em;
         }
         
         .controls {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 20px 0;
+            margin: 30px 0;
         }
         
         button {
             background: #d4af37;
-            color: #1a1a1a;
+            color: #000;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 28px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
+            font-family: Georgia, serif;
             transition: all 0.3s;
+            font-size: 0.95em;
         }
         
         button:hover {
             background: #e5c158;
+            transform: translateY(-2px);
         }
         
         button.secondary {
-            background: #555;
+            background: transparent;
             color: #d4af37;
             border: 2px solid #d4af37;
+            padding: 10px 24px;
+        }
+        
+        button.secondary:hover {
+            background: #d4af37;
+            color: #000;
         }
         
         .voice-control {
-            background: rgba(40, 40, 40, 0.8);
-            padding: 15px;
-            margin: 15px 0;
+            background: rgba(40, 40, 40, 0.5);
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 6px;
+        }
+        
+        .voice-control label {
+            color: #d4af37;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .voice-control select, .voice-control input {
             width: 100%;
             padding: 8px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            border-radius: 4px;
         }
         
         .gallery {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .gallery img {
@@ -139,7 +164,13 @@
             height: 120px;
             object-fit: cover;
             border: 2px solid #d4af37;
+            border-radius: 6px;
             cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.08);
         }
         
         .modal {
@@ -150,7 +181,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.9);
+            background-color: rgba(0,0,0,0.95);
         }
         
         .modal.open {
@@ -170,14 +201,12 @@
     <div class="container" x-data="app()" x-init="init()">
         <h1>✝️ Pray</h1>
         
-        <div class="prayer-selector">
-            <label for="prayerSelect">Select Prayer</label>
-            <select id="prayerSelect" @change="selectPrayer($event)">
-                <option value="">Choose a prayer...</option>
-            </select>
-        </div>
+        <div class="label">Select Prayer</div>
+        <select id="prayerSelect" @change="selectPrayer($event)">
+            <option value="">Choose a prayer...</option>
+        </select>
         
-        <div x-show="selectedPrayer" style="display: none;">
+        <div class="prayer-content" x-show="selectedPrayer" style="display: none;">
             <div class="prayer-title" x-text="prayerTitle"></div>
             
             <div class="controls">
@@ -218,10 +247,10 @@
         </div>
         
         <div id="aboutModal" class="modal" @click="closeAbout()">
-            <div style="background: rgba(20,20,20,0.95); border: 2px solid #d4af37; padding: 30px; border-radius: 12px;" @click.stop>
-                <h2 style="color: #d4af37; margin-bottom: 15px;">About Pray</h2>
-                <p style="color: #d0d0d0; line-height: 1.6;">Devotional web app for daily prayer and meditation.</p>
-                <p style="color: #d0d0d0; line-height: 1.6;">Select a prayer, listen to music, and read in 8 languages.</p>
+            <div style="background: rgba(20,20,20,0.95); border: 2px solid #d4af37; padding: 40px; border-radius: 12px; max-width: 500px;" @click.stop>
+                <h2 style="color: #d4af37; margin-bottom: 20px; font-size: 1.5em;">About Pray</h2>
+                <p style="color: #d0d0d0; line-height: 1.8; margin-bottom: 15px;">A devotional web application for daily prayer and meditation.</p>
+                <p style="color: #d0d0d0; line-height: 1.8;">Select a prayer, listen to its unique musical accompaniment, and read or hear it in your preferred language.</p>
             </div>
         </div>
     </div>
@@ -261,6 +290,11 @@
                     if (this.selectedPrayer) {
                         this.updatePrayerContent();
                     }
+                    this.musicPlaying = false;
+                    if (this.audioElement) {
+                        this.audioElement.pause();
+                    }
+                    this.audioElement = null;
                 },
                 
                 updatePrayerContent() {

@@ -177,7 +177,6 @@
 <div class="controls">
   <button id="btn-pray">🙏 Pray</button>
   <button id="btn-stop" disabled>🙏🙏 Stop</button>
-  <button id="btn-music">♪ Music</button>
   <span id="status"></span>
 </div>
 
@@ -335,23 +334,6 @@ const TEXTS = {
 const PRAYER_NAMES = {"ave": "Ave Maria", "gloria": "Gloria", "kyrie": "Kyrie Eleison", "peace": "Instrument of Thy Peace", "lords": "The Lord's Prayer", "magnificat": "Magnificat", "miserere": "Miserere Psalm 51", "nunc": "Nunc Dimittis", "piejesu": "Pie Jesu", "psalm23": "The Lord is My Shepherd", "sanctus": "Sanctus", "serenity": "Serenity Prayer"};
 const PRAYER_IMAGES = {"nicene": "nicene-creed.png", "apostles": "apostles-creed.png", "ave": "ave-maria.png", "gloria": "gloria.png", "kyrie": "Kyrie.png", "peace": "peace.png", "lords": "Breaking_of_The_Bread.png", "magnificat": "magnificat.png", "miserere": "miserere.png", "nunc": "nunc-dimittis.png", "piejesu": "PieJesu.png", "psalm23": "psalm23.png", "sanctus": "sanctus.png", "serenity": "serenity.png"};
 const PRAYER_AUDIO = {"nicene": "nicene-beethoven-missa-solemnis.mp3", "apostles": "apostles-mozart.mp3", "ave": "ave-maria-gregorian.mp3", "gloria": "vivaldi-gloria-RV-589.mp3", "kyrie": "kyrie-eleison-rutter.mp3", "peace": "instrument-of-thy-peace.mp3", "lords": "lords-prayer-mario-lanza.mp3", "magnificat": "magnificat-reawaken.mp3", "miserere": "miserere-allegri.mp3", "nunc": "nunc-dimittis-gregorian.mp3", "piejesu": "pie-jesu-rutter.mp3", "psalm23": "psalm23-shepherd.mp3", "sanctus": "sanctus-gregorian.mp3", "serenity": "serenity-prayer.mp3"}
-const PRAYER_URLS = {
-  "apostles": "https://youtu.be/suUQAxvI80k",
-  "ave": "https://youtu.be/rzSOObvRtNI",
-  "gloria": "https://youtu.be/2eWjQOdYzMQ",
-  "instrument": "https://youtu.be/fYz14jEoaeU",
-  "kyrie": "https://youtu.be/Mugvq3ErXAI",
-  "lords": "https://youtu.be/4a3ZzPDvWDE",
-  "magnificat": "https://youtu.be/9REjshA-KGo",
-  "miserere": "https://youtu.be/t74mOAbXYcY",
-  "nicene": "https://youtu.be/-K_axwLxgBY",
-  "nunc": "https://youtu.be/GrDTzQtfvwk",
-  "peace": "https://youtu.be/lLQYDjjfd-U",
-  "pie": "https://youtu.be/9ol8bojo_RQ",
-  "psalm23": "https://youtu.be/m_H_Z06nnM8",
-  "sanctus": "https://youtu.be/FLI2QFPnpsw",
-  "serenity": "https://youtu.be/lLQYDjjfd-U"
-};
 ;
 const LANG_CODES = {
   english:'en', german:'de', italian:'it', latin:'it',
@@ -445,18 +427,11 @@ function pray() {
 rateSlider.addEventListener('input', () => { rateOut.textContent = rateSlider.value; });
 prayerSel.addEventListener('change', updateText);
 langSel.addEventListener('change', () => { updateText(); populateVoices(); });
-const btnMusic = document.getElementById('btn-music');
 
 btnPray.addEventListener('click', pray);
 btnStop.addEventListener('click', () => {
   window.speechSynthesis.cancel();
   statusEl.textContent = ''; btnPray.disabled = false; btnStop.disabled = true;
-});
-btnMusic.addEventListener('click', () => {
-  const url = PRAYER_URLS[prayerSel.value];
-  if (url) {
-    window.open(url, '_blank');
-  }
 });
 
 if ('onvoiceschanged' in window.speechSynthesis) {

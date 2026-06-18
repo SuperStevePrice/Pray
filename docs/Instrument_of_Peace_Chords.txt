@@ -1,0 +1,234 @@
+INSTRUMENT OF THY PEACE
+St. Francis Prayer for Peace
+
+TEXT: Prayer attributed to St. Francis of Assisi (12th-13th century, 
+authorship disputed, but spiritually important) — public domain
+ARRANGEMENT: Contemplative, simple arrangement
+KEY: G major
+TEMPO: ~62 BPM (peaceful, reflective, gentle)
+TIME: 4/4
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS:
+
+Lord, make me an instrument of Thy peace.
+Where there is hatred, let me sow love.
+Where there is injury, pardon.
+Where there is doubt, faith.
+Where there is despair, hope.
+Where there is darkness, light.
+Where there is sadness, joy.
+
+O Divine Master, grant that I may not so much seek
+To be consoled, as to console;
+To be understood, as to understand;
+To be loved, as to love.
+
+For it is in giving that we receive,
+It is in pardoning that we are pardoned,
+And it is in dying that we are born to eternal life.
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (Main Theme):
+
+OPENING REQUEST (Lord, make me an instrument...):
+
+| G      | D      | G      | Em     |
+Lord,    make    me    an    in  -  stru  -  ment    of    Thy    peace.
+
+| C      | D      | G      | (holds)
+Where    there    is    ha  -  tred...
+
+PEACE THROUGH OPPOSITION (Where there is hatred, let me sow love...):
+
+| G      | Em     | Am     | D      |
+Where    there    is    ha  -  tred,    let    me    sow    love.
+
+| G      | D      | G      | (continues through the litany)
+
+PARADOX SECTION (O Divine Master...):
+
+| C      | G      | D      | G      |
+Grant    that    I    may    not    so    much    seek
+
+| Em     | Am     | D      | G      |
+To    be    con  -  soled    as    to    con  -  sole.
+
+GIVING & RECEIVING (For it is in giving...):
+
+| G      | C      | G      | D      |
+For    it    is    in    giv  -  ing    that    we    re  -  ceive,
+
+| G      | D      | G      | (resolves)
+It    is    in    par  -  don  -  ing    we    are    par  -  doned.
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+G major:    320033 (open) or 355433
+D major:    xx0232 (open)
+Em:         x02210 or 022000 (open)
+Am:         x02210 (open)
+C major:    x32010
+
+FINGERPICKING PATTERN (4/4, flowing and gentle):
+
+- Beat 1: Root (sustained)
+- Beat 2: 3rd + 5th (gentle)
+- Beat 3: Root + 5th
+- Beat 4: 3rd (release)
+
+This should sound like a gentle river—flowing, peaceful, continuous.
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE:
+
+Intro (8 measures): G major, peaceful, establish devotional tone
+Verse 1 (12 measures): "Lord, make me an instrument of Thy peace"
+Verse 2 (16 measures): "Where there is hatred, let me sow love..." (litany of opposites)
+Verse 3 (16 measures): "O Divine Master, grant that I may not so much seek..."
+Verse 4 (16 measures): "For it is in giving that we receive..." (final paradoxes)
+Coda (4 measures): Fade on G major, peaceful resolution
+
+Total length: ~7 minutes (this is substantial—a full prayer journey)
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. VOCAL APPROACH:
+   - This is a PRAYER OF TRANSFORMATION—asking to become a peacemaker
+   - Each "where there is..." is both complaint and commitment
+   - Sing with gentle strength, not pleading weakness
+   - The central paradoxes (consoled/console, understood/understand, loved/love)
+     are the prayer's heart—give them weight
+   - "For it is in giving..." section is the resolution—sing with peace
+
+2. GUITAR STYLE:
+   - Warm, flowing fingerpicking
+   - G major is open and bright—let it ring
+   - This is the longest prayer arrangement—consistency matters
+   - Use open strings generously (they bloom naturally)
+
+3. RECORDING APPROACH:
+   - This is substantial (7 minutes)
+   - Record 2-3 guitar takes (aim for consistent, warm tone)
+   - Vocal: 2-3 full takes
+   - Comp for coherence and peaceful delivery
+   - This is long; allow natural variation
+
+4. MICROPHONE SETUP:
+   - Vocal: 8-10 inches (warm, intimate position)
+   - Guitar: 2-3 feet (capture the natural resonance)
+   - Record in a peaceful, quiet space
+   - Morning or evening ideal
+
+5. MIXING:
+   - Vocal: forward (3-4 dB above guitar)
+   - Vocal reverb: Room or Chapel, 15-20% (this prayer needs space)
+   - Guitar: minimal reverb (8-10%)
+   - Master: warm, open, peaceful, transformative quality
+   - NO compression (preserve natural flow)
+
+6. EXPORT:
+   - .wav preferred (length and importance warrant quality)
+   - AAC 256 kbps minimum
+   - File name: "Instrument_of_Peace_St_Francis_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+HISTORICAL/SPIRITUAL CONTEXT:
+
+This prayer is attributed to St. Francis of Assisi (1181-1226), though modern
+scholars debate authorship. It doesn't matter—what matters is that it captures
+Franciscan spirituality perfectly:
+
+- Love of peace (Francis made peace between warring families)
+- Love of the poor and dispossessed
+- Transformation through sacrifice
+- Joy in simplicity
+- Trust in divine providence
+
+The prayer's structure is beautiful:
+1. REQUEST (make me an instrument)
+2. LITANY (where there is X, let me bring Y)
+3. PARADOX (in giving we receive; in pardoning we are pardoned)
+4. RESOLUTION (in dying we are born to eternal life)
+
+═══════════════════════════════════════════════════════════════════════════
+
+THEOLOGICAL DEPTH:
+
+This prayer is about:
+- PEACE: not the absence of conflict, but presence of justice and love
+- TRANSFORMATION: being changed into an instrument of peace
+- PARADOX: losing ourselves, we find ourselves; dying, we live eternally
+- SERVICE: consoling rather than being consoled; understanding rather than understood
+
+Each opposite pair (hatred/love, injury/pardon, doubt/faith, despair/hope,
+darkness/light, sadness/joy) is a spiritual principle.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PERFORMANCE APPROACH:
+
+This prayer is most powerful when sung with:
+- Gentle conviction (not wimpy, not aggressive)
+- Clear intention (this is a request to be made into a peacemaker)
+- Peaceful tone (the message and manner should align)
+- Hope (the paradoxes are actually liberating, not burdensome)
+
+Think: "I offer myself as a channel for God's peace, trusting that in
+serving others, I will be transformed."
+
+═══════════════════════════════════════════════════════════════════════════
+
+LITURGICAL USE:
+
+This prayer is used in:
+- Peace services
+- Reconciliation/healing services
+- Franciscan communities (daily prayer)
+- Contemplative prayer practices
+- Interfaith peace initiatives
+
+It transcends denominational boundaries because it focuses on peace
+rather than specific doctrine.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✓ St. Francis prayer (whether by Francis or attributed to him) is public domain
+✓ Your arrangement is original
+✓ Your recording = your copyright
+✓ SAFE for Pray app
+
+═══════════════════════════════════════════════════════════════════════════
+
+TRANSPOSITION:
+
+If G major is uncomfortable:
+- D major: capo 5 (D-A-D-Bm pattern)
+- C major: capo -5 (C-G-C-Am pattern)
+- F major: capo -5 (F-C-F-Dm pattern)
+
+═══════════════════════════════════════════════════════════════════════════
+
+FINAL NOTE:
+
+This is the last of your 14 chord charts. When you've recorded all of them,
+you'll have a complete devotional music library:
+
+- 14 pieces spanning from ancient liturgy to modern prayer
+- Each one a complete spiritual practice
+- All public domain, all yours to record and share
+- A beautiful resource for your Pray app and beyond
+
+Viel Erfolg bei der Aufnahme, Herr Price! (Much success with the recording!)
+
+═══════════════════════════════════════════════════════════════════════════

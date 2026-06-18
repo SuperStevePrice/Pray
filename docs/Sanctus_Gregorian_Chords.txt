@@ -1,0 +1,193 @@
+SANCTUS (Holy, Holy, Holy)
+Chord Chart and Recording Guide for GarageBand
+
+TEXT: Traditional Gregorian liturgical text (public domain)
+ARRANGEMENT: Gregorian chant setting (simplified for guitar)
+KEY: G major (modal, like Gregorian chant)
+TEMPO: ~60 BPM (solemn, reverent, timeless)
+TIME: 4/4 (though Gregorian is technically free rhythm)
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS (Latin):
+
+Sanctus, Sanctus, Sanctus Dominus Deus Sabaoth.
+Pleni sunt caeli et terra gloria tua.
+Hosanna in excelsis.
+Benedictus qui venit in nomine Domini.
+Hosanna in excelsis.
+
+[Holy, Holy, Holy Lord God of Hosts. Heaven and earth are full of Thy glory.
+Hosanna in the highest. Blessed is He that comes in the name of the Lord.
+Hosanna in the highest.]
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (Gregorian modal style):
+
+OPENING TRIPLE HOLY (Sanctus, Sanctus, Sanctus...):
+
+| G      | D      | G      | Em     |
+San  -  ctus,    San  -  ctus,    San  -  ctus
+
+| G      | D      | G      | (holds)
+Do  -  mi  -  nus    De  -  us    Sa  -  ba  -  oth.
+
+HEAVEN AND EARTH (Pleni sunt caeli...):
+
+| Em     | Am     | D      | G      |
+Ple  -  ni    sunt    cae  -  li    et    ter  -  ra
+
+| Em     | Am     | D      | G      |
+Glo  -  ri  -  a    tu  -  a.
+
+HOSANNA (Hosanna in excelsis...):
+
+| G      | D      | Em     | Am     |
+Ho  -  san  -  na    in    ex  -  cel  -  sis.
+
+| D      | G      | (lifts)
+
+BENEDICTUS (Benedictus qui venit...):
+
+| G      | Em     | Am     | D      |
+Be  -  ne  -  dic  -  tus    qui    ve  -  nit
+
+| G      | D      | G      | (resolves)
+In    no  -  mi  -  ne    Do  -  mi  -  ni.
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+G major:    320033 (open) or 355433
+D major:    xx0232 (open)
+Em:         x02210 or 022000 (open)
+Am:         x02210 (open)
+
+FINGERSTYLE APPROACH (modal/Gregorian style):
+
+This is NOT metrically strict. Gregorian chant floats rhythmically.
+Try this approach:
+- Long, sustained notes (whole notes, half notes)
+- Minimal movement between chords
+- Let the voice lead; guitar follows loosely
+- Think "organ drone" rather than "rhythmic guitar"
+
+Optional: Play Em or G as a pedal point under verses, letting the vocal melody
+float above. This is very Gregorian—voice leads, accompaniment sustains.
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE (Flexible, Gregorian-inspired):
+
+Intro (4-6 measures): Establish G major, slow and reverential
+Verse 1 (12 measures): "Sanctus, Sanctus, Sanctus..." (triple invocation)
+Verse 2 (12 measures): "Pleni sunt caeli..." (declaration of fullness)
+Verse 3 (12 measures): "Hosanna in excelsis" (praise)
+Verse 4 (12 measures): "Benedictus qui venit..." (blessing)
+Verse 5 (12 measures): "Hosanna in excelsis" (repeat praise)
+Coda (4 measures): G major, fade
+
+Total length: ~6-7 minutes (can be flexible, as in Gregorian tradition)
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. VOCAL APPROACH (CRITICAL FOR THIS PIECE):
+   - This is SUNG CHANT, not a melody
+   - Approach it like plainsong: meditative, steady, no vibrato (or minimal)
+   - The triple "Sanctus" is the most important moment—sing each with weight
+   - "Hosanna" should feel celebratory (unlike Sanctus, which is solemn)
+   - Let the words themselves suggest phrasing, not a predetermined melody
+
+2. GUITAR STYLE:
+   - SPARSE and SUPPORTIVE
+   - Consider playing just long G and D notes under the voice
+   - Or use a simple arpeggio that repeats
+   - Think "Gregorian accompaniment" not "folk guitar"
+   - Nylon strings only—no brightness
+
+3. RECORDING APPROACH:
+   - This is best recorded with the voice leading and guitar supporting
+   - Record guitar FIRST with very sparse, sustained notes
+   - Then record vocal over it (multiple takes)
+   - The vocal should feel free and unrushed
+
+4. MICROPHONE SETUP:
+   - Vocal: 10-12 inches (slightly further than other pieces, for a floated quality)
+   - Guitar: 3-4 feet (background, very quiet)
+   - Record in a space with natural reverb (cathedral-like if possible)
+
+5. MIXING:
+   - Vocal: DOMINANT (5-6 dB above guitar)
+   - Guitar: way back in the mix, almost texture
+   - Vocal reverb: Large Cathedral or Hall, 25-35% (this needs SPACE)
+   - Guitar: barely audible, almost subliminal
+   - Master: NO compression, preserve the floating quality
+
+6. EXPORT:
+   - .wav (lossless) preferred—quality matters
+   - AAC 256 kbps minimum
+   - File name: "Sanctus_Gregorian_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+GREGORIAN CHANT HISTORY:
+
+The Sanctus is part of the Mass Ordinary (fixed texts sung at every Mass).
+The Gregorian version is one of the oldest continuous musical traditions—
+literally sung the same way for over 1,500 years.
+
+Key qualities of Gregorian:
+- Monophonic (single melodic line, no harmony)
+- Liturgical Latin (proper pronunciation matters)
+- Free rhythm (breath-driven, not metronomic)
+- Meditative quality
+
+Your guitar accompaniment honors this by staying very simple and supportive.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PERFORMANCE STYLE:
+
+Think "monk in a monastery" more than "concert singer." This is prayer
+set to sound, not entertainment.
+
+- Sing from the diaphragm (long, sustainable notes)
+- Breathe naturally (follow the Latin text's phrasing)
+- No vibrato (or very minimal—this is chant, not opera)
+- Let the repetition of "Sanctus" (holy) be meditative
+- "Hosanna" (save us/help us) is slightly more active energy
+- "Benedictus" returns to reverent contemplation
+
+═══════════════════════════════════════════════════════════════════════════
+
+LITURGICAL CONTEXT:
+
+The Sanctus is sung during the Eucharistic Prayer at every Catholic and
+Anglican Mass. It's the moment when the congregation joins the heavenly
+chorus of angels. This is extremely sacred space in Christian tradition.
+
+Your recording should reflect this gravity and beauty.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✓ Sanctus text is ancient liturgical text (centuries old, public domain)
+✓ Gregorian chant melodies are public domain
+✓ Your recording = your copyright
+✓ SAFE for Pray app
+
+═══════════════════════════════════════════════════════════════════════════
+
+TRANSPOSITION:
+
+If G major is uncomfortable:
+- C major: capo 5 (C-G-C-Am pattern)
+- D major: capo -5 (D-A-D-Bm pattern)
+- Gregorian should sit in a comfortable range—don't strain
+
+═══════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,180 @@
+NUNC DIMITTIS (Simeon's Song of Praise)
+Chord Chart and Recording Guide for GarageBand
+
+TEXT: Luke 2:29-32 (Simeon's prayer at presentation of Jesus)
+ARRANGEMENT: Traditional liturgical setting (public domain)
+KEY: Em (E minor)
+TEMPO: ~65 BPM (peaceful, completion-focused)
+TIME: 4/4
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS (Latin — traditional liturgical form):
+
+Nunc dimittis servum tuum, Domine,
+Secundum verbum tuum in pace.
+
+[Now lettest thou thy servant depart in peace, O Lord, according to thy word.]
+
+Quia viderunt oculi mei salutare tuum,
+[For mine eyes have seen thy salvation.]
+
+Quod parasti ante faciem omnium populorum.
+[Which thou hast prepared before the face of all people.]
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (Main Theme):
+
+OPENING (Nunc dimittis servum tuum...):
+
+| Em     | B      | Em     | G      |
+Nunc    di  -  mit  -  tis    ser  -  vum    tu  -  um,    Do  -  mi  -  ne,
+
+| Am     | B      | Em     | (holds)
+Se  -  cun  -  dum    ver  -  bum    tu  -  um    in    pa  -  ce.
+
+SECOND PHRASE (Quia viderunt...):
+
+| Em     | G      | Am     | B      |
+Qui  -  a    vi  -  de  -  runt    o  -  cu  -  li    me  -  i
+
+| Em     | B      | Em     | (builds)
+Sa  -  lu  -  ta  -  re    tu  -  um.
+
+COMPLETION (Quod parasti...):
+
+| Am     | Em     | B      | Em     |
+Quod    pa  -  ras  -  ti    an  -  te    fa  -  ci  -  em
+
+| G      | B      | Em     | (resolution)
+O  -  mni  -  um    po  -  pu  -  lo  -  rum.
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+Em:        x02210 (open) or 022000
+B major:   x24442 (barre) or x2444x (simpler)
+G major:   320033 (open)
+Am:        x02210 (open)
+
+FINGERPICKING PATTERN (4/4, meditative and sustained):
+
+- Beat 1: Root (long)
+- Beat 2: 3rd + 5th (gentle)
+- Beat 3: Root + 5th
+- Beat 4: 3rd (resolve)
+
+Keep it peaceful but with gentle forward motion—this is peaceful completion,
+not stasis.
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE:
+
+Intro (8 measures): Establish Em, peaceful tone
+Verse 1 (12 measures): "Nunc dimittis servum tuum..." (Simeon's release)
+Verse 2 (12 measures): "Secundum verbum tuum in pace" (peaceful completion)
+Verse 3 (16 measures): "Quia viderunt oculi mei..." (eyes have seen salvation)
+Verse 4 (12 measures): "Quod parasti ante faciem..." (prepared before all)
+Coda (4 measures): Return to Em, fade peacefully
+
+Total length: ~5 minutes
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. VOCAL APPROACH:
+   - This is a prayer of PEACEFUL COMPLETION and FULFILLMENT
+   - Simeon has waited his whole life to see the Messiah; now he's at peace
+   - Sing with gentle strength, not sadness
+   - This is satisfaction, not sorrow
+   - The prayer has an "evening of life" quality (Nunc = "now, finally")
+
+2. GUITAR STYLE:
+   - Em is contemplative but not dark
+   - Use open Em strings—they ring naturally and beautifully
+   - Gentle, consistent fingerpicking
+   - This piece sits well for both male and female voices
+
+3. RECORDING APPROACH:
+   - Medium length (shorter than Psalm 23 or Magnificat)
+   - Record 2-3 guitar takes
+   - Vocal: 2-3 takes
+   - Comp for peaceful consistency
+
+4. MICROPHONE SETUP:
+   - Vocal: 8 inches (warm, intimate position)
+   - Guitar: 2-3 feet (let Em strings bloom naturally)
+   - Record in a quiet, warm space
+
+5. MIXING:
+   - Vocal: forward (3-4 dB above guitar)
+   - Vocal reverb: Room or Chapel, 15-18%
+   - Guitar: minimal reverb (8%)
+   - Master: warm, peaceful, introspective quality
+   - Preserve the gentle, sustained character
+
+6. EXPORT:
+   - AAC 256 kbps or .wav
+   - File name: "Nunc_Dimittis_Simeon_Song_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+BIBLICAL CONTEXT:
+
+The Nunc Dimittis (Luke 2:29-32) is Simeon's prayer when Jesus was presented
+at the Temple as an infant. It's:
+- One of the five "great canticles" of Christian tradition
+- Sung at Evening Prayer (Vespers) in all traditional services
+- A model for how to face life's completion with faith and peace
+- Central to the Feast of Candlemas (Feb 2)
+
+The prayer's structure:
+- Nunc dimittis (the release/dismissal)
+- Secundum verbum (according to God's promise)
+- Quia viderunt (because I've seen)
+- Quod parasti (what you prepared)
+
+═══════════════════════════════════════════════════════════════════════════
+
+THEOLOGICAL NOTES:
+
+This is sometimes sung at funeral services or by elderly people recognizing
+that their purpose has been fulfilled. It's not morbid—it's peaceful.
+
+Your recording should convey:
+- Fulfillment and peace
+- Satisfaction in God's promises
+- Gentle strength (not weakness)
+- Hope and light (despite the word "dimittis" = dismissal)
+
+═══════════════════════════════════════════════════════════════════════════
+
+HARMONIC ANALYSIS:
+
+Em (relative minor of G major) is meditative but not dark. The movement to
+B (V of Em) creates gentle movement. G major appears briefly (adding warmth).
+The harmony is stable, affirming, and peaceful.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✓ Nunc Dimittis text (Luke 2:29-32) is scripture, public domain
+✓ Traditional liturgical tune is public domain
+✓ Your recording = your copyright
+✓ SAFE for Pray app
+
+═══════════════════════════════════════════════════════════════════════════
+
+TRANSPOSITION:
+
+If Em is uncomfortable:
+- Bm: capo 2 (Bm-F#-Bm-D pattern)
+- Am: capo -5 (Am-E-Am-C pattern)
+- Choose a key where the lowest notes are resonant
+
+═══════════════════════════════════════════════════════════════════════════

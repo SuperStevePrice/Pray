@@ -1,0 +1,163 @@
+MAGNIFICAT (Mary's Song)
+Chord Chart and Recording Guide for GarageBand
+
+TEXT: Luke 1:46-55 (Mary's prayer of praise)
+ARRANGEMENT: Traditional liturgical setting (public domain)
+KEY: C major
+TEMPO: ~70 BPM (meditative, joyful)
+TIME: 4/4
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS (Latin — traditional liturgical form):
+
+Magnificat anima mea Dominum,
+Et exsultavit spiritus meus in Deo salutari meo.
+
+[My soul doth magnify the Lord, and my spirit hath rejoiced in God my Saviour.]
+
+(Full text continues through verses of praise and affirmation of God's power
+and mercy, especially toward the humble and lowly.)
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (Main Theme):
+
+OPENING (Magnificat anima mea...):
+
+| C      | G      | C      | Am     |
+Mag  -  ni  -  fi  -  cat    a  -  ni  -  ma    me  -  a    Do  -  mi  -  num,
+
+| F      | G      | C      | (holds)
+Et    ex  -  sul  -  ta  -  vit...
+
+CONTINUATION (spiritus meus...):
+
+| C      | Em     | F      | G      |
+Spi  -  ri  -  tus    me  -  us    in    De  -  o
+
+| C      | Am     | F      | G      | C
+Sa  -  lu  -  ta  -  ri    me  -  o.
+
+VERSE SECTION (Quia respexit...):
+
+| Am     | F      | C      | G      |
+Qui  -  a    res  -  pex  -  it    hu  -  mi  -  li  -  ta  -  tem
+
+| C      | G      | C      | (resolves)
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+C major:    x32010
+G major:    320033 (open) or 355433
+Am:         x02210 (open)
+F major:    133211 (barre) or xx3211 (simpler)
+Em:         022000 (open)
+
+FINGERPICKING PATTERN (4/4, flowing and lyrical):
+
+- Beat 1: Root (whole note feel)
+- Beat 2: 3rd + 5th (gentle)
+- Beat 3: Root + 5th
+- Beat 4: 3rd (let ring)
+
+Keep it smooth and singing—this is Mary's prayer of joy and humility.
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE:
+
+Intro (8 measures): Establish C major, contemplative yet joyful
+Verse 1 (16 measures): "Magnificat anima mea Dominum..." (opening statement)
+Verse 2 (16 measures): "Et exsultavit spiritus..." (spirit rejoicing)
+Verse 3 (16 measures): "Quia respexit humilitatem..." (God's regard for humble)
+Verse 4 (16 measures): "Quia fecit mihi magna..." (great things done)
+Coda (4 measures): Return to C major, fade on "magnificat"
+
+Total length: ~6 minutes
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. VOCAL APPROACH:
+   - This is Mary's prayer of PRAISE and JOY (not sorrow or penitence)
+   - The Magnificat is about God's power reversing worldly order
+   - Sing with warmth, strength, and confidence (not timidity)
+   - This piece suits strong, confident female voices best
+   (but any voice can approach it with appropriate energy)
+
+2. GUITAR STYLE:
+   - Lyrical, flowing fingerpicking
+   - C major is open and resonant—let it ring
+   - This is longer than most pieces, so consistency matters
+   - Use warm nylon strings
+
+3. RECORDING APPROACH:
+   - This is one of the longer pieces (like Psalm 23)
+   - Record 2-3 guitar takes
+   - Vocal: 2-3 full takes
+   - Comp the best moments—allow natural variation over this length
+
+4. MICROPHONE SETUP:
+   - Vocal: 8 inches (warm, forward position)
+   - Guitar: 2-3 feet (capture the resonance of open strings)
+   - Record in a space with some natural warmth (living room ideal)
+
+5. MIXING:
+   - Vocal: forward (3-4 dB above guitar)
+   - Vocal reverb: Room, 15-18% (this piece needs some space)
+   - Guitar: minimal reverb (8-10%)
+   - Master: warm, open, celebratory quality
+   - Preserve dynamic range—no aggressive compression
+
+6. EXPORT:
+   - AAC 256 kbps or .wav
+   - File name: "Magnificat_Marys_Song_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+BIBLICAL/SPIRITUAL CONTEXT:
+
+The Magnificat (Luke 1:46-55) is Mary's prayer in response to the Annunciation.
+It's one of the most important Marian prayers and is:
+- Sung at Vespers (evening prayer) in traditional services
+- Central to Catholic and Orthodox Marian devotion
+- A prayer about reversing injustice ("putting down the mighty, lifting up the lowly")
+- Mary's own words about her role as the Mother of God
+
+Your recording should convey:
+- Joy and confidence (this is NOT a lament)
+- Strength and dignity
+- Faith in God's justice and mercy
+- Theological importance (not sentimental)
+
+═══════════════════════════════════════════════════════════════════════════
+
+HARMONIC ANALYSIS:
+
+C major (open, affirming) with movement to F (subdominant, grounding) and
+G (dominant, movement). The harmonic progression is stable and affirming—
+this is a prayer of confidence, not doubt.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✓ Magnificat text (Luke 1:46-55) is scripture, public domain
+✓ Traditional liturgical tune is public domain
+✓ Your recording = your copyright
+✓ SAFE for Pray app
+
+═══════════════════════════════════════════════════════════════════════════
+
+TRANSPOSITION:
+
+If C major is uncomfortable:
+- G major: capo 5 (G-D-G-Em pattern)
+- F major: capo -5 (F-C-F-Dm pattern)
+- A major: capo 3 (A-E-A-F# minor pattern)
+
+═══════════════════════════════════════════════════════════════════════════

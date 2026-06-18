@@ -1,0 +1,163 @@
+GLORIA (Glory Be to the Father)
+Chord Chart and Recording Guide for GarageBand
+
+TEXT: Traditional Doxology (Gloria Patri) — public domain
+ARRANGEMENT: Inspired by Vivaldi's Gloria RV 589 (simplified for guitar)
+KEY: D major
+TEMPO: ~88 BPM (bright, celebratory, yet controlled)
+TIME: 4/4
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS (Latin — traditional liturgical text):
+
+Gloria Patri et Filio et Spiritui Sancto,
+Sicut erat in principio et nunc et semper
+Et in saecula saeculorum. Amen.
+
+[English: Glory be to the Father, and to the Son, and to the Holy Ghost;
+As it was in the beginning, is now, and ever shall be, world without end. Amen.]
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (Main Theme — Vivaldi-inspired):
+
+OPENING PHRASE (Gloria Patri...):
+
+| D      | A      | D      | Bm     |
+Glo  -  ria    Pa  -  tri    et    Fi  -  li  -  o    et
+
+| G      | A      | D      | (holds)
+Spi  -  ri  -  tu    Sanc  -  to.
+
+CONTINUATION (Sicut erat...):
+
+| D      | A      | D      | G      |
+Si  -  cut    e  -  rat    in    prin  -  ci  -  pi  -  o
+
+| D      | A      | D      | (builds)
+Et    nunc    et    sem  -  per.
+
+FINAL PHRASE (Et in saecula...):
+
+| G      | D      | A      | D      |
+Et    in    sae  -  cu  -  la    sae  -  cu  -  lo  -  rum.
+
+| Bm     | G      | A      | D      |
+A  -  men.    A  -  men.    A  -  men.
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+D major:    xx0232 (open) or 557775
+A major:    x02220 (open) or 577655
+Bm:         x24432
+G major:    320033 (open) or 355433
+
+FINGERPICKING PATTERN (4/4, bright and energetic):
+
+- Beat 1: Root + 3rd (brisk)
+- Beat 2: 5th + 3rd
+- Beat 3: Root + 5th (lift)
+- Beat 4: 3rd (resolution)
+
+Think "dance-like" energy—this is celebration, not sorrow.
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE:
+
+Intro (8 measures): Bright D major fingerpicking, set celebratory tone
+Verse 1 (12 measures): "Gloria Patri et Filio..." (main statement)
+Verse 2 (12 measures): "Sicut erat in principio..." (historical reference)
+Verse 3 (16 measures): "Et in saecula saeculorum, Amen" (affirmation, triple Amen)
+Coda (4 measures): Final D major flourish
+
+Total length: ~4 minutes
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. VOCAL APPROACH:
+   - This is JOYFUL music—brightness, not darkness
+   - The Gloria traditionally follows penitential prayers (Kyrie, Miserere)
+   - Sing with clarity, energy, and positive tone
+   - Emphasize the three "Amens" at the end (affirmation of eternity)
+
+2. GUITAR STYLE:
+   - Brighter, more energetic fingerpicking than Ave Maria or Miserere
+   - Let the open D strings ring—this chord is your anchor
+   - Use nylon or steel strings (steel gives more brightness here)
+   - Rhythmic precision is important—this is not free-floating
+
+3. RECORDING APPROACH:
+   - This is shorter than Lord's Prayer or Psalm 23—easier to nail in fewer takes
+   - Record 2-3 guitar takes
+   - Vocal: 2-3 takes (the "Amen" section is triple, so get those solid)
+   - Comp for consistency and energy
+
+4. MICROPHONE SETUP:
+   - Vocal: 8 inches (standard position, capture the brightness)
+   - Guitar: 2-3 feet (open strings should ring clearly)
+   - Bright space preferred (not a dead room)
+
+5. MIXING:
+   - Vocal: forward (3-4 dB above guitar)
+   - Vocal reverb: Room, 10-12% (lighter than Miserere, more than Ave Maria)
+   - Guitar: dry or minimal reverb (8%)
+   - Master: bright, clear, celebratory quality
+   - NO compression—preserve dynamic range
+
+6. EXPORT:
+   - AAC 256 kbps or .wav
+   - File name: "Gloria_Doxology_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+LITURGICAL CONTEXT:
+
+The Gloria Patri (Glory Be) is:
+- Sung after every psalm in traditional church services
+- A way of blessing/sanctifying the psalm that preceded it
+- One of the oldest liturgical texts (origins in early church, ~2nd century)
+- Often called the "Lesser Doxology" (vs. Gloria in excelsis, the "Greater Doxology")
+
+Your recording should convey:
+- Gratitude and celebration
+- Affirmation of God's eternal nature ("world without end")
+- Light and clarity (not heaviness)
+
+═══════════════════════════════════════════════════════════════════════════
+
+HARMONIC NOTES:
+
+D major is bright and celebratory. The progression moves naturally:
+- D (home, affirmation)
+- A (V chord, question/movement)
+- G (iv, emotional depth briefly)
+- Return to D (resolution)
+
+The harmonic movement mirrors the text: opening statement → historical reference
+→ eternal affirmation → final Amen.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✓ Gloria Patri text (2nd century liturgical text) is public domain
+✓ Your arrangement is original (inspired by Vivaldi, but simplified)
+✓ Your recording = your copyright
+✓ SAFE for Pray app
+
+═══════════════════════════════════════════════════════════════════════════
+
+TRANSPOSITION:
+
+If D major is too high:
+- A major: capo 5 (A-E-A-F# minor pattern)
+- G major: capo -5 (G-D-G-Em pattern)
+- Choose a key where the highest note is comfortable
+
+═══════════════════════════════════════════════════════════════════════════

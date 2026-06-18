@@ -1,0 +1,127 @@
+SCHUBERT AVE MARIA (D. 839)
+Chord Chart and Recording Guide for GarageBand
+
+KEY: B-flat major (original key)
+TEMPO: ~60-70 BPM (slow, meditative)
+TIME: 3/4 waltz (3 beats per measure)
+
+═══════════════════════════════════════════════════════════════════════════
+
+VERSE STRUCTURE (12 measures per verse, repeats for all 3 verses):
+
+Verse 1:
+
+| Bb    | Gm     | Cm    | F     |
+Ave    Ma  -  ria,    gra  -  tia  ple  -  na,
+
+| Bb    | Gm     | Cm    | F     |
+Do  -  mi  nus    te  -  cum,    be  -  ne  -  dic  -  ta
+
+| Bb    | Gm     | Cm    | F     |
+tu    in    mu  -  li  -  e  -  ri  -  bus,    et
+
+| Bb    | F      | Bb    | (ends on Bb)
+be  -  ne  -  dic  -  tus    fruc  -  tus...
+
+═══════════════════════════════════════════════════════════════════════════
+
+FULL LYRICS (English)
+
+Hail Mary, full of grace,
+The Lord is with thee.
+Blessed art thou among women,
+And blessed is the fruit of thy womb, Jesus.
+Holy Mary, Mother of God,
+Pray for us sinners,
+Now and at the hour of our death. Amen.
+
+═══════════════════════════════════════════════════════════════════════════
+
+HARMONIC ANALYSIS:
+
+The piece is extremely simple harmonically—mostly Bb major, Gm (vi), Cm (ii), 
+and F (V). The modal shift to Cm gives it a contemplative, gentle quality.
+
+Key harmonic moments:
+- Bb → Gm: Opens the soundscape
+- Gm → Cm: Introduces minor color (introspective)
+- Cm → F: Movement toward resolution
+- F → Bb: Return to home
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (for standard tuning):
+
+Bb (major):  x13331 (barre 1st fret) or 688766
+Gm:          355333 or 3556xx (lighter voicing)
+Cm:          x35543 or 3356xx
+F:           133211 (barre) or xx3211 (simpler)
+
+FINGERPICKING PATTERN (suggested):
+3/4 time, gentle arpeggios:
+- Beat 1: Root + 3rd
+- Beat 2: 5th + 3rd
+- Beat 3: Root
+
+Example on Bb:
+Bb (R-3rd-5th / 5th-3rd / R) flowing naturally
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. SETUP:
+   - Create a new song, 3/4 time signature, ~65 BPM
+   - Add two tracks: Acoustic Guitar + Vocal
+
+2. GUITAR TRACK:
+   - Use "Warm Finger Picking" or "Soft Nylon" guitar sound
+   - Record multiple takes; keep the best or comp from 2-3
+   - Light touch—this is a prayer, not a performance piece
+   - Use capo on 1st fret if you prefer open chord voicings (Cm becomes Bm, etc.)
+
+3. VOCAL TRACK:
+   - Record in a quiet space, early morning is ideal
+   - Don't oversing—Schubert needs restraint and beauty
+   - Breathe naturally between phrases
+   - Multiple takes: one for verse, one for repeat; you can comp the best parts
+   - Add a touch of reverb (Room or Cathedral, ~20% wet) for the spacious effect
+
+4. STRUCTURE FOR GARAGEBAND:
+   - Intro: 2 measures of guitar fingerpicking (establish the feel)
+   - Verse 1: Guitar + Vocal (12 measures)
+   - Verse 2: Vocal alone or lighter guitar (12 measures)
+   - Verse 3: Full (guitar + vocal) + gentle crescendo
+   - Outro: 2 measures of guitar fading
+
+5. EFFECTS STRATEGY:
+   - Guitar: No effects needed, or light reverb (10%)
+   - Vocal: Subtle reverb (Cathedral, 15-20%), no compression if possible
+   - Master: Keep it clean and intimate—no loudness limiting
+   
+   Mixing target: Vocal and guitar at equal perceived loudness
+
+6. EXPORT:
+   - AAC 256 kbps or .wav (lossless) if you want to preserve quality
+   - Name: "Schubert_Ave_Maria_Steve_Price_[DATE]"
+   - Check mono/stereo: stereo is richer for guitar + voice
+
+═══════════════════════════════════════════════════════════════════════════
+
+PERFORMANCE NOTES:
+
+- This is a *lied* (German art song)—intimate, not grand
+- Tempo: Don't rush. Each verse should feel like one long breath
+- Phrasing: "Ave Maria" is the question; "gratia plena" is the response
+- Dynamics: Gentle crescendo into verse 2, soften for verse 3
+- The simplicity is the point—no shredding, no drama
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✓ Schubert died 1828 → work in public domain worldwide
+✓ Your recording = your copyright (you can license/restrict it however you want)
+✓ Perfect for the Pray app
+
+═══════════════════════════════════════════════════════════════════════════

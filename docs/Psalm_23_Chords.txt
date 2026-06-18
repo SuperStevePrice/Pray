@@ -1,0 +1,195 @@
+PSALM 23 - THE LORD IS MY SHEPHERD
+Chord Chart and Recording Guide for GarageBand
+
+TEXT: Psalm 23 (King James Version or modern translations)
+ARRANGEMENT: Traditional hymn tune (public domain)
+KEY: G major
+TEMPO: ~72 BPM (peaceful, flowing)
+TIME: 4/4
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS (King James English):
+
+The Lord is my shepherd; I shall not want.
+He maketh me to lie down in green pastures:
+He leadeth me beside the still waters.
+He restoreth my soul:
+He leadeth me in the paths of righteousness for his name's sake.
+Yea, though I walk through the valley of the shadow of death,
+I will fear no evil: for thou art with me;
+Thy rod and thy staff they comfort me.
+Thou preparest a table before me in the presence of mine enemies:
+Thou anointest my head with oil; my cup runneth over.
+Surely goodness and mercy shall follow me all the days of my life:
+And I will dwell in the house of the Lord forever.
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (Verse Structure):
+
+OPENING (The Lord is my shepherd...):
+
+| G      | D      | G      | Em     |
+The    Lord    is    my    shep  -  herd;    I    shall    not    want.
+
+| G      | D      | G      | (holds)
+He    make  -  th    me    to    lie    down...
+
+PASTURES SECTION (He maketh me...):
+
+| G      | Em     | Am     | D      |
+He    make  -  th    me    to    lie    down    in    green    pas  -  tures:
+
+| G      | D      | G      | Em     |
+He    lead  -  eth    me    be  -  side    the    still    wa  -  ters.
+
+RESTORATION (He restoreth my soul):
+
+| Am     | D      | G      | Em     |
+He    res  -  tor  -  eth    my    soul:
+
+| C      | D      | G      | (resolution)
+He    lead  -  eth    me...
+
+VALLEY SECTION (Yea, though I walk...):
+
+| Em     | Am     | D      | G      |
+Yea,    though    I    walk    through    the    val  -  ley
+
+| Em     | Am     | D      | G      |
+Of    the    sha  -  dow    of    death,    I    will    fear    no    e  -  vil.
+
+TABLE SECTION (Thou preparest a table...):
+
+| G      | Em     | Am     | D      |
+Thou    prep  -  ar  -  est    a    ta  -  ble    be  -  fore    me
+
+| G      | D      | G      | (builds)
+
+CONCLUSION (Surely goodness...):
+
+| C      | G      | Am     | D      |
+Sure  -  ly    good  -  ness    and    mer  -  cy    shall    fol  -  low
+
+| G      | Em     | C      | D      | G
+All    the    days    of    my    life:    And    I    will    dwell...
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+G major:    320033 (open) or 355433
+D major:    xx0232 (open) or xx0232
+Em:         022000 (open)
+Am:         x02210 (open)
+C major:    x32010
+
+FINGERPICKING PATTERN (4/4, pastoral feel):
+
+- Beat 1: Root (whole note)
+- Beat 2: 3rd + 5th (fingerpick pair)
+- Beat 3: Root + 5th
+- Beat 4: 3rd (gentle)
+
+Keep a steady, flowing rhythm—like walking through pastures.
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE:
+
+Intro (8 measures): Peaceful G major, establish pastoral mood
+Verse 1 (16 measures): "The Lord is my shepherd... shall not want"
+Verse 2 (16 measures): "He maketh me lie down... still waters"
+Verse 3 (16 measures): "He restoreth my soul..."
+Bridge (12 measures): "Yea, though I walk... fear no evil" (darker, then reassuring)
+Verse 4 (16 measures): "Thou preparest a table..."
+Verse 5 (16 measures): "Surely goodness and mercy..." (returns to pastoral)
+Coda (4 measures): "Forever" — fade on G major
+
+Total length: ~6-7 minutes
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. VOCAL APPROACH:
+   - This is the MOST COMFORTING scripture passage in the Bible
+   - Sing with warmth, assurance, and peace—not melancholy
+   - The valley section (yea, though I walk...) is brief; then reassurance returns
+   - Think: shepherd's care, not darkness
+
+2. GUITAR STYLE:
+   - Pastoral, flowing fingerpicking
+   - Use open strings (let them ring naturally)
+   - This should sound like folk music—not too refined
+   - Warm nylon strings work beautifully here
+
+3. MICROPHONE SETUP:
+   - Vocal: 8 inches (warm, forward position)
+   - Guitar: 2-3 feet (capture open string resonance)
+   - Record in a space with light natural reverb (living room is ideal)
+
+4. RECORDING SEQUENCE:
+   - Guitar first (2 takes; this is long, keep the most consistent)
+   - Vocal: 2-3 full takes
+   - Comp the best sections
+   - This is quite long; allow natural variation in delivery
+
+5. MIXING:
+   - Vocal: slightly prominent (2-3 dB above guitar)
+   - Vocal reverb: Room, 12-15%
+   - Guitar: minimal reverb (8%) or dry (let open strings naturally bloom)
+   - Master: warm, open, peaceful quality
+   - NO compression (dynamic range preserves the intimacy)
+
+6. EXPORT:
+   - AAC 256 kbps or .wav
+   - File name: "Psalm_23_Lord_is_My_Shepherd_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+SPIRITUAL CONTEXT:
+
+Psalm 23 is recited at:
+- Funerals (comfort in grief)
+- Healing services (restoration theme)
+- Daily devotions (assurance in uncertainty)
+- Children's bedtime prayers (trust, protection)
+
+Your recording should convey:
+- Peace in the Lord's care (main theme)
+- Confidence even in difficulty (valley section)
+- Gratitude and abundance (table section)
+- Eternal hope (conclusion)
+
+═══════════════════════════════════════════════════════════════════════════
+
+HISTORICAL NOTES:
+
+Psalm 23 is the most beloved psalm worldwide. It's been set to music for centuries:
+- Traditional hymn tune (what we use here)
+- Dvorak, Charles Gounod, various composers
+- Modern praise songs
+
+Your simple guitar + voice version honors the original's intimate spirituality.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✓ Psalm 23 (Bible text) is public domain
+✓ Traditional hymn tune is public domain
+✓ Your recording = your copyright
+✓ SAFE for Pray app
+
+═══════════════════════════════════════════════════════════════════════════
+
+TRANSPOSITION:
+
+If G major is uncomfortable:
+- D major: capo 5 (D-A-D-Bm pattern)
+- Bb major: capo -5 (Bb-F-Bb-Gm pattern)
+- Choose a key where the high note ("forever") sits comfortably
+
+═══════════════════════════════════════════════════════════════════════════

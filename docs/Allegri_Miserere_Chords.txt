@@ -1,0 +1,176 @@
+ALLEGRI MISERERE (Psalm 51)
+Chord Chart and Recording Guide for GarageBand
+
+COMPOSER: Gregorio Allegri (1652) — Public Domain
+KEY: A minor (original A minor, can transpose)
+TEMPO: ~50 BPM (slow, penitential)
+TIME: 4/4
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS (Latin — traditional Psalm 51 text):
+
+Miserere mei, Deus, secundum magnam misericordiam tuam.
+Et secundum multitudinem miserationum tuarum dele iniquitates meas.
+
+[Full translation: "Have mercy upon me, O God, according to thy great mercy,
+and according to the multitude of thy compassions blot out my transgressions."]
+
+═══════════════════════════════════════════════════════════════════════════
+
+HISTORICAL CONTEXT:
+
+This is one of the most famous pieces of Renaissance sacred music. For centuries,
+it was kept as a Vatican secret—sung only in the Sistine Chapel. Mozart famously
+learned it by ear as a boy and transcribed it from memory. 
+
+The traditional version is unaccompanied voices (a cappella). For your GarageBand
+arrangement, we'll create a supportive guitar accompaniment that honors the
+original's austere beauty while making it accessible for solo recording.
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (simplified arrangement):
+
+SECTION A (Opening — Miserere mei):
+
+| Am     | G      | F      | E      |
+Mi  -  se  -  re  -  re    me  -  i,    De  -  us,
+
+| Am     | G      | F      | E      | Am
+se  -  cun  -  dum    mag  -  nam    mi  -  se  -  ri  -  cor  -  di  -  am.
+
+SECTION B (Response — Et secundum multitudinem):
+
+| Dm     | G      | C      | F      |
+Et    se  -  cun  -  dum    mul  -  ti  -  tu  -  di  -  nem
+
+| Dm     | G      | C      | E      | Am
+mi  -  se  -  ra  -  ti  -  o  -  num    tu  -  a  -  rum.
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+Am:        x02210 (open)
+G:         320033 (open)
+F:         133211 (barre) or xx3211 (simpler)
+E:         022100 (open)
+Dm:        xx0231 (open)
+C:         x32010 (open)
+
+FINGERSTYLE PATTERN (4/4, slow and meditative):
+
+This should be SPARSE—long, sustained notes. Think organ, not guitar.
+- Beat 1: Whole note (let it ring)
+- Beats 2, 3, 4: Let the sustain dominate
+
+Allegri's original uses long, held notes. Your guitar should echo that
+aesthetic—minimal movement, maximum resonance.
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE (Traditional Shape):
+
+Intro (16 measures): Sparse Am fingerpicking, establish gravity
+Verse 1 (32 measures): "Miserere mei, Deus..." (slow, penitential)
+Verse 2 (32 measures): "Et secundum multitudinem..." (darker, minor-focused)
+Coda (8 measures): Return to Am, fade slowly
+
+Total length: ~5-6 minutes (this is a LONG piece; allow silence)
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. SETUP:
+   - This piece demands SILENCE around it
+   - Record when you have 30+ minutes of uninterrupted quiet
+   - Close windows, turn off HVAC, silence phone
+   - The smallest background noise will be obvious
+
+2. INSTRUMENTS:
+   - Acoustic guitar (classical or folk nylon strings)
+   - Solo voice (countertenor, soprano, or tenor—any voice works)
+   - NO other instruments (this is austere music)
+   - Silence is your second instrument
+
+3. VOCAL APPROACH:
+   - This is the Psalm of Repentance (deepest Christian prayer)
+   - Sing with restraint, gravity, introspection
+   - Don't oversell emotion—let the text speak
+   - Breathe naturally; don't rush the Latin syllables
+   - Think "cathedral" not "concert hall"
+
+4. RECORDING SEQUENCE:
+   - Record guitar first (2-3 takes, keep the warmest)
+   - Vocal: 3-4 takes minimum; this text is emotionally demanding
+   - Comp the best moments—this is long, you'll have natural variation
+   - Leave 2-3 seconds of silence at start and end
+
+5. MICROPHONE APPROACH:
+   - Vocal: 10-12 inches from mic (slightly further than Ave Maria)
+   - Reduce mouth/breath noise: speak the words first, then sing
+   - Guitar: 2-3 feet away, capturing room tone (the space matters here)
+
+6. MIXING:
+   - Vocal: primary focus (3-4 dB above guitar)
+   - Vocal reverb: Large Cathedral, 25-30% wet (this piece NEEDS space)
+   - Guitar: dry or minimal reverb (6-8%)
+   - Master: keep it warm, NO compression or limiting
+   - Overall dynamic range: preserve the quiet moments
+
+7. EXPORT:
+   - .wav (lossless) preferred for this piece—quality matters
+   - AAC 256 kbps minimum
+   - File name: "Allegri_Miserere_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+HARMONIC ANALYSIS:
+
+The original is modal (church modes) and unaccompanied. This guitar arrangement
+stays in A minor (the relative minor of C major) to honor the original's
+meditative quality.
+
+Key harmonic moments:
+- Am: home (mercy sought)
+- G → F: descent (contrition)
+- E: lightening (hope of forgiveness)
+- Dm → C: further descent (human limitation acknowledged)
+
+The harmony never fully resolves to major—this is NOT a piece about joy,
+but about genuine repentance and hope for mercy.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PERFORMANCE TRADITION:
+
+The famous recording is the Sistine Chapel Choir (with soprano soloists
+taking the highest passages). The 16th-century style was to have boys
+(sopranos) and men's voices singing together.
+
+For your solo guitar + voice version, focus on:
+- Clarity of text (Latin should be understood even by non-speakers)
+- Length of breath (long, unsustainable notes show commitment)
+- Silence (let it sit; don't fill every gap)
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✓ Allegri's Miserere (1652) is in public domain worldwide
+✓ The text (Psalm 51) is ancient scripture, public domain
+✓ Your recording = your copyright; no licensing required
+✓ SAFE TO USE IN PRAY APP without any restrictions
+
+═══════════════════════════════════════════════════════════════════════════
+
+TRANSPOSITION REFERENCE:
+
+If A minor is uncomfortable:
+- Em minor: capo 5 (Em-Dm-Cm-B minor progression)
+- D minor: capo -2 (Dm-Cm-Bbm-A minor progression)
+- Choose a key where the lowest note is still resonant in your voice
+
+═══════════════════════════════════════════════════════════════════════════

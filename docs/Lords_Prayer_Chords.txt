@@ -1,0 +1,192 @@
+THE LORD'S PRAYER
+Chord Chart and Recording Guide for GarageBand
+
+TEXT: Matthew 6:9-13 (Jesus's teaching)
+ARRANGEMENT: Traditional (public domain)
+KEY: F major
+TEMPO: ~66 BPM (steady, contemplative)
+TIME: 4/4
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS (English):
+
+Our Father, who art in heaven,
+Hallowed be thy Name.
+Thy kingdom come, thy will be done,
+On earth as it is in heaven.
+Give us this day our daily bread.
+And forgive us our trespasses,
+As we forgive those who trespass against us.
+And lead us not into temptation,
+But deliver us from evil.
+For thine is the kingdom, and the power, and the glory,
+Forever and ever. Amen.
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (Main Theme):
+
+OPENING PHRASE (Our Father...):
+
+| F      | Bb     | F      | C      |
+Our    Fa  -  ther,    who    art    in    hea  -  ven,
+
+| F      | Dm     | Bb     | C      | F     |
+Hal  -  low  -  ed    be    thy    Name.
+
+KINGDOM PHRASE (Thy kingdom come...):
+
+| F      | Bb     | F      | C      |
+Thy    king  -  dom    come,    thy    will    be    done,
+
+| Bb     | F      | C      | F      |
+On    earth    as    it    is    in    hea  -  ven.
+
+BREAD PHRASE (Give us...):
+
+| F      | Dm     | Gm     | C      |
+Give    us    this    day    our    dai  -  ly    bread.
+
+| F      | Bb     | C      | F      |
+(resolution)
+
+FORGIVENESS PHRASE (And forgive us...):
+
+| Bb     | F      | Gm     | Dm     |
+And    for  -  give    us    our    tres  -  pass  -  es,
+
+| Bb     | C      | F      | (holds)
+As    we    for  -  give    those...
+
+FINAL PHRASE (For thine is...):
+
+| F      | Bb     | F      | C      |
+For    thine    is    the    king  -  dom,
+
+| F      | Dm     | Bb     | C      | F
+And    the    power    and    the    glo  -  ry,
+
+| Bb     | C      | F      | (final resolution)
+For  -  ev  -  er    and    ev  -  er.    A  -  men.
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+F major:    133211 (barre) or xx3211 (simpler)
+Bb:         x13331 (barre 1st fret) or 688766
+Dm:         xx0231
+Gm:         355333
+C major:    x32010
+
+FINGERPICKING PATTERN (4/4, gentle waltz-like feel):
+
+- Beat 1: Root (whole note feel)
+- Beat 2: 3rd + 5th (fingerpick)
+- Beat 3: Root + 5th
+- Beat 4: Let ring
+
+Keep steady, meditative rhythm. This is recitation + prayer, not drama.
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE:
+
+Intro (8 measures): Establish F major, gentle fingerpicking
+Verse 1 (12 measures): "Our Father... Hallowed be thy Name"
+Verse 2 (12 measures): "Thy kingdom come... in heaven"
+Verse 3 (12 measures): "Give us this day our daily bread"
+Verse 4 (16 measures): "And forgive us trespasses..." (longer emotional section)
+Verse 5 (12 measures): "Lead us not into temptation..."
+Verse 6 (16 measures): "For thine is the kingdom..." (final affirmation)
+Coda (4 measures): Amen, fade on F major
+
+Total length: ~5-6 minutes
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. RECORDING APPROACH:
+   - This is THE most important prayer in Christian tradition
+   - Don't rush—each phrase has weight
+   - This is steady, not dramatic (unlike some recordings that oversell emotion)
+   - Tempo should feel like liturgical recitation + song
+
+2. VOCAL STYLE:
+   - Sing clearly enough that someone unfamiliar with the prayer can follow it
+   - Don't mumble Latin-style; articulate English clearly
+   - The Lord's Prayer is usually chanted (like liturgical speech)
+   - Think: hymn tune + prayer = your approach
+
+3. GUITAR:
+   - Simple fingerpicking (not too complex)
+   - Let it sit under the vocal—support, don't compete
+   - Use warm nylon strings for resonance
+   - Consistent rhythm anchors the prayer
+
+4. MICROPHONE SETUP:
+   - Vocal: 8-10 inches, standard position
+   - Guitar: 2-3 feet away (capture the natural resonance)
+   - Record in a space with some natural reverb (bathroom tiles work!)
+
+5. RECORDING SEQUENCE:
+   - Guitar first (2 takes)
+   - Vocal: 2-3 takes of the full prayer
+   - Comp the best—this is long, you'll have natural variation
+   - This is one continuous piece (don't break between verses in mix)
+
+6. MIXING:
+   - Vocal: forward (3-4 dB above guitar)
+   - Vocal reverb: Room or Chapel, 15-18%
+   - Guitar: dry (8-10% reverb max)
+   - Master: warm, clear, no limiting
+   - Preserve the liturgical quality—not overly produced
+
+7. EXPORT:
+   - AAC 256 kbps or .wav
+   - File name: "Lords_Prayer_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+THEOLOGICAL/LITURGICAL NOTES:
+
+The Lord's Prayer is:
+- The ONLY prayer explicitly taught by Jesus in scripture
+- Central to Christian liturgy (recited in nearly every service worldwide)
+- A complete prayer structure: address, petition, intercession, doxology
+
+Your recording should honor this significance. Avoid:
+- Oversentimental interpretation
+- Slow, dragging tempos (this can feel maudlin)
+- Excessive reverb (clarity matters here)
+
+Instead, go for:
+- Steady, prayerful pacing
+- Clear diction (people should understand every word)
+- Warm, inviting tone
+- Liturgical simplicity
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✓ The Lord's Prayer text (Matthew 6:9-13) is scripture, public domain
+✓ This simple tune is traditional, public domain
+✓ Your recording = your copyright
+✓ SAFE for the Pray app without restrictions
+
+═══════════════════════════════════════════════════════════════════════════
+
+ALTERNATIVE VERSIONS:
+
+Famous settings include:
+- Albert Malotte (composer): very beautiful, but copyrighted
+- Traditional hymn tune (what we've transcribed): public domain
+- Modern arrangements: many exist, but you have creative freedom here
+
+Your simple guitar + voice version is entirely legitimate and respectful
+to the prayer's purpose.
+
+═══════════════════════════════════════════════════════════════════════════

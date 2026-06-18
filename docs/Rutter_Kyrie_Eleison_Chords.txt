@@ -1,0 +1,126 @@
+RUTTER KYRIE ELEISON (from Requiem)
+Chord Chart and Recording Guide for GarageBand
+
+COMPOSER: John Rutter (contemporary, 1975)
+KEY: A major
+TEMPO: ~72 BPM (gently flowing)
+TIME: 4/4
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS (Latin):
+
+Kyrie eleison. Kyrie eleison. Kyrie eleison.
+Christe eleison. Christe eleison. Christe eleison.
+Kyrie eleison. Kyrie eleison. Kyrie eleison.
+Amen.
+
+[Translation: Lord, have mercy. Christ, have mercy. Lord, have mercy. Amen.]
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (main section):
+
+| A     | F#m    | D      | E      |
+Ky  -  rie    e  -  lei  -  son.    (repeat)
+
+| A     | F#m    | D      | A      |
+(soft resolution back to home)
+
+SECONDARY SECTION (Christe):
+
+| D     | Bm     | G      | A      |
+Chris  -  te    e  -  lei  -  son.
+
+| D     | Bm     | E      | A      |
+(returns to A major)
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+A major:    x02220 (open) or 577655
+F#m:        244222 (barre) or xx4222 (lighter)
+D major:    xx0232
+E major:    022100 (open) or x79997
+Bm:         x24432
+G major:    320033
+
+FINGERPICKING PATTERN (4/4 time):
+Gentle, rolling arpeggios:
+- Beat 1: Root
+- Beat 2: 3rd + 5th
+- Beat 3: Root
+- Beat 4: 5th
+
+Keep it meditative and unhurried.
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE:
+
+Intro (8 measures): Fingerpicking on A major, establish the mood
+Verse 1 (16 measures): "Kyrie eleison" x3 — gentle, contemplative
+Verse 2 (16 measures): "Christe eleison" x3 — slightly more animated
+Verse 3 (16 measures): "Kyrie eleison" x3 — return to opening energy
+Outro (4 measures): Fade on A major
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. INSTRUMENTS:
+   - Acoustic guitar (warm nylon or folk setting)
+   - Vocal (solo voice, intimate, no strain)
+   - Optional: add a single string pad (Strings → Warm Pad) at 20% volume for texture
+
+2. RECORDING APPROACH:
+   - This piece is SHORT—about 3-4 minutes total
+   - Record guitar first as a reference
+   - Vocal should be laid back and contemplative
+   - Use natural phrasing—"Kyrie" is the plea, "eleison" is the response
+
+3. MICROPHONE/VOCAL:
+   - Sing at a comfortable volume (medium, not loud)
+   - This is prayer music—restraint is beauty
+   - Distance from mic: 6-8 inches for intimacy without plosives
+   - No compression; let the voice breathe naturally
+
+4. MIXING:
+   - Vocal sits slightly above guitar (maybe 2-3 dB louder)
+   - Light reverb on vocal only (Room, 12-15%)
+   - Guitar: dry or subtle reverb (8-10%)
+   - Master: keep it simple, no limiting
+
+5. EXPORT:
+   - AAC 256 kbps or .wav
+   - File name: "Rutter_Kyrie_Eleison_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+HARMONIC NOTES:
+
+Rutter's Kyrie uses major key harmonic language (A major) which is unusual 
+for this text—traditionally Kyrie is somber (minor). Rutter's choice creates
+a sense of hope and gentleness rather than darkness. This modern sensibility
+is perfect for a meditative/devotional setting.
+
+The key modulation from A to D (Christe section) creates intimacy—a shift 
+inward before returning to the original key.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN STATUS:
+
+✗ Rutter's arrangement is NOT in public domain (copyright 1975, expires 2050+)
+✓ HOWEVER: The text "Kyrie eleison" is ancient liturgical text (centuries old)
+✓ Your recording of Rutter's melody = derivative work (you need permission OR)
+✓ SOLUTION: Use this chart as a GUIDE to create your own arrangement of 
+           the traditional Kyrie melody (which IS public domain)
+
+RECOMMENDATION: 
+Use Rutter's harmonic language and structure as inspiration, but arrange it 
+simply for solo guitar + voice. The melody is traditional; your recording is 
+your original performance.
+
+═══════════════════════════════════════════════════════════════════════════

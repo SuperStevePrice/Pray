@@ -1,0 +1,143 @@
+RUTTER PIE JESU (from Requiem)
+Chord Chart and Recording Guide for GarageBand
+
+COMPOSER: John Rutter (1975)
+KEY: G major (you can transpose)
+TEMPO: ~60 BPM (gentle, flowing)
+TIME: 3/4 (waltz)
+
+═══════════════════════════════════════════════════════════════════════════
+
+LYRICS (Latin):
+
+Pie Jesu, Pie Jesu,
+Pie Jesu, Domine.
+Dona eis requiem,
+Dona eis requiem.
+Dona nobis pacem.
+
+[Translation: Gentle Jesus, Gentle Jesus, Gentle Jesus, Lord. Grant them rest.
+Grant them rest. Grant us peace.]
+
+═══════════════════════════════════════════════════════════════════════════
+
+CHORD PROGRESSION (main theme):
+
+| G     | Em     | Am     | D      |
+Pie    Je  -  su,    Pie    Je  -  su,
+
+| G     | Em     | Am     | D      | G     |
+Pie    Je  -  su,    Do  -  mi  -  ne.
+
+(Chorus/Resolution):
+
+| Em    | Am     | D      | G      |
+Do  -  na    e  -  is    re  -  qui  -  em,
+
+| Em    | Am     | D      | G      |
+Do  -  na    e  -  is    re  -  qui  -  em.
+
+| C     | D      | G      | (holds)
+Do  -  na    no  -  bis    pa  -  cem.
+
+═══════════════════════════════════════════════════════════════════════════
+
+GUITAR VOICINGS (standard tuning):
+
+G major:    320033 (open) or 355433
+Em:         022000 (open)
+Am:         x02210 (open)
+D major:    xx0232 (open)
+C major:    x32010
+
+FINGERPICKING PATTERN (3/4 time, gentle):
+- Beat 1: Root + 3rd (fingerpick)
+- Beat 2: 5th + 3rd
+- Beat 3: Root (let ring)
+
+Example on G:
+G (root-3rd-5th / 5th-3rd / root) — soft and rolling
+
+═══════════════════════════════════════════════════════════════════════════
+
+STRUCTURE:
+
+Intro (8 measures): Gentle G major fingerpicking, set the contemplative tone
+Verse 1 (12 measures): "Pie Jesu, Pie Jesu, Pie Jesu, Domine"
+Verse 2 (12 measures): "Dona eis requiem, dona eis requiem"
+Chorus (8 measures): "Dona nobis pacem" — gentle lift, then settle
+Outro (4 measures): Fade on G major
+
+Total length: ~4 minutes
+
+═══════════════════════════════════════════════════════════════════════════
+
+GARAGEBAND RECORDING TIPS:
+
+1. INSTRUMENTS:
+   - Acoustic guitar (nylon strings preferred—warm, resonant)
+   - Solo voice (soprano or tenor range works beautifully)
+   - OPTIONAL: Add a pad (Strings → Warm Pad) at 15% volume for shimmer
+
+2. VOCAL APPROACH:
+   - This piece is VERY lyrical—think "cantabile" (singing style)
+   - Don't rush—let each syllable breathe
+   - "Pie Jesu" should feel almost like a question or plea
+   - "Dona nobis pacem" (grant us peace) is the emotional resolution
+   - Sing from the diaphragm, not the throat (this is a long, sustained line)
+
+3. RECORDING SEQUENCE:
+   - Record guitar twice: one for reference, one for final mix
+   - Vocal: 2-3 takes, comp the best moments
+   - Let the guitar and voice "talk" to each other—not rigid timing
+
+4. MICROPHONE PLACEMENT:
+   - Vocal: 8-10 inches from mic, slightly off-axis to reduce plosives
+   - Guitar: 2-3 feet away, capturing the natural resonance
+
+5. MIXING:
+   - Vocal: slightly prominent (2-3 dB above guitar)
+   - Vocal reverb: Cathedral or Room, 18-22% wet (this piece needs space)
+   - Guitar: minimal reverb (8-10%) or dry
+   - Master: gentle, warm tone—no compression
+
+6. EXPORT:
+   - AAC 256 kbps or .wav
+   - File name: "Rutter_Pie_Jesu_Steve_Price_[DATE]"
+
+═══════════════════════════════════════════════════════════════════════════
+
+INTERPRETATION NOTES:
+
+Rutter's Pie Jesu is one of the most beautiful contemporary choral works.
+It's often sung by soloists (soprano or countertenor traditionally).
+
+KEY to performance:
+- This is a meditation on mercy and peace
+- Texture: smooth, legato, no vibrato (or minimal vibrato)
+- Phrasing: long lines—think of it as one continuous prayer
+- Emotional arc: start gentle → build slightly on "dona" → resolve peacefully
+
+The piece works equally well in major keys (G, D, Bb) or minor (Em, Am).
+You can transpose to whatever key sits in your vocal sweet spot.
+
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC DOMAIN / COPYRIGHT:
+
+✗ Rutter's Pie Jesu (1975) is NOT in public domain
+✓ The liturgical text (Latin prayer) IS public domain
+✓ SOLUTION: Use this as harmonic/structural inspiration, but create your
+           own simple arrangement. Rutter's genius is in the orchestration
+           anyway—your guitar + voice version is a legitimate interpretation
+
+═══════════════════════════════════════════════════════════════════════════
+
+TRANSPOSITION REFERENCE:
+
+If G major is too high/low, try:
+- D major: capo 2 (same shape, D-Bm-Em-A progression)
+- Bb major: capo -2 (Bb-Gm-Cm-F progression)
+- Em: relative minor (darker, introspective quality)
+
+═══════════════════════════════════════════════════════════════════════════

@@ -213,12 +213,14 @@
 const ANALYTICS_URL = "https://script.google.com/macros/s/AKfycbwmGAoq9XWk8lFAUcW90-kBMj9a0Y43QmJahmZptBGfU0Op00-dyVBQ0qR1Igrseja1/exec";
 
 function trackEvent(prayer, language) {
-  fetch(ANALYTICS_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "text/plain" },
-    body: JSON.stringify({ prayer, language })
-  }).catch(() => { /* fail silently — never block prayer playback */ });
+  try {
+    const img = new Image();
+    const url = ANALYTICS_URL
+      + "?prayer=" + encodeURIComponent(prayer)
+      + "&language=" + encodeURIComponent(language)
+      + "&t=" + Date.now();
+    img.src = url;
+  } catch (err) { /* fail silently — never block prayer playback */ }
 }
 
 const TEXTS = {

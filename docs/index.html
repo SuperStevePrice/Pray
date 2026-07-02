@@ -35,6 +35,21 @@
   .thumb-btn.large { width: 100px; height: 100px; }
   .thumb-btn:hover { opacity: 0.85; }
   .thumb-btn:disabled { opacity: 0.3; cursor: default; }
+  #btn-alpine {
+    width: 100% !important;
+    order: 10;
+    background: url('/Pray/images/bg_alps.png') center 25% / cover !important;
+    color: #e8e8e8;
+    font-weight: 600;
+    font-size: 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7), -1px -1px 3px rgba(0,0,0,0.7);
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  #btn-alpine:hover {
+    background-position: center 30% !important;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+  }
   #status { font-size: 13px; color: #888; }
   #prayer-text {
     background: #2a2a2a;
@@ -155,7 +170,7 @@
   <button id="btn-stop" disabled>&#9646;&#9646; Stop</button>
   <button id="thumb-small" class="thumb-btn" title="View image" hidden></button>
   <button id="thumb-large" class="thumb-btn large" title="Full screen" hidden></button>
-  <button id="btn-alpine" style="width: 100%; order: 10;">Display Lakeside Alpine Church</button>
+  <button id="btn-alpine">⛪ Alpine Church</button>
   <span id="status"></span>
 </div>
 <div id="prayer-text"></div>

@@ -136,17 +136,17 @@
   <div>
     <label for="prayer">Prayer</label>
     <select id="prayer">
-        <option value="ave">ave</option>
-        <option value="ave_verum">ave_verum</option>
-        <option value="gloria">gloria</option>
-        <option value="lords">lords</option>
-        <option value="magnificat">magnificat</option>
-        <option value="miserere">miserere</option>
-        <option value="nunc">nunc</option>
-        <option value="peace">peace</option>
-        <option value="psalm23">psalm23</option>
-        <option value="sanctus">sanctus</option>
-        <option value="serenity">serenity</option>
+        <option value="psalm23">23rd Psalm</option>
+        <option value="ave">Ave Maria</option>
+        <option value="ave_verum">Ave Verum Corpus</option>
+        <option value="gloria">Gloria</option>
+        <option value="lords">Lord's Prayer</option>
+        <option value="magnificat">Magnificat</option>
+        <option value="miserere">Miserere — Psalm 51</option>
+        <option value="nunc">Nunc Dimittis</option>
+        <option value="peace">Peace Prayer</option>
+        <option value="sanctus">Sanctus</option>
+        <option value="serenity">Serenity Prayer</option>
     </select>
   </div>
   <div>
@@ -203,12 +203,22 @@
     <p>Prayer texts are traditional liturgical and biblical texts in the public domain.</p>
     <p>Background: alpine landscape.</p>
     <p>Pray is open source: <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
-    <p class="modal-ver">Version 2026-07-08 20:11 · 457af14</p>
+    <p class="modal-ver">Version 2026-07-08 20:45 · c130ac3</p>
   </div>
 </div>
 
 <script>
 const TEXTS = {
+  "psalm23": {
+    "english": "The Lord is my shepherd; I shall not want.\nHe maketh me to lie down in green pastures:\nhe leadeth me beside the still waters.\nHe restoreth my soul:\nhe leadeth me in the paths of righteousness\nfor his name's sake.\nYea, though I walk through the valley\nof the shadow of death,\nI will fear no evil: for thou art with me;\nthy rod and thy staff they comfort me.\nThou preparest a table before me\nin the presence of mine enemies:\nthou anointest my head with oil;\nmy cup runneth over.\nSurely goodness and mercy shall follow me\nall the days of my life:\nand I will dwell in the house of the Lord for ever.\nAmen.",
+    "german": "Der Herr ist mein Hirte, mir wird nichts mangeln.\nEr weidet mich auf einer grünen Aue\nund führet mich zum frischen Wasser.\nEr erquicket meine Seele.\nEr führet mich auf rechter Straße\num seines Namens willen.\nUnd ob ich schon wanderte im finstern Tal,\nfürchte ich kein Unglück;\ndenn du bist bei mir,\ndein Stecken und Stab trösten mich.\nDu bereitest vor mir einen Tisch\nim Angesicht meiner Feinde.\nDu salbest mein Haupt mit Öl\nund schenkest mir voll ein.\nGutes und Barmherzigkeit werden mir folgen\nmein Leben lang,\nund ich werde bleiben im Hause des Herrn immerdar.\nAmen.",
+    "italian": "Il Signore è il mio pastore: non manco di nulla.\nSu pascoli erbosi mi fa riposare,\nad acque tranquille mi conduce.\nRinfranca l'anima mia.\nMi guida per il giusto cammino\na motivo del suo nome.\nAnche se vado per una valle oscura,\nnon temo alcun male, perché tu sei con me.\nIl tuo bastone e il tuo vincastro\nmi danno sicurezza.\nDavanti a me tu prepari una mensa\nsotto gli occhi dei miei nemici.\nUngi di olio il mio capo;\nil mio calice trabocca.\nSì, bontà e fedeltà mi saranno compagne\ntutti i giorni della mia vita,\nabiterò nella casa del Signore per lunghi giorni.\nAmen.",
+    "latin": "Dominus pascit me, nihil mihi deerit.\nIn pascuis virentibus me collocat,\nsuper aquas quietis me adducit.\nAnimam meam reficit.\nDeducit me per semitas iustitiae\npropter nomen suum.\nNam et si ambulavero in valle umbrae mortis,\nnon timebo mala, quoniam tu mecum es.\nVirga tua et baculus tuus,\nipsa me consolabuntur.\nPones coram me mensam\nadversus eos qui tribulant me.\nImpinguasti in oleo caput meum;\ncalix meus inebrians quam praeclarus est.\nEt misericordia tua subsequetur me\nomnibus diebus vitae meae,\net ut inhabitem in domo Domini\nin longitudinem dierum.\nAmen.",
+    "french": "L'Éternel est mon berger: je ne manquerai de rien.\nIl me fait reposer dans de verts pâturages,\nil me dirige près des eaux paisibles.\nIl restaure mon âme.\nIl me conduit dans les sentiers de la justice,\nà cause de son nom.\nQuand je marche dans la vallée de l'ombre de la mort,\nje ne crains aucun mal, car tu es avec moi:\nta houlette et ton bâton me rassurent.\nTu dresses devant moi une table,\nen face de mes adversaires;\ntu oins d'huile ma tête,\net ma coupe déborde.\nOui, le bonheur et la grâce m'accompagneront\ntous les jours de ma vie,\net j'habiterai dans la maison de l'Éternel\npour de longs jours.\nAmen.",
+    "spanish": "El Señor es mi pastor; nada me faltará.\nEn lugares de delicados pastos me hará descansar;\njunto a aguas de reposo me pastoreará.\nConfortará mi alma.\nMe guiará por sendas de justicia\npor amor de su nombre.\nAunque ande en valle de sombra de muerte,\nno temeré mal alguno, porque tú estarás conmigo;\ntu vara y tu cayado me infundirán aliento.\nAderezas mesa delante de mí\nen presencia de mis angustiadores;\nunges mi cabeza con aceite;\nmi copa está rebosando.\nCiertamente el bien y la misericordia me seguirán\ntodos los días de mi vida,\ny en la casa del Señor moraré por largos días.\nAmén.",
+    "portuguese": "O Senhor é o meu pastor; nada me faltará.\nEle me faz repousar em pastos verdejantes.\nLeva-me para junto das águas tranquilas.\nRefrigera a minha alma.\nGuia-me pelas veredas da justiça\npor amor do seu nome.\nAinda que eu andasse pelo vale da sombra da morte,\nnão temeria mal algum, porque tu estás comigo;\no teu cajado e o teu bordão me consolam.\nPreparas uma mesa perante mim\nna presença dos meus adversários.\nUnges a minha cabeça com óleo;\no meu cálice transborda.\nCertamente que a bondade e a misericórdia\nme seguirão todos os dias da minha vida,\ne habitarei na casa do Senhor por longos dias.\nAmém.",
+    "polish": "Pan jest moim pasterzem, nie brak mi niczego.\nPozwala mi leżeć na zielonych pastwiskach.\nProwadzi mnie nad wody, gdzie mogę odpocząć.\nOrzeźwia moją duszę.\nWiedzie mnie po właściwych ścieżkach\nprzez wzgląd na swoją chwałę.\nChociażbym chodził ciemną doliną,\nzła się nie ulęknę, bo Ty jesteś ze mną.\nTwój kij i Twoja laska są moją pociechą.\nZastawiasz przede mną stół\nwobec moich przeciwników.\nNamaszczasz olejkiem moją głowę,\nmój kielich jest pełny po brzegi.\nDobroć i łaska będą mi towarzyszyć\nprzez wszystkie dni mego życia\ni zamieszkam w domu Pana\npo najdłuższe czasy.\nAmen."
+  },
   "ave": {
     "english": "Hail Mary, full of grace, the Lord is with thee.\nBlessed art thou among women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God, pray for us sinners,\nnow and at the hour of our death. Amen.",
     "german": "Gegrüßet seist du, Maria, voll der Gnade, der Herr ist mit dir.\nDu bist gebenedeit unter den Frauen,\nund gebenedeit ist die Frucht deines Leibes, Jesus.\nHeilige Maria, Mutter Gottes, bitte für uns Sünder\njetzt und in der Stunde unseres Todes. Amen.",
@@ -289,16 +299,6 @@ const TEXTS = {
     "portuguese": "Senhor, fazei-me instrumento da vossa paz.\nOnde houver ódio, que eu leve o amor;\nonde houver ofensa, que eu leve o perdão;\nonde houver discórdia, que eu leve a união;\nonde houver dúvida, que eu leve a fé;\nonde houver erro, que eu leve a verdade;\nonde houver desespero, que eu leve a esperança;\nonde houver tristeza, que eu leve a alegria;\nonde houver trevas, que eu leve a luz.\nÓ Divino Mestre, concedei-me que eu não procure tanto\nser consolado como consolar,\nser compreendido como compreender,\nser amado como amar.\nPois é dando que se recebe,\né perdoando que se é perdoado,\ne é morrendo que se ressuscita para a vida eterna.\nAmém.",
     "polish": "Panie, uczyń mnie narzędziem Twojego pokoju,\nabym siał miłość tam, gdzie panuje nienawiść;\nprzebaczenie tam, gdzie panuje krzywda;\njedność tam, gdzie panuje niezgoda;\nprawdę tam, gdzie panuje błąd;\nwiarę tam, gdzie panuje wątpliwość;\nnadzieję tam, gdzie panuje rozpacz;\nświatło tam, gdzie panuje mrok;\nradość tam, gdzie panuje smutek.\nO Panie, spraw, abym nie szukał tak bardzo\npociechy, jak pocieszania;\nzrozumienia, jak rozumienia;\nmiłości, jak miłowania.\nBo przez dawanie — otrzymujemy,\nprzez przebaczanie — otrzymujemy przebaczenie,\na przez umieranie — rodzimy się do życia wiecznego.\nAmen."
   },
-  "psalm23": {
-    "english": "The Lord is my shepherd; I shall not want.\nHe maketh me to lie down in green pastures:\nhe leadeth me beside the still waters.\nHe restoreth my soul:\nhe leadeth me in the paths of righteousness\nfor his name's sake.\nYea, though I walk through the valley\nof the shadow of death,\nI will fear no evil: for thou art with me;\nthy rod and thy staff they comfort me.\nThou preparest a table before me\nin the presence of mine enemies:\nthou anointest my head with oil;\nmy cup runneth over.\nSurely goodness and mercy shall follow me\nall the days of my life:\nand I will dwell in the house of the Lord for ever.\nAmen.",
-    "german": "Der Herr ist mein Hirte, mir wird nichts mangeln.\nEr weidet mich auf einer grünen Aue\nund führet mich zum frischen Wasser.\nEr erquicket meine Seele.\nEr führet mich auf rechter Straße\num seines Namens willen.\nUnd ob ich schon wanderte im finstern Tal,\nfürchte ich kein Unglück;\ndenn du bist bei mir,\ndein Stecken und Stab trösten mich.\nDu bereitest vor mir einen Tisch\nim Angesicht meiner Feinde.\nDu salbest mein Haupt mit Öl\nund schenkest mir voll ein.\nGutes und Barmherzigkeit werden mir folgen\nmein Leben lang,\nund ich werde bleiben im Hause des Herrn immerdar.\nAmen.",
-    "italian": "Il Signore è il mio pastore: non manco di nulla.\nSu pascoli erbosi mi fa riposare,\nad acque tranquille mi conduce.\nRinfranca l'anima mia.\nMi guida per il giusto cammino\na motivo del suo nome.\nAnche se vado per una valle oscura,\nnon temo alcun male, perché tu sei con me.\nIl tuo bastone e il tuo vincastro\nmi danno sicurezza.\nDavanti a me tu prepari una mensa\nsotto gli occhi dei miei nemici.\nUngi di olio il mio capo;\nil mio calice trabocca.\nSì, bontà e fedeltà mi saranno compagne\ntutti i giorni della mia vita,\nabiterò nella casa del Signore per lunghi giorni.\nAmen.",
-    "latin": "Dominus pascit me, nihil mihi deerit.\nIn pascuis virentibus me collocat,\nsuper aquas quietis me adducit.\nAnimam meam reficit.\nDeducit me per semitas iustitiae\npropter nomen suum.\nNam et si ambulavero in valle umbrae mortis,\nnon timebo mala, quoniam tu mecum es.\nVirga tua et baculus tuus,\nipsa me consolabuntur.\nPones coram me mensam\nadversus eos qui tribulant me.\nImpinguasti in oleo caput meum;\ncalix meus inebrians quam praeclarus est.\nEt misericordia tua subsequetur me\nomnibus diebus vitae meae,\net ut inhabitem in domo Domini\nin longitudinem dierum.\nAmen.",
-    "french": "L'Éternel est mon berger: je ne manquerai de rien.\nIl me fait reposer dans de verts pâturages,\nil me dirige près des eaux paisibles.\nIl restaure mon âme.\nIl me conduit dans les sentiers de la justice,\nà cause de son nom.\nQuand je marche dans la vallée de l'ombre de la mort,\nje ne crains aucun mal, car tu es avec moi:\nta houlette et ton bâton me rassurent.\nTu dresses devant moi une table,\nen face de mes adversaires;\ntu oins d'huile ma tête,\net ma coupe déborde.\nOui, le bonheur et la grâce m'accompagneront\ntous les jours de ma vie,\net j'habiterai dans la maison de l'Éternel\npour de longs jours.\nAmen.",
-    "spanish": "El Señor es mi pastor; nada me faltará.\nEn lugares de delicados pastos me hará descansar;\njunto a aguas de reposo me pastoreará.\nConfortará mi alma.\nMe guiará por sendas de justicia\npor amor de su nombre.\nAunque ande en valle de sombra de muerte,\nno temeré mal alguno, porque tú estarás conmigo;\ntu vara y tu cayado me infundirán aliento.\nAderezas mesa delante de mí\nen presencia de mis angustiadores;\nunges mi cabeza con aceite;\nmi copa está rebosando.\nCiertamente el bien y la misericordia me seguirán\ntodos los días de mi vida,\ny en la casa del Señor moraré por largos días.\nAmén.",
-    "portuguese": "O Senhor é o meu pastor; nada me faltará.\nEle me faz repousar em pastos verdejantes.\nLeva-me para junto das águas tranquilas.\nRefrigera a minha alma.\nGuia-me pelas veredas da justiça\npor amor do seu nome.\nAinda que eu andasse pelo vale da sombra da morte,\nnão temeria mal algum, porque tu estás comigo;\no teu cajado e o teu bordão me consolam.\nPreparas uma mesa perante mim\nna presença dos meus adversários.\nUnges a minha cabeça com óleo;\no meu cálice transborda.\nCertamente que a bondade e a misericórdia\nme seguirão todos os dias da minha vida,\ne habitarei na casa do Senhor por longos dias.\nAmém.",
-    "polish": "Pan jest moim pasterzem, nie brak mi niczego.\nPozwala mi leżeć na zielonych pastwiskach.\nProwadzi mnie nad wody, gdzie mogę odpocząć.\nOrzeźwia moją duszę.\nWiedzie mnie po właściwych ścieżkach\nprzez wzgląd na swoją chwałę.\nChociażbym chodził ciemną doliną,\nzła się nie ulęknę, bo Ty jesteś ze mną.\nTwój kij i Twoja laska są moją pociechą.\nZastawiasz przede mną stół\nwobec moich przeciwników.\nNamaszczasz olejkiem moją głowę,\nmój kielich jest pełny po brzegi.\nDobroć i łaska będą mi towarzyszyć\nprzez wszystkie dni mego życia\ni zamieszkam w domu Pana\npo najdłuższe czasy.\nAmen."
-  },
   "sanctus": {
     "english": "Holy, holy, holy, Lord God of hosts.\nHeaven and earth are full of thy glory.\nGlory be to thee, O Lord Most High.\nBlessed is he that cometh in the name of the Lord.\nHosanna in the highest.",
     "german": "Heilig, heilig, heilig ist der Herr, Gott der Heerscharen.\nHimmel und Erde sind erfüllt von deiner Herrlichkeit.\nGelobt seist du, Herr in der Höhe.\nGesegnet ist, der da kommt im Namen des Herrn.\nHosanna in der Höhe.",
@@ -320,7 +320,7 @@ const TEXTS = {
     "polish": "Boże, użycz mi pogody ducha,\nabym godził się z tym, czego nie mogę zmienić,\nodwagi, abym zmieniał to, co mogę zmienić,\ni mądrości, abym odróżniał jedno od drugiego.\nAmen."
   }
 };
-const PRAYER_IMAGES = {"ave": "ave-maria.png", "ave_verum": "ave-verum-corpus.png", "gloria": "gloria.png", "lords": "Breaking_of_The_Bread.png", "magnificat": "magnificat.png", "miserere": "miserere.png", "nunc": "nunc-dimittis.png", "peace": "peace.png", "psalm23": "psalm23.png", "sanctus": "sanctus.png", "serenity": "serenity.png"};
+const PRAYER_IMAGES = {"psalm23": "psalm23.png", "ave": "ave-maria.png", "ave_verum": "ave-verum-corpus.png", "gloria": "gloria.png", "lords": "Breaking_of_The_Bread.png", "magnificat": "magnificat.png", "miserere": "miserere.png", "nunc": "nunc-dimittis.png", "peace": "peace.png", "sanctus": "sanctus.png", "serenity": "serenity.png"};
 const LANG_CODES = {
   english:'en', german:'de', italian:'it', latin:'it',
   french:'fr', spanish:'es', portuguese:'pt', polish:'pl'

@@ -174,12 +174,8 @@
 <div class="controls">
   <button id="btn-pray">🙏 Pray</button>
   <button id="btn-stop" disabled>🙏🙏 Stop</button>
-  <button id="btn-music">♪ Music</button>
-  <span id="status"></span>
+    <span id="status"></span>
 </div>
-<audio id="gregorian-audio" loop>
-  <source src="audio/ave-maria-gregorian.mp3" type="audio/mpeg">
-</audio>
 <div id="prayer-gallery"></div>
 <div id="prayer-text"></div>
 <p class="note">Uses your browser's built-in speech synthesis. Available voices vary by OS and browser.</p>
@@ -203,7 +199,7 @@
     <p>Prayer texts are traditional liturgical and biblical texts in the public domain.</p>
     <p>Background: alpine landscape.</p>
     <p>Pray is open source: <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
-    <p class="modal-ver">Version 2026-07-08 20:47 · ca19d14</p>
+    <p class="modal-ver">Version 2026-07-08 20:57 · 7e2205a</p>
   </div>
 </div>
 
@@ -405,22 +401,11 @@ function pray() {
 rateSlider.addEventListener('input', () => { rateOut.textContent = rateSlider.value; });
 prayerSel.addEventListener('change', updateText);
 langSel.addEventListener('change', () => { updateText(); populateVoices(); });
-const btnMusic = document.getElementById('btn-music');
-const audio = document.getElementById('gregorian-audio');
 
 btnPray.addEventListener('click', pray);
 btnStop.addEventListener('click', () => {
   window.speechSynthesis.cancel();
   statusEl.textContent = ''; btnPray.disabled = false; btnStop.disabled = true;
-});
-btnMusic.addEventListener('click', () => {
-  if (audio.paused) {
-    audio.play();
-    btnMusic.style.opacity = '1';
-  } else {
-    audio.pause();
-    btnMusic.style.opacity = '0.6';
-  }
 });
 
 if ('onvoiceschanged' in window.speechSynthesis) {

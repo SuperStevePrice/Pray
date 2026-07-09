@@ -136,16 +136,17 @@
   <div>
     <label for="prayer">Prayer</label>
     <select id="prayer">
-      <option value="ave">ave</option>
-      <option value="gloria">gloria</option>
-      <option value="lords">lords</option>
-      <option value="magnificat">magnificat</option>
-      <option value="miserere">miserere</option>
-      <option value="nunc">nunc</option>
-      <option value="peace">peace</option>
-      <option value="psalm23">psalm23</option>
-      <option value="sanctus">sanctus</option>
-      <option value="serenity">serenity</option>
+        <option value="ave">ave</option>
+        <option value="ave_verum">ave_verum</option>
+        <option value="gloria">gloria</option>
+        <option value="lords">lords</option>
+        <option value="magnificat">magnificat</option>
+        <option value="miserere">miserere</option>
+        <option value="nunc">nunc</option>
+        <option value="peace">peace</option>
+        <option value="psalm23">psalm23</option>
+        <option value="sanctus">sanctus</option>
+        <option value="serenity">serenity</option>
     </select>
   </div>
   <div>
@@ -202,7 +203,7 @@
     <p>Prayer texts are traditional liturgical and biblical texts in the public domain.</p>
     <p>Background: alpine landscape.</p>
     <p>Pray is open source: <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
-    <p class="modal-ver">Version 2026-07-08 16:53 · 021ac8f</p>
+    <p class="modal-ver">Version 2026-07-08 20:11 · 457af14</p>
   </div>
 </div>
 
@@ -217,6 +218,16 @@ const TEXTS = {
     "spanish": "Dios te salve, María, llena eres de gracia,\nel Señor es contigo.\nBendita tú eres entre todas las mujeres,\ny bendito es el fruto de tu vientre, Jesús.\nSanta María, Madre de Dios,\nruega por nosotros, pecadores,\nahora y en la hora de nuestra muerte. Amén.",
     "portuguese": "Ave Maria, cheia de graça,\no Senhor é convosco.\nBendita sois vós entre as mulheres,\ne bendito é o fruto do vosso ventre, Jesus.\nSanta Maria, Mãe de Deus,\nrogai por nós, pecadores,\nagora e na hora da nossa morte. Amém.",
     "polish": "Zdrowaś Maryjo, łaski pełna,\nPan z Tobą.\nBłogosławionaś Ty między niewiastami\ni błogosławiony owoc żywota Twojego, Jezus.\nŚwięta Maryjo, Matko Boża,\nmódl się za nami grzesznymi\nteraz i w godzinę śmierci naszej. Amen."
+  },
+  "ave_verum": {
+    "english": "Hail, true Body, born of the Virgin Mary,\nwho truly suffered, sacrificed on the cross for mankind,\nfrom whose pierced side flowed water and blood:\nbe for us a foretaste in the trial of death.\n\nO sweet Jesus, O holy Jesus, O Jesus, son of Mary.\nHave mercy on me. Amen.",
+    "german": "Sei gegrüßt, wahrer Leib, geboren von der Jungfrau Maria,\nder du wahrhaft gelitten hast, geopfert am Kreuz für den Menschen,\ndessen durchbohrte Seite von Wasser und Blut floss:\nsei uns ein Vorgeschmack in der Prüfung des Todes.\n\nO süßer Jesus, o gütiger Jesus, o Jesus, Sohn der Maria.\nErbarme dich meiner. Amen.",
+    "italian": "Ave, o vero corpo, nato da Maria Vergine,\nche veramente patì e fu immolato sulla croce per l'uomo,\ndal cui fianco squarciato sgorgarono acqua e sangue:\nfa' che noi possiamo gustarti nella prova suprema della morte.\n\nO Gesù dolce, o Gesù pio, o Gesù figlio di Maria.\nPietà di me. Amen.",
+    "latin": "Ave verum corpus, natum de Maria Virgine,\nvere passum, immolatum in cruce pro homine,\ncuius latus perforatum fluxit aqua et sanguine:\nesto nobis praegustatum in mortis examine.\n\nO Iesu dulcis, O Iesu pie, O Iesu, fili Mariae.\nMiserere mei. Amen.",
+    "french": "Salut, vrai Corps né de la Vierge Marie,\nayant vraiment souffert et qui fut immolé sur la croix pour l'homme,\ntoi dont le côté transpercé laissa couler l'eau et le sang:\nsois pour nous un réconfort dans l'heure de la mort.\n\nÔ doux, ô bon, ô Jésus fils de Marie.\nAie pitié de moi. Ainsi soit-il.",
+    "spanish": "Salve, verdadero Cuerpo, nacido de la Virgen María,\nverdaderamente atormentado, sacrificado en la cruz por la humanidad,\nde cuyo costado perforado fluyó agua y sangre:\nsé para nosotros un anticipo en el trance de la muerte.\n\n¡Oh, dulce Jesús! ¡Oh, piadoso Jesús! ¡Oh, Jesús, hijo de María!\nTen piedad de mí. Amén.",
+    "portuguese": "Salve, ó verdadeiro Corpo, nascido da Virgem Maria,\nque verdadeiramente padeceu e foi imolado na cruz pelo homem,\ndo qual o lado transpassado jorrou água e sangue:\nsê para nós um antegosto na hora da morte.\n\nÓ doce Jesus, ó piedoso Jesus, ó Jesus, Filho de Maria.\nTem piedade de mim. Amém.",
+    "polish": "Witaj, prawdziwe Ciało, zrodzone z Maryi Dziewicy,\nprawdziwie umęczone i ofiarowane na krzyżu za człowieka,\nz Twego przebitego boku wypłynęła krew i woda:\nbądź nam przedsmakiem w godzinę śmierci.\n\nO Jezu słodki, o Jezu dobrotliwy, o Jezu, Synu Maryi.\nZmiłuj się nade mną. Amen."
   },
   "gloria": {
     "english": "Glory be to the Father,\nand to the Son,\nand to the Holy Ghost;\nas it was in the beginning,\nis now, and ever shall be,\nworld without end.\nAmen.",
@@ -309,7 +320,7 @@ const TEXTS = {
     "polish": "Boże, użycz mi pogody ducha,\nabym godził się z tym, czego nie mogę zmienić,\nodwagi, abym zmieniał to, co mogę zmienić,\ni mądrości, abym odróżniał jedno od drugiego.\nAmen."
   }
 };
-const PRAYER_IMAGES = {"ave": "ave-maria.png", "lords": "Breaking_of_The_Bread.png", "serenity": "serenity.png", "psalm23": "psalm23.png", "peace": "peace.png", "nunc": "nunc-dimittis.png", "miserere": "miserere.png", "gloria": "gloria.png", "sanctus": "sanctus.png", "magnificat": "magnificat.png"};
+const PRAYER_IMAGES = {"ave": "ave-maria.png", "ave_verum": "ave-verum-corpus.png", "gloria": "gloria.png", "lords": "Breaking_of_The_Bread.png", "magnificat": "magnificat.png", "miserere": "miserere.png", "nunc": "nunc-dimittis.png", "peace": "peace.png", "psalm23": "psalm23.png", "sanctus": "sanctus.png", "serenity": "serenity.png"};
 const LANG_CODES = {
   english:'en', german:'de', italian:'it', latin:'it',
   french:'fr', spanish:'es', portuguese:'pt', polish:'pl'

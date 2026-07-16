@@ -193,18 +193,30 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="about-title">
     <button id="about-close" class="modal-close" aria-label="Close">&times;</button>
     <h2 id="about-title">About Pray</h2>
-    <p>Pray speaks sacred prayers aloud in eight languages, using your browser's built-in speech synthesis.</p>
-    <p>Created by Rodney Stephen (Steve) Price, 2026.</p>
-    <p>Devotional artwork, including <em>The First Eucharist</em>, is AI-generated, directed by Rodney Stephen (Steve) Price, 2026.</p>
-    <p>Prayer texts are traditional liturgical and biblical texts in the public domain.</p>
-    <p>Background: alpine landscape.</p>
-    <p>Pray is open source: <a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>.</p>
+    <div style="margin:0.2rem 0 0.9rem">
+      <select id="about-lang" aria-label="Info language">
+        <option value="english" selected>English</option>
+        <option value="german">Deutsch</option>
+        <option value="italian">Italiano</option>
+        <option value="latin">Latina</option>
+        <option value="french">Français</option>
+        <option value="spanish">Español</option>
+        <option value="portuguese">Português</option>
+        <option value="polish">Polski</option>
+      </select>
+    </div>
+    <p id="about-desc"></p>
+    <p id="about-created"></p>
+    <p id="about-art"></p>
+    <p id="about-texts"></p>
+    <p id="about-bg"></p>
+    <p id="about-src"></p>
     <div style="text-align:center;margin:0.9rem 0 0.3rem">
       <svg style="width:140px;height:140px;background:#fff;padding:8px;border-radius:8px" xmlns="http://www.w3.org/2000/svg" width="132" height="132" class="segno"><path transform="scale(4)" class="qrline" stroke="#2b2b2b" d="M2 2.5h7m2 0h2m1 0h1m1 0h2m2 0h2m2 0h7m-29 1h1m5 0h1m1 0h1m4 0h1m1 0h1m1 0h4m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m4 0h2m2 0h2m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m3 0h3m2 0h1m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m3 0h1m1 0h1m1 0h3m2 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m2 0h3m1 0h1m1 0h1m2 0h3m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-18 1h5m1 0h1m1 0h1m-20 1h1m1 0h1m1 0h1m1 0h1m2 0h3m1 0h2m2 0h1m1 0h2m3 0h1m2 0h1m-27 1h3m5 0h2m4 0h3m2 0h1m1 0h1m2 0h1m2 0h1m-28 1h1m1 0h1m1 0h2m2 0h5m3 0h1m2 0h1m1 0h3m1 0h3m-26 1h2m3 0h1m4 0h2m1 0h3m2 0h2m4 0h1m-28 1h1m1 0h1m1 0h3m1 0h2m1 0h2m1 0h4m3 0h2m2 0h1m1 0h2m-24 1h1m3 0h3m1 0h1m6 0h1m1 0h1m2 0h1m2 0h1m-29 1h2m1 0h1m2 0h1m4 0h2m1 0h1m3 0h1m1 0h1m1 0h1m1 0h2m1 0h2m-28 1h1m5 0h1m1 0h1m3 0h1m2 0h4m2 0h2m1 0h1m1 0h1m-28 1h1m3 0h3m2 0h1m1 0h2m1 0h4m3 0h3m1 0h1m1 0h2m-28 1h1m3 0h1m1 0h1m1 0h2m5 0h3m1 0h1m1 0h1m2 0h2m1 0h1m-29 1h1m2 0h5m1 0h1m1 0h1m1 0h1m7 0h4m2 0h2m-28 1h1m1 0h2m7 0h1m2 0h1m1 0h1m1 0h3m3 0h1m1 0h1m-28 1h1m3 0h1m1 0h1m1 0h3m4 0h3m2 0h5m-17 1h2m3 0h1m2 0h1m2 0h2m3 0h1m1 0h3m-29 1h7m2 0h1m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1m1 0h2m1 0h2m-29 1h1m5 0h1m2 0h2m2 0h2m1 0h2m2 0h1m3 0h2m2 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h4m2 0h5m2 0h2m-29 1h1m1 0h3m1 0h1m2 0h3m2 0h1m2 0h4m3 0h1m1 0h3m-29 1h1m1 0h3m1 0h1m1 0h2m2 0h2m2 0h1m2 0h2m2 0h3m2 0h1m-29 1h1m5 0h1m2 0h1m2 0h1m4 0h2m1 0h1m3 0h1m2 0h1m-28 1h7m1 0h1m1 0h2m1 0h2m1 0h2m1 0h4m1 0h2m1 0h2"/></svg>
 
-      <p style="margin:0.4rem 0 0;font-size:0.85rem;opacity:0.8">Scan to open Pray on another device</p>
+      <p id="about-qr-caption" style="margin:0.4rem 0 0;font-size:0.85rem;opacity:0.8"></p>
     </div>
-    <p class="modal-ver">Version 2026-07-16 · 9b01e2e</p>
+    <p class="modal-ver">Version 2026-07-16 14:10 · 9b01e2e</p>
   </div>
 </div>
 
@@ -423,7 +435,111 @@ updateText();
 const aboutBtn     = document.getElementById('about-btn');
 const aboutOverlay = document.getElementById('about-overlay');
 const aboutClose   = document.getElementById('about-close');
-const openAbout    = () => { aboutOverlay.hidden = false; };
+const aboutLangSel = document.getElementById('about-lang');
+
+const ABOUT_LINK = '<a href="https://github.com/SuperStevePrice/Pray">github.com/SuperStevePrice/Pray</a>';
+const ABOUT_TEXTS = {
+ "english": {
+  "title": "About Pray",
+  "desc": "Pray speaks sacred prayers aloud in eight languages, using your browser's built-in speech synthesis.",
+  "created": "Created by Rodney Stephen (Steve) Price, 2026.",
+  "art": "Devotional artwork, including <em>The First Eucharist</em>, is AI-generated, directed by Rodney Stephen (Steve) Price, 2026.",
+  "texts": "Prayer texts are traditional liturgical and biblical texts in the public domain.",
+  "bg": "Background: alpine landscape.",
+  "src": "Pray is open source: {LINK}.",
+  "qr": "Scan to open Pray on another device"
+ },
+ "german": {
+  "title": "Über Pray",
+  "desc": "Pray spricht heilige Gebete in acht Sprachen laut aus und nutzt dabei die im Browser eingebaute Sprachsynthese.",
+  "created": "Erstellt von Rodney Stephen (Steve) Price, 2026.",
+  "art": "Die Andachtsbilder, darunter <em>The First Eucharist</em> (Die erste Eucharistie), sind KI-generiert, gestaltet unter der Leitung von Rodney Stephen (Steve) Price, 2026.",
+  "texts": "Die Gebetstexte sind überlieferte liturgische und biblische Texte, die gemeinfrei sind.",
+  "bg": "Hintergrund: Alpenlandschaft.",
+  "src": "Pray ist quelloffen: {LINK}.",
+  "qr": "Scannen, um Pray auf einem anderen Gerät zu öffnen"
+ },
+ "italian": {
+  "title": "Informazioni su Pray",
+  "desc": "Pray recita ad alta voce preghiere sacre in otto lingue, utilizzando la sintesi vocale integrata nel browser.",
+  "created": "Creato da Rodney Stephen (Steve) Price, 2026.",
+  "art": "Le immagini devozionali, tra cui <em>The First Eucharist</em> (La prima Eucaristia), sono generate dall'intelligenza artificiale, sotto la direzione di Rodney Stephen (Steve) Price, 2026.",
+  "texts": "I testi delle preghiere sono testi liturgici e biblici tradizionali di pubblico dominio.",
+  "bg": "Sfondo: paesaggio alpino.",
+  "src": "Pray è open source: {LINK}.",
+  "qr": "Scansiona per aprire Pray su un altro dispositivo"
+ },
+ "latin": {
+  "title": "De Pray",
+  "desc": "Pray preces sacras octo linguis clara voce recitat, synthesi vocis in navigatro insita utens.",
+  "created": "Creatum a Rodney Stephen (Steve) Price, anno MMXXVI.",
+  "art": "Imagines devotae, inter quas <em>The First Eucharist</em> (Prima Eucharistia), arte intellegentiae artificialis generatae sunt, moderante Rodney Stephen (Steve) Price, MMXXVI.",
+  "texts": "Textus precum sunt textus liturgici et biblici traditi, iuris publici.",
+  "bg": "Fundus: prospectus Alpinus.",
+  "src": "Pray fons apertus est: {LINK}.",
+  "qr": "Codicem lege ut Pray in alio instrumento aperias"
+ },
+ "french": {
+  "title": "À propos de Pray",
+  "desc": "Pray récite à voix haute des prières sacrées en huit langues, grâce à la synthèse vocale intégrée à votre navigateur.",
+  "created": "Créé par Rodney Stephen (Steve) Price, 2026.",
+  "art": "Les images de dévotion, dont <em>The First Eucharist</em> (La Première Eucharistie), sont générées par IA, sous la direction de Rodney Stephen (Steve) Price, 2026.",
+  "texts": "Les textes des prières sont des textes liturgiques et bibliques traditionnels du domaine public.",
+  "bg": "Arrière-plan : paysage alpin.",
+  "src": "Pray est open source : {LINK}.",
+  "qr": "Scannez pour ouvrir Pray sur un autre appareil"
+ },
+ "spanish": {
+  "title": "Acerca de Pray",
+  "desc": "Pray recita en voz alta oraciones sagradas en ocho idiomas, utilizando la síntesis de voz integrada en su navegador.",
+  "created": "Creado por Rodney Stephen (Steve) Price, 2026.",
+  "art": "Las imágenes devocionales, entre ellas <em>The First Eucharist</em> (La Primera Eucaristía), son generadas por IA, bajo la dirección de Rodney Stephen (Steve) Price, 2026.",
+  "texts": "Los textos de las oraciones son textos litúrgicos y bíblicos tradicionales de dominio público.",
+  "bg": "Fondo: paisaje alpino.",
+  "src": "Pray es de código abierto: {LINK}.",
+  "qr": "Escanee para abrir Pray en otro dispositivo"
+ },
+ "portuguese": {
+  "title": "Sobre o Pray",
+  "desc": "O Pray recita em voz alta orações sagradas em oito línguas, usando a síntese de voz integrada ao navegador.",
+  "created": "Criado por Rodney Stephen (Steve) Price, 2026.",
+  "art": "As imagens devocionais, incluindo <em>The First Eucharist</em> (A Primeira Eucaristia), são geradas por IA, sob a direção de Rodney Stephen (Steve) Price, 2026.",
+  "texts": "Os textos das orações são textos litúrgicos e bíblicos tradicionais de domínio público.",
+  "bg": "Fundo: paisagem alpina.",
+  "src": "O Pray é de código aberto: {LINK}.",
+  "qr": "Escaneie para abrir o Pray em outro dispositivo"
+ },
+ "polish": {
+  "title": "O Pray",
+  "desc": "Pray odczytuje na głos święte modlitwy w ośmiu językach, korzystając z wbudowanej w przeglądarkę syntezy mowy.",
+  "created": "Twórca: Rodney Stephen (Steve) Price, 2026.",
+  "art": "Obrazy dewocyjne, w tym <em>The First Eucharist</em> (Pierwsza Eucharystia), zostały wygenerowane przez sztuczną inteligencję pod kierunkiem Rodneya Stephena (Steve'a) Price'a, 2026.",
+  "texts": "Teksty modlitw to tradycyjne teksty liturgiczne i biblijne należące do domeny publicznej.",
+  "bg": "Tło: krajobraz alpejski.",
+  "src": "Pray jest oprogramowaniem open source: {LINK}.",
+  "qr": "Zeskanuj, aby otworzyć Pray na innym urządzeniu"
+ }
+};
+
+function renderAbout(lang) {
+  const t = ABOUT_TEXTS[lang] || ABOUT_TEXTS.english;
+  document.getElementById('about-title').innerHTML   = t.title;
+  document.getElementById('about-desc').innerHTML    = t.desc;
+  document.getElementById('about-created').innerHTML = t.created;
+  document.getElementById('about-art').innerHTML     = t.art;
+  document.getElementById('about-texts').innerHTML   = t.texts;
+  document.getElementById('about-bg').innerHTML      = t.bg;
+  document.getElementById('about-src').innerHTML     = t.src.replace('{LINK}', ABOUT_LINK);
+  document.getElementById('about-qr-caption').innerHTML = t.qr;
+}
+aboutLangSel.addEventListener('change', () => renderAbout(aboutLangSel.value));
+
+const openAbout    = () => {
+  const lang = ABOUT_TEXTS[langSel.value] ? langSel.value : 'english';
+  aboutLangSel.value = lang;
+  renderAbout(lang);
+  aboutOverlay.hidden = false;
+};
 const closeAbout   = () => { aboutOverlay.hidden = true; };
 aboutBtn.addEventListener('click', openAbout);
 aboutClose.addEventListener('click', closeAbout);

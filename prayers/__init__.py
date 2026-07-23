@@ -3,29 +3,32 @@ prayers/__init__.py — Prayer registry.
 Import all prayers here and register them in PRAYERS dict.
 To add a new prayer: create a new module, import it here, add to PRAYERS.
 """
-from .ave_maria      import AveMaria
-from .lords_prayer   import LordsPrayer
-from .serenity       import Serenity
-from .psalm_23       import Psalm23
-from .peace          import Peace
-from .nunc_dimittis  import NuncDimittis
-from .miserere       import Miserere
-from .gloria_patri   import GloriaPatri
-from .sanctus        import Sanctus
-from .magnificat     import Magnificat
-from .base           import Prayer
+
+from .ave_maria       import AveMaria
+from .ave_verum_corpus import AveVerumCorpus
+from .lords_prayer    import LordsPrayer
+from .serenity        import Serenity
+from .psalm_23        import Psalm23
+from .peace           import Peace
+from .nunc_dimittis   import NuncDimittis
+from .miserere        import Miserere
+from .gloria_patri    import GloriaPatri
+from .sanctus         import Sanctus
+from .magnificat      import Magnificat
+from .base            import Prayer
 
 # ── Registry ───────────────────────────────────────────────────────────────────
 PRAYERS: dict = {
-    "ave":      AveMaria,
-    "lords":    LordsPrayer,
-    "serenity": Serenity,
-    "psalm23":  Psalm23,
-    "peace":    Peace,
-    "nunc":     NuncDimittis,
-    "miserere": Miserere,
-    "gloria":   GloriaPatri,
-    "sanctus":  Sanctus,
+    "ave":        AveMaria,
+    "ave_verum":  AveVerumCorpus,
+    "lords":      LordsPrayer,
+    "serenity":   Serenity,
+    "psalm23":    Psalm23,
+    "peace":      Peace,
+    "nunc":       NuncDimittis,
+    "miserere":   Miserere,
+    "gloria":     GloriaPatri,
+    "sanctus":    Sanctus,
     "magnificat": Magnificat,
 }
 
@@ -37,6 +40,12 @@ PRAYER_ALIASES: dict = {
     "avemaria":      "ave",
     "hail mary":     "ave",
     "hailmary":      "ave",
+    # Ave Verum Corpus
+    "ave_verum":         "ave_verum",
+    "ave verum":         "ave_verum",
+    "ave verum corpus":  "ave_verum",
+    "averumcorpus":      "ave_verum",
+    "hail true body":    "ave_verum",
     # Lord's Prayer
     "lords":         "lords",
     "lord":          "lords",

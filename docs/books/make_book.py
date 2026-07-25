@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-make_book.py — builds the Book of Pray (English) and Buch des Gebets (German)
-as print-ready 6"x9" PDFs from the Pray repo's texts and images.
+make_book.py — builds the Book of Prayer (English), Buch des Gebets (German),
+and Libro de Oración (Spanish) as print-ready 6"x9" PDFs from the Pray repo's
+texts and images.
 """
 import json, os, io
 from PIL import Image as PILImage
@@ -47,12 +48,16 @@ TITLES = {
    'gloria':'Gloria','lords':'Das Vaterunser','magnificat':'Magnificat',
    'miserere':'Miserere — Psalm 51','nunc':'Nunc Dimittis','peace':'Das Friedensgebet',
    'sanctus':'Sanctus','serenity':'Das Gelassenheitsgebet'},
+ 'spanish': {'psalm23':'Salmo 23','ave':'Ave María','ave_verum':'Ave Verum Corpus',
+   'gloria':'Gloria','lords':'El Padrenuestro','magnificat':'Magníficat',
+   'miserere':'Miserere — Salmo 51','nunc':'Nunc Dimittis','peace':'La Oración por la Paz',
+   'sanctus':'Sanctus','serenity':'La Oración de la Serenidad'},
 }
 
 META = {
  'english': dict(
     title='The Book of Prayer',
-    subtitle='Eleven Sacred Prayers',
+    subtitle='Sacred Prayers',
     author='Rodney Stephen (Steve) Price',
     contents='Contents',
     about_title='About Pray',
@@ -68,11 +73,11 @@ META = {
       "Cover: alpine landscape.",
       "<i>Pray</i> is open source: <i>github.com/SuperStevePrice/Pray</i>."
     ],
-    version='Version 2026-07-08 · 9b01e2e',
+    version='Version 2026-07-25 · e0c6ec6',
     colophon="Set in EB Garamond · MMXXVI"),
  'german': dict(
     title='Das Buch des Gebets',
-    subtitle='Elf heilige Gebete',
+    subtitle='Heilige Gebete',
     author='Rodney Stephen (Steve) Price',
     contents='Inhalt',
     about_title='Über Pray',
@@ -89,8 +94,29 @@ META = {
       "Umschlag: Alpenlandschaft.",
       "<i>Pray</i> ist quelloffen: <i>github.com/SuperStevePrice/Pray</i>."
     ],
-    version='Version 2026-07-08 · 9b01e2e',
+    version='Version 2026-07-25 · e0c6ec6',
     colophon="Gesetzt in EB Garamond · MMXXVI"),
+ 'spanish': dict(
+    title='El Libro de Oración',
+    subtitle='Oraciones sagradas',
+    author='Rodney Stephen (Steve) Price',
+    contents='Índice',
+    about_title='Acerca de Pray',
+    about=[
+      "<i>Pray</i> pronuncia oraciones sagradas en voz alta en ocho idiomas, "
+      "mediante la síntesis de voz integrada en su navegador. La aplicación "
+      "viva puede visitarse en <i>supersteveprice.github.io/Pray</i>.",
+      "Creado por Rodney Stephen (Steve) Price, 2026.",
+      "Las imágenes devocionales, entre ellas <i>The First Eucharist</i> "
+      "(La primera eucaristía), son generadas por inteligencia artificial, "
+      "bajo la dirección de Rodney Stephen (Steve) Price, 2026.",
+      "Los textos de las oraciones son textos litúrgicos y bíblicos "
+      "tradicionales de dominio público.",
+      "Portada: paisaje alpino.",
+      "<i>Pray</i> es de código abierto: <i>github.com/SuperStevePrice/Pray</i>."
+    ],
+    version='Versión 2026-07-25 · e0c6ec6',
+    colophon="Compuesto en EB Garamond · MMXXVI"),
 }
 
 def flat_image(fname):
@@ -281,3 +307,4 @@ def assemble(lang, final):
 
 assemble('english', '/home/claude/The_Book_of_Prayer.pdf')
 assemble('german',  '/home/claude/Das_Buch_des_Gebets.pdf')
+assemble('spanish', '/home/claude/El_Libro_de_Oracion.pdf')

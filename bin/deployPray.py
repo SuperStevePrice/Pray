@@ -1,15 +1,38 @@
 #!/usr/bin/env python3
 """
-Deploy Pray - af1a2ce design.
+deployPray.py — dynamic, in-place deploy.
+
 Regenerates the <select id="prayer"> option list, the TEXTS object, and the
-PRAYER_IMAGES object directly from prayers/, so every registered prayer
-shows up automatically. Also stamps a live version string into the About
-modal.
+PRAYER_IMAGES object inside the CURRENT docs/index.html (sourced from the
+prayers/ registry), and refreshes the About-modal version stamp.
+
+Unlike the previous version, this does NOT rebuild the page from a frozen
+historical commit. It edits the live page in place, so hand-maintained
+features — the Book download table (BOOKS), the QR code, and the
+language-aware About modal — are preserved automatically. Only the four
+generated regions are touched.
+
+Usage:
+    python bin/deployPray.py                    # regenerate, commit, push
+    python bin/deployPray.py -m "your message"  # custom commit message
+    python bin/deployPray.py --no-push          # commit only, don't push
+    python bin/deployPray.py --dry-run          # write docs/index.preview.html; no git
 """
-import json, re, subprocess
+import argparse
+import json
+import re
+import subprocess
+import sys
 from datetime import datetime
 from pathlib import Path
-from prayers import PRAYERS
+
+# Resolve the repo root from this file's location (bin/ lives under the root),
+# so the script works no matter which directory you run it from.
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+INDEX = REPO_ROOT / "docs" / "index.html"
+
+from prayers import PRAYERS  # noqa: E402  (import after sys.path insert)
 
 # Friendly, mixed-case labels shown in the dropdown. The <option value="...">
 # still uses the raw key (so TEXTS[prayerSel.value] lookups keep working) —
@@ -45,92 +68,115 @@ PRAYER_IMAGES = {
     "magnificat": "magnificat.png",
 }
 
-prayers_sorted = sorted(PRAYERS.keys(), key=lambda k: PRAYER_NAMES.get(k, k))
 
-# Build TEXTS = { key: { lang: text, ... }, ... } from the actual Prayer objects
-texts_dict = {}
-for key in prayers_sorted:
-    prayer = PRAYERS[key]
-    langs = prayer.language_names() if callable(prayer.language_names) else prayer.language_names
-    texts_dict[key] = {lang.lower(): prayer.texts.get(lang.lower(), '') for lang in langs}
+def build_data():
+    """Build the sorted prayer list, TEXTS dict, and images dict from the registry."""
+    prayers_sorted = sorted(PRAYERS.keys(), key=lambda k: PRAYER_NAMES.get(k, k))
 
-images_dict = {key: PRAYER_IMAGES[key] for key in prayers_sorted if key in PRAYER_IMAGES}
+    texts_dict = {}
+    for key in prayers_sorted:
+        prayer = PRAYERS[key]
+        langs = (prayer.language_names()
+                 if callable(prayer.language_names) else prayer.language_names)
+        texts_dict[key] = {lang.lower(): prayer.texts.get(lang.lower(), '') for lang in langs}
 
-# Get af1a2ce HTML as the base template
-subprocess.run(["git", "show", "af1a2ce:docs/index.html"], stdout=open('/tmp/base.html', 'w'))
-with open('/tmp/base.html') as f:
-    html = f.read()
+    images_dict = {key: PRAYER_IMAGES[key] for key in prayers_sorted if key in PRAYER_IMAGES}
+    return prayers_sorted, texts_dict, images_dict
 
-# ── Replace the <select id="prayer"> option list (mixed-case labels) ───────
-new_options = "\n".join(
-    f'        <option value="{key}">{PRAYER_NAMES.get(key, key)}</option>' for key in prayers_sorted
-)
-select_pattern = re.compile(r'(<select id="prayer">\n)(.*?)(\n\s*</select>)', re.S)
-if select_pattern.search(html):
-    html = select_pattern.sub(lambda m: m.group(1) + new_options + m.group(3), html, count=1)
-    print(f"✅ Rewrote <select id=\"prayer\"> with {len(prayers_sorted)} options (friendly names)")
-else:
-    print("⚠️  Could not find <select id=\"prayer\">...</select> — check docs/index.html markup.")
 
-# ── Replace const TEXTS = {...}; ─────────────────────────────────────────────
-texts_pattern = re.compile(r'const TEXTS = \{.*?\n\};\n', re.S)
-new_texts_js = f"const TEXTS = {json.dumps(texts_dict, indent=2, ensure_ascii=False)};\n"
-if texts_pattern.search(html):
-    html = texts_pattern.sub(lambda m: new_texts_js, html, count=1)
-    print(f"✅ Rewrote TEXTS with {len(texts_dict)} prayers")
-else:
-    print("⚠️  Could not find 'const TEXTS = {...};' block — check docs/index.html.")
+def main():
+    ap = argparse.ArgumentParser(description="Dynamic in-place deploy for Pray.")
+    ap.add_argument("-m", "--message",
+                    default="Deploy Pray: regenerate prayer list, texts, images; refresh version stamp")
+    ap.add_argument("--no-push", action="store_true", help="commit but do not push")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="write docs/index.preview.html for inspection; no write to index.html, no git")
+    args = ap.parse_args()
 
-# ── Replace const PRAYER_IMAGES = {...}; ────────────────────────────────────
-images_pattern = re.compile(r'const PRAYER_IMAGES = \{.*?\};')
-new_images_js = f"const PRAYER_IMAGES = {json.dumps(images_dict, ensure_ascii=False)};"
-if images_pattern.search(html):
-    html = images_pattern.sub(lambda m: new_images_js, html, count=1)
-    print(f"✅ Rewrote PRAYER_IMAGES with {len(images_dict)} entries")
-else:
-    print("⚠️  Could not find 'const PRAYER_IMAGES = {...};' — check docs/index.html.")
+    if not INDEX.exists():
+        sys.exit(f"✋ Not found: {INDEX} — is this the Pray repo?")
 
-# ── Remove the non-functional Music button and audio element ───────────────
-# docs/audio/ doesn't exist and never has — the <audio> tag points at a file
-# that 404s for every prayer, so the button has never actually played
-# anything. Strip it out entirely rather than leave dead UI in place.
-audio_tag_pattern = re.compile(r'<audio id="gregorian-audio" loop>.*?</audio>\n?', re.S)
-html, n = audio_tag_pattern.subn('', html)
-print(f"✅ Removed <audio id=\"gregorian-audio\"> element ({n} found)")
+    prayers_sorted, texts_dict, images_dict = build_data()
+    html = INDEX.read_text(encoding="utf-8")
 
-music_button_pattern = re.compile(r'<button[^>]*id="btn-music"[^>]*>.*?</button>\n?', re.S)
-html, n = music_button_pattern.subn('', html)
-print(f"✅ Removed Music <button> ({n} found)")
+    # ── Safety guard: confirm we're editing the real, current page ─────────────
+    required = ['const TEXTS = {', '<select id="prayer">', 'const PRAYER_IMAGES = {']
+    missing = [r for r in required if r not in html]
+    if missing:
+        sys.exit(f"✋ Aborting: docs/index.html is missing {missing} — unexpected markup, nothing changed.")
+    # Non-fatal: warn if the hand-maintained features aren't where we expect them.
+    for feat in ('const BOOKS', 'aboutLangSel', 'about-qr'):
+        if feat not in html:
+            print(f"⚠️  Heads-up: '{feat}' not found in the current page — it may be older than expected.")
 
-js_const_pattern = re.compile(
-    r"const btnMusic = document\.getElementById\('btn-music'\);\n"
-    r"const audio = document\.getElementById\('gregorian-audio'\);\n"
-)
-html, n = js_const_pattern.subn('', html)
-print(f"✅ Removed btnMusic/audio JS const declarations ({n} found)")
+    ok = True
 
-js_handler_pattern = re.compile(
-    r"btnMusic\.addEventListener\('click', \(\) => \{.*?\}\);\n", re.S
-)
-html, n = js_handler_pattern.subn('', html)
-print(f"✅ Removed btnMusic click handler ({n} found)")
+    # ── <select id="prayer"> options ──────────────────────────────────────────
+    new_options = "\n".join(
+        f'        <option value="{k}">{PRAYER_NAMES.get(k, k)}</option>' for k in prayers_sorted
+    )
+    sel = re.compile(r'(<select id="prayer">\n)(.*?)(\n\s*</select>)', re.S)
+    if sel.search(html):
+        html = sel.sub(lambda m: m.group(1) + new_options + m.group(3), html, count=1)
+        print(f'✅ Rewrote <select id="prayer"> with {len(prayers_sorted)} options')
+    else:
+        print('⚠️  Could not rewrite <select id="prayer">'); ok = False
 
-# ── Update the "Version" stamp shown in the About Pray modal ───────────────
-commit_hash = subprocess.run(
-    ["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True
-).stdout.strip()
-deploy_time = datetime.now().strftime("%Y-%m-%d %H:%M")
-new_version_line = f"Version {deploy_time} · {commit_hash}"
-version_pattern = re.compile(r"Version \d{4}-\d{2}-\d{2} \d{2}:\d{2} · [0-9a-fA-F]{6,}")
-if version_pattern.search(html):
-    html = version_pattern.sub(new_version_line, html)
-    print(f"✅ Updated version stamp → {new_version_line}")
-else:
-    print("⚠️  Could not find an existing 'Version ...' string to replace.")
+    # ── const TEXTS = {...}; ──────────────────────────────────────────────────
+    new_texts = f"const TEXTS = {json.dumps(texts_dict, indent=2, ensure_ascii=False)};\n"
+    tx = re.compile(r'const TEXTS = \{.*?\n\};\n', re.S)
+    if tx.search(html):
+        html = tx.sub(lambda m: new_texts, html, count=1)
+        print(f"✅ Rewrote TEXTS with {len(texts_dict)} prayers")
+    else:
+        print("⚠️  Could not rewrite TEXTS"); ok = False
 
-Path('docs/index.html').write_text(html)
-print("✅ Generated docs/index.html")
-subprocess.run(["git", "add", "docs/index.html"])
-subprocess.run(["git", "commit", "-m", "Remove non-functional Music button (no audio files exist)"])
-subprocess.run(["git", "push"])
-print("✅ Committed and pushed")
+    # ── const PRAYER_IMAGES = {...}; ──────────────────────────────────────────
+    new_images = f"const PRAYER_IMAGES = {json.dumps(images_dict, ensure_ascii=False)};"
+    im = re.compile(r'const PRAYER_IMAGES = \{.*?\};')
+    if im.search(html):
+        html = im.sub(lambda m: new_images, html, count=1)
+        print(f"✅ Rewrote PRAYER_IMAGES with {len(images_dict)} entries")
+    else:
+        print("⚠️  Could not rewrite PRAYER_IMAGES"); ok = False
+
+    # ── About-modal version stamp ─────────────────────────────────────────────
+    commit_hash = subprocess.run(
+        ["git", "rev-parse", "--short", "HEAD"],
+        cwd=REPO_ROOT, capture_output=True, text=True,
+    ).stdout.strip()
+    stamp = f"Version {datetime.now().strftime('%Y-%m-%d %H:%M')} · {commit_hash}"
+    vp = re.compile(r"Version \d{4}-\d{2}-\d{2} \d{2}:\d{2} · [0-9a-fA-F]{6,}")
+    if vp.search(html):
+        html = vp.sub(stamp, html)
+        print(f"✅ Updated version stamp → {stamp}")
+    else:
+        print("⚠️  No existing version stamp found (left unchanged)")
+
+    if not ok:
+        sys.exit("✋ Aborting before write: a required block was not rewritten. Nothing changed, nothing committed.")
+
+    # ── Dry run: write a preview and stop ─────────────────────────────────────
+    if args.dry_run:
+        preview = REPO_ROOT / "docs" / "index.preview.html"
+        preview.write_text(html, encoding="utf-8")
+        print(f"📝 Dry run — wrote {preview.relative_to(REPO_ROOT)} for inspection. No git actions taken.")
+        return
+
+    # ── Write, commit, push ───────────────────────────────────────────────────
+    INDEX.write_text(html, encoding="utf-8")
+    print(f"✅ Wrote {INDEX.relative_to(REPO_ROOT)}")
+    subprocess.run(["git", "add", str(INDEX)], cwd=REPO_ROOT)
+    commit = subprocess.run(["git", "commit", "-m", args.message], cwd=REPO_ROOT)
+    if commit.returncode != 0:
+        print("ℹ️  Nothing to commit (index.html unchanged).")
+        return
+    if args.no_push:
+        print("✅ Committed (push skipped).")
+    else:
+        subprocess.run(["git", "push"], cwd=REPO_ROOT)
+        print("✅ Committed and pushed.")
+
+
+if __name__ == "__main__":
+    main()

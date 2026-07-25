@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
-"""Update Lord's Prayer to The Lord's Prayer"""
-import subprocess
-from pathlib import Path
+"""
+RETIRED (safe no-op) — Relabel the Lord's Prayer option text in docs/index.html.
 
-path = Path.home() / "Projects/Pray/docs/index.html"
-html = path.read_text()
+Superseded by bin/deployPray.py, which regenerates the prayer <option> list,
+its order, and its labels from the prayers/ registry on every deploy.
 
-# 1. Update the option display text
-old_option = '<option value="lords">Lord\'s Prayer</option>'
-new_option = '<option value="lords">The Lord\'s Prayer</option>'
-html = html.replace(old_option, new_option)
-print("✅ Updated option text")
+Why this was retired:
+Prayer labels now come from PRAYER_NAMES in deployPray.py, so this hand-edit is obsolete and would fight the source of truth.
 
-# 2. Update PRAYER_NAMES constant
-old_names = '"lords": "Lord\'s Prayer"'
-new_names = '"lords": "The Lord\'s Prayer"'
-html = html.replace(old_names, new_names)
-print("✅ Updated PRAYER_NAMES")
+This stub has been neutralized: it does not read or write any file and does
+not run git. It cannot alter docs/index.html or push anything.
 
-path.write_text(html)
-subprocess.run(["git", "add", "docs/index.html"], cwd=str(Path.home() / "Projects/Pray"))
-subprocess.run(["git", "commit", "-m", 'Rename: "Lord\'s Prayer" → "The Lord\'s Prayer"'], cwd=str(Path.home() / "Projects/Pray"))
-subprocess.run(["git", "push"], cwd=str(Path.home() / "Projects/Pray"))
-print("✅ Committed and pushed")
+To change the prayer list, order, or labels, edit prayers/ (and, for the
+visible label, PRAYER_NAMES in bin/deployPray.py), then run:
+
+    python bin/deployPray.py            # add --dry-run to preview first
+
+The original one-shot logic remains available in git history if ever needed.
+"""
+import sys
+
+print(__doc__.strip())
+print("\nNo changes made. Nothing written, nothing committed, nothing pushed.")
+sys.exit(0)

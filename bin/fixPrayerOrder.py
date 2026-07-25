@@ -1,31 +1,25 @@
 #!/usr/bin/env python3
-"""Fix prayer order: Lord prayers should be between I and M alphabetically"""
-import subprocess
-from pathlib import Path
+"""
+RETIRED (safe no-op) — Move the two 'Lord' prayers to a fixed spot in the <option> list.
 
-path = Path.home() / "Projects/Pray/docs/index.html"
-html = path.read_text()
+Superseded by bin/deployPray.py, which regenerates the prayer <option> list,
+its order, and its labels from the prayers/ registry on every deploy.
 
-# Remove the Lord prayers from wherever they are
-html = html.replace('      <option value="psalm23">The Lord is My Shepherd</option>\n', '')
-html = html.replace('      <option value="lords">The Lord\'s Prayer</option>\n', '')
+Why this was retired:
+It matched exact option strings that no longer exist, so it was already an inert no-op that nonetheless still tried to commit and push.
 
-# Insert them after "Instrument of Thy Peace"
-insert_after = '      <option value="peace">Instrument of Thy Peace</option>'
-lord_options = '''      <option value="psalm23">The Lord is My Shepherd</option>
-      <option value="lords">The Lord's Prayer</option>'''
+This stub has been neutralized: it does not read or write any file and does
+not run git. It cannot alter docs/index.html or push anything.
 
-if insert_after in html:
-    html = html.replace(
-        insert_after,
-        insert_after + '\n' + lord_options
-    )
-    print("✅ Moved Lord prayers to correct position (after I, before M)")
-else:
-    print("⚠️ Could not find insertion point")
+To change the prayer list, order, or labels, edit prayers/ (and, for the
+visible label, PRAYER_NAMES in bin/deployPray.py), then run:
 
-path.write_text(html)
-subprocess.run(["git", "add", "docs/index.html"], cwd=str(Path.home() / "Projects/Pray"))
-subprocess.run(["git", "commit", "-m", "Fix: Move Lord prayers to correct alphabetical position (I → L → M)"], cwd=str(Path.home() / "Projects/Pray"))
-subprocess.run(["git", "push"], cwd=str(Path.home() / "Projects/Pray"))
-print("✅ Committed and pushed")
+    python bin/deployPray.py            # add --dry-run to preview first
+
+The original one-shot logic remains available in git history if ever needed.
+"""
+import sys
+
+print(__doc__.strip())
+print("\nNo changes made. Nothing written, nothing committed, nothing pushed.")
+sys.exit(0)

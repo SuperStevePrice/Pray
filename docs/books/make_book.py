@@ -1,18 +1,15 @@
 #!/usr/bin/env python3
 """
-make_book.py — builds the Book of Prayer (English), Buch des Gebets (German),
-and Libro de Oración (Spanish) as print-ready 6"x9" PDFs from the Pray repo's
-texts and images.
+make_book.py (macOS) — builds PDFs using built-in Garamond font.
+UPDATED: Sept 11, 2026 with Hail Mary prayer.
 """
-import json, os, io
+import json, os, sys
 from PIL import Image as PILImage
 from reportlab.lib.pagesizes import inch
 from reportlab.lib.units import inch
 from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib import colors
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas as pdfcanvas
 from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph,
                                 Spacer, PageBreak, Image, HRFlowable,
@@ -20,38 +17,41 @@ from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph,
 from reportlab.platypus.tableofcontents import TableOfContents
 from pypdf import PdfReader, PdfWriter
 
+# macOS paths
+PRAY_DIR = os.path.expanduser("/Users/steve/Projects/Pray")
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 PAGE_W, PAGE_H = 6*inch, 9*inch
 MARGIN = 0.8*inch
-IMG_DIR = '/home/claude/Pray/docs/images'
-FLAT_DIR = '/home/claude/flat_images'
+IMG_DIR = os.path.join(PRAY_DIR, 'docs/images')
+FLAT_DIR = os.path.join(SCRIPT_DIR, 'flat_images')
 os.makedirs(FLAT_DIR, exist_ok=True)
 
-pdfmetrics.registerFont(TTFont('EBG', '/home/claude/fonts/EBGaramond-Regular.ttf'))
-pdfmetrics.registerFont(TTFont('EBGI', '/home/claude/fonts/EBGaramond-Italic.ttf'))
+# Load texts
+TEXTS = json.load(open(os.path.join(SCRIPT_DIR, 'texts.json')))
 
-TEXTS = json.load(open('/home/claude/texts.json'))
-
-ORDER = ['psalm23','ave','ave_verum','gloria','lords','magnificat',
+ORDER = ['psalm23','ave','hail-mary','ave_verum','gloria','lords','magnificat',
          'miserere','nunc','peace','sanctus','serenity']
 
-IMAGES = {"psalm23":"psalm23.png","ave":"ave-maria.png","ave_verum":"ave-verum-corpus.png",
-          "gloria":"gloria.png","lords":"Breaking_of_The_Bread.png","magnificat":"magnificat.png",
+IMAGES = {"psalm23":"psalm23.png","ave":"ave-maria.png","hail-mary":"hail-mary.png",
+          "ave_verum":"ave-verum-corpus.png","gloria":"gloria.png",
+          "lords":"Breaking_of_The_Bread.png","magnificat":"magnificat.png",
           "miserere":"miserere.png","nunc":"nunc-dimittis.png","peace":"peace.png",
           "sanctus":"sanctus.png","serenity":"serenity.png"}
 
 TITLES = {
- 'english': {'psalm23':'The 23rd Psalm','ave':'Ave Maria','ave_verum':'Ave Verum Corpus',
-   'gloria':'Gloria','lords':"The Lord's Prayer",'magnificat':'Magnificat',
-   'miserere':'Miserere — Psalm 51','nunc':'Nunc Dimittis','peace':'The Peace Prayer',
-   'sanctus':'Sanctus','serenity':'The Serenity Prayer'},
- 'german': {'psalm23':'Psalm 23','ave':'Ave Maria','ave_verum':'Ave Verum Corpus',
-   'gloria':'Gloria','lords':'Das Vaterunser','magnificat':'Magnificat',
-   'miserere':'Miserere — Psalm 51','nunc':'Nunc Dimittis','peace':'Das Friedensgebet',
-   'sanctus':'Sanctus','serenity':'Das Gelassenheitsgebet'},
- 'spanish': {'psalm23':'Salmo 23','ave':'Ave María','ave_verum':'Ave Verum Corpus',
-   'gloria':'Gloria','lords':'El Padrenuestro','magnificat':'Magníficat',
-   'miserere':'Miserere — Salmo 51','nunc':'Nunc Dimittis','peace':'La Oración por la Paz',
-   'sanctus':'Sanctus','serenity':'La Oración de la Serenidad'},
+ 'english': {'psalm23':'The 23rd Psalm','ave':'Ave Maria','hail-mary':'Hail Mary',
+   'ave_verum':'Ave Verum Corpus','gloria':'Gloria','lords':"The Lord's Prayer",
+   'magnificat':'Magnificat','miserere':'Miserere — Psalm 51','nunc':'Nunc Dimittis',
+   'peace':'The Peace Prayer','sanctus':'Sanctus','serenity':'The Serenity Prayer'},
+ 'german': {'psalm23':'Psalm 23','ave':'Ave Maria','hail-mary':'Gegrüßet seist du, Maria',
+   'ave_verum':'Ave Verum Corpus','gloria':'Gloria','lords':'Das Vaterunser',
+   'magnificat':'Magnificat','miserere':'Miserere — Psalm 51','nunc':'Nunc Dimittis',
+   'peace':'Das Friedensgebet','sanctus':'Sanctus','serenity':'Das Gelassenheitsgebet'},
+ 'spanish': {'psalm23':'Salmo 23','ave':'Ave María','hail-mary':'Dios te salve, María',
+   'ave_verum':'Ave Verum Corpus','gloria':'Gloria','lords':'El Padrenuestro',
+   'magnificat':'Magníficat','miserere':'Miserere — Salmo 51','nunc':'Nunc Dimittis',
+   'peace':'La Oración por la Paz','sanctus':'Sanctus','serenity':'La Oración de la Serenidad'},
 }
 
 META = {
@@ -69,12 +69,12 @@ META = {
       "Devotional artwork, including <i>The First Eucharist</i>, is AI-generated, "
       "directed by Rodney Stephen (Steve) Price, 2026.",
       "Prayer texts are traditional liturgical and biblical texts in the "
-      "public domain.",
+      "public domain, together with original prayers.",
       "Cover: alpine landscape.",
       "<i>Pray</i> is open source: <i>github.com/SuperStevePrice/Pray</i>."
     ],
-    version='Version 2026-07-25 · e0c6ec6',
-    colophon="Set in EB Garamond · MMXXVI"),
+    version='Version 2026-09-11',
+    colophon="Set in Garamond · MMXXVI"),
  'german': dict(
     title='Das Buch des Gebets',
     subtitle='Heilige Gebete',
@@ -89,13 +89,13 @@ META = {
       "Die Andachtsbilder, darunter <i>The First Eucharist</i> (Die erste "
       "Eucharistie), sind KI-generiert, gestaltet unter der Leitung von "
       "Rodney Stephen (Steve) Price, 2026.",
-      "Die Gebetstexte sind überlieferte liturgische und biblische Texte, "
-      "die gemeinfrei sind.",
+      "Die Gebetstexte sind überlieferte liturgische und biblische Texte "
+      "sowie Originalgebete, die gemeinfrei sind.",
       "Umschlag: Alpenlandschaft.",
       "<i>Pray</i> ist quelloffen: <i>github.com/SuperStevePrice/Pray</i>."
     ],
-    version='Version 2026-07-25 · e0c6ec6',
-    colophon="Gesetzt in EB Garamond · MMXXVI"),
+    version='Version 2026-09-11',
+    colophon="Gesetzt in Garamond · MMXXVI"),
  'spanish': dict(
     title='El Libro de Oración',
     subtitle='Oraciones sagradas',
@@ -111,12 +111,12 @@ META = {
       "(La primera eucaristía), son generadas por inteligencia artificial, "
       "bajo la dirección de Rodney Stephen (Steve) Price, 2026.",
       "Los textos de las oraciones son textos litúrgicos y bíblicos "
-      "tradicionales de dominio público.",
+      "tradicionales junto con oraciones originales de dominio público.",
       "Portada: paisaje alpino.",
       "<i>Pray</i> es de código abierto: <i>github.com/SuperStevePrice/Pray</i>."
     ],
-    version='Versión 2026-07-25 · e0c6ec6',
-    colophon="Compuesto en EB Garamond · MMXXVI"),
+    version='Versión 2026-09-11',
+    colophon="Compuesto en Garamond · MMXXVI"),
 }
 
 def flat_image(fname):
@@ -135,22 +135,22 @@ def flat_image(fname):
     im = PILImage.open(out)
     return out, im.size
 
-# ---------- styles ----------
-S_title    = ParagraphStyle('BookTitle', fontName='EBG', fontSize=30, leading=36,
+# ---------- styles (using built-in Garamond) ----------
+S_title    = ParagraphStyle('BookTitle', fontName='Garamond', fontSize=30, leading=36,
                             alignment=TA_CENTER, textColor=colors.HexColor('#2b2b2b'))
-S_subtitle = ParagraphStyle('BookSub', fontName='EBGI', fontSize=15, leading=20,
+S_subtitle = ParagraphStyle('BookSub', fontName='Garamond', fontSize=15, leading=20,
                             alignment=TA_CENTER, textColor=colors.HexColor('#555555'))
-S_author   = ParagraphStyle('Author', fontName='EBG', fontSize=13, leading=18,
+S_author   = ParagraphStyle('Author', fontName='Garamond', fontSize=13, leading=18,
                             alignment=TA_CENTER)
-S_chapter  = ParagraphStyle('ChapterTitle', fontName='EBG', fontSize=20, leading=26,
+S_chapter  = ParagraphStyle('ChapterTitle', fontName='Garamond', fontSize=20, leading=26,
                             alignment=TA_CENTER, spaceAfter=6)
-S_verse    = ParagraphStyle('Verse', fontName='EBG', fontSize=12.5, leading=19.5,
+S_verse    = ParagraphStyle('Verse', fontName='Garamond', fontSize=12.5, leading=19.5,
                             alignment=TA_CENTER)
-S_body     = ParagraphStyle('Body', fontName='EBG', fontSize=11.5, leading=17,
+S_body     = ParagraphStyle('Body', fontName='Garamond', fontSize=11.5, leading=17,
                             alignment=TA_CENTER)
-S_colophon = ParagraphStyle('Colophon', fontName='EBGI', fontSize=10, leading=14,
+S_colophon = ParagraphStyle('Colophon', fontName='Garamond', fontSize=10, leading=14,
                             alignment=TA_CENTER, textColor=colors.HexColor('#777777'))
-S_toc      = ParagraphStyle('TOCEntry', fontName='EBG', fontSize=12, leading=20)
+S_toc      = ParagraphStyle('TOCEntry', fontName='Garamond', fontSize=12, leading=20)
 
 class BookDoc(BaseDocTemplate):
     def afterFlowable(self, f):
@@ -159,7 +159,7 @@ class BookDoc(BaseDocTemplate):
 
 def page_decor(canv, doc):
     canv.saveState()
-    canv.setFont('EBG', 10)
+    canv.setFont('Garamond', 10)
     canv.setFillColor(colors.HexColor('#666666'))
     canv.drawCentredString(PAGE_W/2, 0.45*inch, str(canv.getPageNumber()))
     canv.restoreState()
@@ -251,8 +251,8 @@ def build_cover(lang, outpath):
     c = pdfcanvas.Canvas(outpath, pagesize=(PAGE_W, PAGE_H))
 
     # full-bleed portrait crop featuring the lakeside church (right of image)
-    c.drawImage('/home/claude/cover_church.png', 0, 0,
-                width=PAGE_W, height=PAGE_H)
+    cover_img = os.path.expanduser("~/cover_church.png")
+    c.drawImage(cover_img, 0, 0, width=PAGE_W, height=PAGE_H)
 
     # translucent title band across the sky, above the steeple
     band_h = 1.5*inch
@@ -260,16 +260,16 @@ def build_cover(lang, outpath):
     c.setFillColor(colors.Color(0, 0, 0, alpha=0.42))
     c.rect(0, band_y, PAGE_W, band_h, stroke=0, fill=1)
     c.setFillColor(colors.white)
-    c.setFont('EBG', 29)
+    c.setFont('Garamond', 29)
     c.drawCentredString(PAGE_W/2, band_y + band_h - 0.72*inch, m['title'])
-    c.setFont('EBGI', 13.5)
+    c.setFont('Garamond', 13.5)
     c.drawCentredString(PAGE_W/2, band_y + band_h - 1.14*inch, m['subtitle'])
 
     # author band at the foot
     c.setFillColor(colors.Color(0, 0, 0, alpha=0.42))
     c.rect(0, 0, PAGE_W, 0.55*inch, stroke=0, fill=1)
     c.setFillColor(colors.white)
-    c.setFont('EBG', 12.5)
+    c.setFont('Garamond', 12.5)
     c.drawCentredString(PAGE_W/2, 0.21*inch, m['author'])
 
     # QR tile, lower-left over the water, clear of the church
@@ -288,14 +288,14 @@ def build_cover(lang, outpath):
     d.add(qr)
     renderPDF.draw(d, c, qx, qy)
     c.setFillColor(colors.white)
-    c.setFont('EBGI', 9.5)
+    c.setFont('Garamond', 9.5)
     c.drawString(qx - pad, qy - pad - 0.22*inch,
                  'supersteveprice.github.io/Pray')
     c.showPage()
     c.save()
 
 def assemble(lang, final):
-    cov, body = f'/home/claude/cover_{lang}.pdf', f'/home/claude/body_{lang}.pdf'
+    cov, body = os.path.join(SCRIPT_DIR, f'cover_{lang}.pdf'), os.path.join(SCRIPT_DIR, f'body_{lang}.pdf')
     build_cover(lang, cov)
     build_body(lang, body)
     w = PdfWriter()
@@ -305,6 +305,11 @@ def assemble(lang, final):
         w.write(f)
     print(final, len(w.pages), 'pages')
 
-assemble('english', '/home/claude/The_Book_of_Prayer.pdf')
-assemble('german',  '/home/claude/Das_Buch_des_Gebets.pdf')
-assemble('spanish', '/home/claude/El_Libro_de_Oracion.pdf')
+# Generate PDFs in the Pray docs/books directory
+out_en = os.path.join(PRAY_DIR, 'docs/books/en/The_Book_of_Prayer.pdf')
+out_de = os.path.join(PRAY_DIR, 'docs/books/de/Das_Buch_des_Gebets.pdf')
+out_es = os.path.join(PRAY_DIR, 'docs/books/es/El_Libro_de_Oracion.pdf')
+
+assemble('english', out_en)
+assemble('german', out_de)
+assemble('spanish', out_es)

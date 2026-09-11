@@ -110,3 +110,4 @@ PRAYER_ALIASES: dict = {
 }
 
 __all__ = ["Prayer", "PRAYERS", "PRAYER_ALIASES"]
+from .hail_mary import HailMary

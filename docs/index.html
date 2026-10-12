@@ -85,18 +85,30 @@
     border-radius: 8px;
   }
 
-  /* Info button + modal */
+  /* Info / Download-PDF buttons */
   #panel { position: relative; }
-  #about-btn {
+  #top-actions {
     position: absolute; top: 1rem; right: 1rem;
-    width: 28px; height: 28px; padding: 0;
-    border-radius: 50%; border: 1px solid #444;
-    background: #2a2a2a; color: #aaa;
-    font-family: Georgia, 'Times New Roman', serif; font-style: italic;
-    font-size: 15px; line-height: 1; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; gap: 8px;
   }
-  #about-btn:hover { background: #333; color: #e8e8e8; }
+  .top-action-btn {
+    height: 30px; padding: 0 12px;
+    border-radius: 16px; border: 1px solid #444;
+    background: #2a2a2a; color: #ccc;
+    font-family: system-ui, sans-serif;
+    font-size: 12.5px; font-weight: 500; line-height: 1;
+    cursor: pointer; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 5px;
+    text-decoration: none;
+  }
+  .top-action-btn:hover { background: #333; color: #e8e8e8; }
+  @media (max-width: 480px) {
+    #top-actions {
+      position: static;
+      justify-content: flex-end;
+      margin: 0 0 0.75rem;
+    }
+  }
   .overlay {
     position: fixed; inset: 0; z-index: 100;
     background: rgba(0,0,0,0.6);
@@ -139,11 +151,25 @@
     font-size: 0.85rem;
   }
   #about-book a:hover { background: #333; }
+
+  .pdf-toast {
+    position: fixed; left: 50%; bottom: 1.5rem;
+    transform: translateX(-50%);
+    background: #2a2a2a; color: #e8e8e8;
+    border: 1px solid #444; border-radius: 10px;
+    padding: 10px 18px; font-size: 13px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    z-index: 300; max-width: 90vw; text-align: center;
+  }
+  .pdf-toast[hidden] { display: none; }
 </style>
 </head>
 <body>
 <div id="panel">
-<button id="about-btn" aria-label="About Pray" title="About Pray">i</button>
+<div id="top-actions">
+  <button id="about-btn" class="top-action-btn" aria-label="About Pray" title="About Pray">ℹ️ Info</button>
+  <button id="download-pdf-btn" type="button" class="top-action-btn" title="View or download the full prayer book as a PDF">⬇ Download PDF</button>
+</div>
 <h1>Pray</h1>
 <p class="sub">"Ask, and it shall be given you; seek, and ye shall find." — Matthew 7:7</p>
 <div class="grid">
@@ -238,6 +264,20 @@
     <p class="modal-ver">Version 2026-10-08 08:12 · cd49a4e
   </div>
 </div>
+
+<div id="pdf-confirm-overlay" class="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="pdf-confirm-title">
+    <button id="pdf-confirm-close" class="modal-close" aria-label="Close">&times;</button>
+    <h2 id="pdf-confirm-title">View PDF?</h2>
+    <p id="pdf-confirm-desc"></p>
+    <div style="display:flex; gap:10px; justify-content:center; margin-top:1.1rem">
+      <button id="pdf-confirm-yes" class="top-action-btn" style="height:36px; padding:0 20px; font-size:14px">Yes</button>
+      <button id="pdf-confirm-no"  class="top-action-btn" style="height:36px; padding:0 20px; font-size:14px">No</button>
+    </div>
+  </div>
+</div>
+
+<div id="pdf-toast" class="pdf-toast" hidden></div>
 
 <script>
 const TEXTS = {
@@ -589,6 +629,74 @@ function renderAbout(lang) {
   }
 }
 aboutLangSel.addEventListener('change', () => renderAbout(aboutLangSel.value));
+
+// Header "Download PDF" button — always points at the book for whichever
+// language is currently selected on the main panel (not the About modal's
+// language, which can be changed independently while the modal is open).
+// Clicking it asks "View PDF?"; Yes both downloads the file and opens it
+// for viewing; No just closes the prompt with no action taken.
+const downloadPdfBtn    = document.getElementById('download-pdf-btn');
+const pdfConfirmOverlay = document.getElementById('pdf-confirm-overlay');
+const pdfConfirmDesc    = document.getElementById('pdf-confirm-desc');
+const pdfConfirmYes     = document.getElementById('pdf-confirm-yes');
+const pdfConfirmNo      = document.getElementById('pdf-confirm-no');
+const pdfConfirmClose   = document.getElementById('pdf-confirm-close');
+const pdfToast          = document.getElementById('pdf-toast');
+
+let currentBook = BOOKS.english;
+
+function updateDownloadButton() {
+  currentBook = BOOKS[langSel.value] || BOOKS.english;
+  const plainLabel = currentBook.label.replace(/^\p{Emoji}\uFE0F?\s*/u, '');
+  downloadPdfBtn.title = 'View or download: ' + plainLabel;
+}
+langSel.addEventListener('change', updateDownloadButton);
+updateDownloadButton();
+
+function showPdfToast(filename) {
+  pdfToast.textContent = filename + ' has been downloaded to your Downloads folder.';
+  pdfToast.hidden = false;
+  clearTimeout(pdfToast._hideTimer);
+  pdfToast._hideTimer = setTimeout(() => { pdfToast.hidden = true; }, 6000);
+}
+
+function openPdfConfirm() {
+  const plainLabel = currentBook.label.replace(/^\p{Emoji}\uFE0F?\s*/u, '');
+  pdfConfirmDesc.textContent = 'View "' + plainLabel + '"? It will also be saved to your Downloads folder.';
+  pdfConfirmOverlay.hidden = false;
+}
+function closePdfConfirm() { pdfConfirmOverlay.hidden = true; }
+
+function viewAndDownloadPdf() {
+  const book     = currentBook;
+  const filename = book.file.split('/').pop();
+
+  // Trigger a real file download via a throwaway anchor.
+  const a = document.createElement('a');
+  a.href = book.file;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  // Open it in a new tab so they can view it right away.
+  window.open(book.file, '_blank');
+
+  closePdfConfirm();
+
+  // Tell them it's been saved once they come back to this tab — but not
+  // immediately, since opening the new tab itself causes a focus change.
+  setTimeout(() => {
+    window.addEventListener('focus', () => showPdfToast(filename), { once: true });
+  }, 800);
+}
+
+downloadPdfBtn.addEventListener('click', openPdfConfirm);
+pdfConfirmYes.addEventListener('click', viewAndDownloadPdf);
+pdfConfirmNo.addEventListener('click', closePdfConfirm);
+pdfConfirmClose.addEventListener('click', closePdfConfirm);
+pdfConfirmOverlay.addEventListener('click', e => { if (e.target === pdfConfirmOverlay) closePdfConfirm(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !pdfConfirmOverlay.hidden) closePdfConfirm(); });
 
 const openAbout    = () => {
   const lang = ABOUT_TEXTS[langSel.value] ? langSel.value : 'english';

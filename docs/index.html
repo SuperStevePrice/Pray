@@ -668,19 +668,24 @@ function openPdfConfirm() {
 function closePdfConfirm() { pdfConfirmOverlay.hidden = true; }
 
 function viewAndDownloadPdf() {
-  const book     = currentBook;
-  const filename = book.file.split('/').pop();
+  const book        = currentBook;
+  const filename     = book.file.split('/').pop();
+  const absoluteUrl  = new URL(book.file, document.baseURI).href;
 
-  // Trigger a real file download via a throwaway anchor.
+  // Open the viewer tab FIRST, while we're still on the freshest part of
+  // the click gesture — Safari's popup blocker can treat window.open as
+  // "not user-initiated" if it runs after another DOM action (like the
+  // download below) has already consumed the click's activation.
+  window.open(absoluteUrl, '_blank');
+
+  // Then trigger a real file download via a throwaway anchor, using the
+  // same resolved absolute URL so the two can't disagree.
   const a = document.createElement('a');
-  a.href = book.file;
+  a.href = absoluteUrl;
   a.download = filename;
   document.body.appendChild(a);
   a.click();
   a.remove();
-
-  // Open it in a new tab so they can view it right away.
-  window.open(book.file, '_blank');
 
   closePdfConfirm();
 

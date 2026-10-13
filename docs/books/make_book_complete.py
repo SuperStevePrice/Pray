@@ -149,7 +149,7 @@ def build_book(lang, outpath):
     
     doc.multiBuild(story)
 
-build_book('english', os.path.join(PRAY_DIR, 'docs/books/en/The_Book_of_Prayer.pdf'))
+build_book('english', os.path.join(PRAY_DIR, 'docs/books/en/A_Book_of_Common_Prayer.pdf'))
 build_book('german', os.path.join(PRAY_DIR, 'docs/books/de/Das_Buch_des_Gebets.pdf'))
 build_book('spanish', os.path.join(PRAY_DIR, 'docs/books/es/El_Libro_de_Oracion.pdf'))
 print("✅ Complete PDFs with cover pages generated!")

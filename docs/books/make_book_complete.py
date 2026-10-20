@@ -55,6 +55,7 @@ CREDITS_BODY = {
         'This collection brings together prayers from the Christian tradition, believed to be in the public domain, '
         'alongside original content prepared for this edition.',
         '<b>Hail Mary (2026)</b> — original composition written by Steve Price.',
+        '<b>Hail, O Thief (2026)</b> — original composition written by Steve Price.',
         'All artwork in this volume was created by ChatGPT, under the direction of Steve Price.',
         '© 2026 Steve Price. Compilation, arrangement, and original content.',
     ],
@@ -62,6 +63,7 @@ CREDITS_BODY = {
         'Diese Sammlung vereint Gebete aus der christlichen Tradition, die als gemeinfrei gelten, '
         'zusammen mit Originalinhalten, die für diese Ausgabe verfasst wurden.',
         '<b>Gegrüßet seist du, Maria (2026)</b> — Originalkomposition, verfasst von Steve Price.',
+        '<b>Sei gegrüßt, o Schächer (2026)</b> — Originalkomposition, verfasst von Steve Price.',
         'Alle Kunstwerke in diesem Band wurden von ChatGPT unter der Leitung von Steve Price erstellt.',
         '© 2026 Steve Price. Zusammenstellung, Anordnung und Originalinhalte.',
     ],
@@ -69,6 +71,7 @@ CREDITS_BODY = {
         'Esta colección reúne oraciones de la tradición cristiana, consideradas de dominio público, '
         'junto con contenido original preparado para esta edición.',
         '<b>Dios te salve, María (2026)</b> — composición original escrita por Steve Price.',
+        '<b>Salve, oh Ladrón (2026)</b> — composición original escrita por Steve Price.',
         'Todas las obras de arte de este volumen fueron creadas por ChatGPT, bajo la dirección de Steve Price.',
         '© 2026 Steve Price. Compilación, disposición y contenido original.',
     ],
@@ -89,6 +92,7 @@ SOURCE_NOTES = [
     'The 23rd Psalm — traditional biblical text (Hebrew Scriptures), public domain.',
     'Ave Maria — traditional Catholic prayer based on Luke 1, public domain.',
     'Hail Mary — see note above regarding the 2026 composition.',
+    'Hail, O Thief — see note above regarding the 2026 composition.',
     'Ave Verum Corpus — medieval Eucharistic hymn, traditionally attributed to Pope Innocent VI (14th century), public domain.',
     'Gloria — traditional liturgical text (Gloria in Excelsis Deo), public domain.',
     "The Lord's Prayer — from the Gospels (Matthew 6, Luke 11), public domain.",

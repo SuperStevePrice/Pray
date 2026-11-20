@@ -108,6 +108,7 @@ class Prayer:
     voices:         dict                       # language → {name: say_string}
     language_aliases: dict                     # alias → canonical language
     latin_note:     str = ""                   # shown when latin requested
+    image:          Optional[str] = None       # optional artwork filename under docs/images/
 
     def language_names(self) -> list:
         return list(self.texts.keys())

@@ -15,6 +15,8 @@ from .miserere        import Miserere
 from .gloria_patri    import GloriaPatri
 from .sanctus         import Sanctus
 from .magnificat      import Magnificat
+from .hail_mary       import HailMary
+from .crucified_thief import CrucifiedThief
 from .base            import Prayer
 
 # ── Registry ───────────────────────────────────────────────────────────────────
@@ -30,6 +32,8 @@ PRAYERS: dict = {
     "gloria":     GloriaPatri,
     "sanctus":    Sanctus,
     "magnificat": Magnificat,
+    "hail-mary":  HailMary,
+    "crucified-thief": CrucifiedThief,
 }
 
 # Aliases for --prayer argument
@@ -110,4 +114,3 @@ PRAYER_ALIASES: dict = {
 }
 
 __all__ = ["Prayer", "PRAYERS", "PRAYER_ALIASES"]
-from .hail_mary import HailMary

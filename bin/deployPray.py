@@ -8,9 +8,16 @@ prayers/ registry), and refreshes the About-modal version stamp.
 
 Unlike the previous version, this does NOT rebuild the page from a frozen
 historical commit. It edits the live page in place, so hand-maintained
-features — the Book download table (BOOKS), the QR code, and the
-language-aware About modal — are preserved automatically. Only the four
-generated regions are touched.
+features — the QR code and the language-aware About modal — are preserved
+automatically. Only the four generated regions are touched.
+
+Downloadable PDF prayer books were removed (Oct 2026): maintaining a
+pre-built PDF per language was tedious busywork, and the app already
+generates any prayer, in any language, on demand via speech synthesis --
+so a static downloadable book was redundant. The book-generation scripts
+under docs/books/ still work for local/offline use if ever wanted again,
+but their PDF output is no longer committed to the repo or linked from
+the page.
 
 Usage:
     python bin/deployPray.py                    # regenerate, commit, push
@@ -41,6 +48,8 @@ PRAYER_NAMES = {
     "ave": "Ave Maria",
     "ave_verum": "Ave Verum Corpus",
     "gloria": "Gloria",
+    "hail-mary": "Hail Mary (2026)",
+    "crucified-thief": "Hail, O Thief",
     "lords": "Lord's Prayer",
     "magnificat": "Magnificat",
     "miserere": "Miserere — Psalm 51",
@@ -57,6 +66,8 @@ PRAYER_NAMES = {
 PRAYER_IMAGES = {
     "ave": "ave-maria.png",
     "ave_verum": "ave-verum-corpus.png",
+    "hail-mary": "hail-mary.png",
+    "crucified-thief": "crucified-thief.png",
     "lords": "Breaking_of_The_Bread.png",
     "serenity": "serenity.png",
     "psalm23": "psalm23.png",
@@ -105,7 +116,9 @@ def main():
     if missing:
         sys.exit(f"✋ Aborting: docs/index.html is missing {missing} — unexpected markup, nothing changed.")
     # Non-fatal: warn if the hand-maintained features aren't where we expect them.
-    for feat in ('const BOOKS', 'aboutLangSel', 'about-qr'):
+    # (No downloadable PDF books anymore -- generated on the fly by the app
+    # itself, so 'const BOOKS' is intentionally gone and isn't checked here.)
+    for feat in ('aboutLangSel', 'about-qr'):
         if feat not in html:
             print(f"⚠️  Heads-up: '{feat}' not found in the current page — it may be older than expected.")
 
